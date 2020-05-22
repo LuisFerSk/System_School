@@ -106,9 +106,7 @@ $user= UserData::getById($_SESSION["user_id"]);
       <ul class="sidebar-menu">
          <li><a href="./?view=home"><i class="fa fa-home"></i> <span>Inicio</span></a></li>
 <?php if(!$user->kind):?>
-         <li><a href="./?view=asis"><i class="fa fa-users"></i> <span>Asistencia</span></a></li>
-         <li><a href="./?view=calificaciones"><i class="fa fa-book"></i> <span>Calificaciones</span></a></li>
-         <li><a href="./?view=conducta"><i class="fa  fa-graduation-cap"></i> <span>Conducta</span></a></li>
+         <li><a href="./?view=asis"><i class="fa fa-users"></i> <span>Grupos</span></a></li>
          <li><a href="./?view=prof_grad"><i class="fa  fa-hourglass-end"></i> <span>Mis Grados</span></a></li>
 <?php endif;?>
 
