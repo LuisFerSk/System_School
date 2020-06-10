@@ -121,8 +121,6 @@ if(isset($_GET["opt"]) && $_GET["opt"]=="all"):?>
       <thead>
       <th></th>
       <th>Nombres y Apellidos</th>
-      <th>Especialidad</th>
-      <th><i class="fa  fa-mobile-phone (alias)"></i> N° de Celular</th>
       </thead>
       <?php
       foreach($profesores as $prof){
@@ -130,8 +128,6 @@ if(isset($_GET["opt"]) && $_GET["opt"]=="all"):?>
         <tr>
         <td style="width:130px;"><a href="./?action=select_userprof&id=<?php echo $prof->id_prof;?>" class="btn btn-warning btn-xs">Agregar administrador <i class="fa fa-arrow-right"></i></a></td>
         <td><a href="./?view=prof&id=<?php echo $prof->id;?>"><?php echo $prof->nombres." ".$prof->apellidos; ?></a></td>
-        <td><a href="./?view=prof&id=<?php echo $prof->id;?>"><?php echo $prof->especialidad; ?></a></td>
-        <td style="width:130px;"><a href="./?view=prof&id=<?php echo $prof->id;?>"><?php echo $prof->num_cel; ?></a></td>
         </tr>
 
 <?php

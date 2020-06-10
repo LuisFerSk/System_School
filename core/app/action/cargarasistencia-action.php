@@ -1,6 +1,6 @@
 		<?php
 
-		$estudiantes = Est_graData::getAllByTeamId($_GET["id_grado"]);
+		$estudiantes = Est_curData::getAllByTeamId($_GET["id_grado"]);
 		if(count($estudiantes)>0){
 			// si hay usuarios
 			?>

@@ -57,6 +57,11 @@ class CursosData {
 		return Model::many($query[0],new CursosData());
 	}
 
+	public static function getAllByUserId($id){
+		$sql = "select * from ".self::$tablename." inner join est_cur ON cursos.id_curso = est_cur.id_grado WHERE cursos.profesor=$id";
+		$query = Executor::doit($sql);
+		return Model::many($query[0],new CursosData());
+	}
 
 	public static function getLike($q){
 		$sql = "select * from ".self::$tablename." where name like '%$q%'";

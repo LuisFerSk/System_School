@@ -4,7 +4,7 @@
 <div class="btn-group pull-right">
 	<a href="./?view=nuevogrado" class="btn btn-success"><i class='fa  fa-plus'></i> Nuevo Grado</a>
 </div>
-		<h1>Grados</h1>
+		<h1>Programas</h1>
 <br>
 		<?php
 
@@ -16,8 +16,8 @@
 			<table class="table table-bordered table-hover">
 			<thead>
 			<th></th>
-			<th>Grado</th>
-			<th>Nivel</th>
+			<th>Programa</th>
+			<th>Facultad</th>
 			<th><i class="fa fa-cog fa-spin fa-1x fa-fw"></i> Acciones</th>
 			</thead>
 			<?php
@@ -37,7 +37,7 @@
 
 <?php
 		}else{
-			echo "<p class='alert alert-danger'>No hay Grupos</p>";
+			echo "<p class='alert alert-danger'>No hay Facultades</p>";
 		}
 
 
