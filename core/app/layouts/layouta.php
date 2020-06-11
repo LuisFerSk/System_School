@@ -4,7 +4,8 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Schools</title>
+  <title>Reksai</title>
+  <link rel="icon" href="wwwroot/Logoupc.png">
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
@@ -105,7 +106,7 @@
           <ul class="sidebar-menu">
             <li><a href="./?view=home"><i class="fa fa-home"></i> <span>Inicio</span></a></li>
             <?php if (!$user->kind) : ?>
-              <li><a href="./?view=asis"><i class="fa fa-users"></i> <span>Grupos</span></a></li>
+              <li><a href="./?view=asis"><i class="fa fa-users"></i> <span>Cursos</span></a></li>
             <?php endif; ?>
 
             <?php if ($user->kind) : ?>
@@ -117,7 +118,7 @@
               <li class="treeview">
                 <a href="#">
                   <i class="fa fa-cogs"></i>
-                  <span>Administracion <small><span class="label label-warning">administrador</span></small></span>
+                  <span>Administracion</span>
                   <span class="pull-right-container">
                     <i class="fa fa-angle-left pull-right"></i>
                   </span>
@@ -197,13 +198,13 @@
 
       <!-- /.control-sidebar -->
       <!-- Add the sidebar's background. This div must be placed
-       immediately after the control sidebar -->
+      immediately after the control sidebar -->
       <div class="control-sidebar-bg"></div>
     </div>
   <?php else : ?>
     <div class="login-box">
       <div class="login-logo">
-        <a href="../../index2.html">Schools</a>
+        <a href="../../index2.html">Universidad Popular del Cesar</a>
       </div>
       <!-- /.login-logo -->
       <div class="login-box-body">
@@ -220,7 +221,7 @@
           </div>
 
 
-          <button type="submit" class="btn btn-primary btn-block btn-flat">Entrar</button>
+          <button type="submit" class="btn btn-block btn-flat" style="background-color:green;">Entrar</button>
         </form>
 
 
@@ -249,7 +250,7 @@
     $(function() {
 
       /* initialize the external events
-       -----------------------------------------------------------------*/
+      -----------------------------------------------------------------*/
       function ini_events(ele) {
         ele.each(function() {
 
@@ -275,7 +276,7 @@
       ini_events($('#external-events div.external-event'));
 
       /* initialize the calendar
-       -----------------------------------------------------------------*/
+      -----------------------------------------------------------------*/
       //Date for the calendar events (dummy data)
       var date = new Date();
       var d = date.getDate(),

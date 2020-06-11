@@ -18,7 +18,6 @@
 			<thead>
 			<th></th>
 			<th>Nombre</th>
-			<th></th>
 			</thead>
 			<?php
 			foreach($grados as $grado){
@@ -26,7 +25,6 @@
 				<tr>
 				<td style="width:130px;"><a href="./?action=selectteam&id=<?php echo $grado->id_grado;?>" class="btn btn-default btn-xs">Seleccionar <i class="fa fa-arrow-right"></i></a></td>
 				<td><a href="./?view=grado&id=<?php echo $grado->id;?>"><?php echo $grado->nombre ?></a></td>				
-				<td style="width:130px;"><a href="index.php?view=editteam&id=<?php echo $grado->id;?>" class="btn btn-warning btn-xs">Editar</a> <a href="index.php?view=delteam&id=<?php echo $grado->id;?>" class="btn btn-danger btn-xs">Eliminar</a></td>
 				</tr>
 				<?php
 

@@ -10,11 +10,7 @@ $user = UserData::getById($_SESSION["user_id"]);
 		<?php if ($user->kind) : ?>
 			<a href="./?view=nuevoestu&id_grado=<?php echo $_GET["id"]; ?>" class="btn btn-info"><i class='fa fa-asterisk'></i> Nuevo Alumno</a> <?php endif; ?>
 		<?php if (count($estudiantes) > 0) : ?>
-			<a href="./?view=asistencia&id_grado=<?php echo $_GET["id"]; ?>" class="btn btn-info"><i class='fa fa-check'></i> Asistencia</a>
-			<a href="./?view=conducta&id_grado=<?php echo $_GET["id"]; ?>" class="btn btn-info"><i class='fa fa-smile-o'></i> Comportamiento</a>
-			<a href="./?view=calificaciones&id_grado=<?php echo $_GET["id"]; ?>" class="btn btn-info"><i class='fa fa-tasks'></i> Calificaciones</a>
-			<a href="./?view=bloques&id_grado=<?php echo $_GET["id"]; ?>" class="btn btn-info"><i class='fa fa-th-large'></i> Bloques</a>
-			<!-- Single button -->
+			<!-- Single button
 			<div class="btn-group">
 				<button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
 					<i class='fa fa-th-list'></i> Listas <span class="caret"></span>
@@ -25,6 +21,7 @@ $user = UserData::getById($_SESSION["user_id"]);
 					<li><a href="./?view=lista_notas&id_grado=<?php echo $_GET["id"]; ?>">Calificaciones</a></li>
 				</ul>
 			</div>
+			-->
 			<a href="report/grado-word.php?id_grado=<?php echo $_GET["id"]; ?>" class="btn btn-info"><i class='fa fa-download'></i> Descargar</a>
 		<?php endif; ?>
 		<!--	<a href="index.php?view=list&id_grado=<?php echo $_GET["id"]; ?>" class="btn btn-info"><i class='fa fa-area-chart'></i> Estadisticas</a> -->
@@ -48,7 +45,7 @@ $user = UserData::getById($_SESSION["user_id"]);
 				?>
 					<tr>
 						<td><?php echo $alumn->nombre . " " . $alumn->apellido_paterno . " " . $alumn->apellido_materno; ?></td>
-						<td style="width:160px;"><a href="./?view=abrirestu&id=<?php echo $alumn->id_estudiante; ?>&tid=<?php echo $grado->id_grado; ?>" class="btn btn-info btn-xs">Ver</a> <a href="./?view=editarestudiante&id=<?php echo $alumn->id_estudiante; ?>&tid=<?php echo $grado->id_grado; ?>" class="btn btn-warning btn-xs">Editar</a> <a href="index.php?action=delalumn&id=<?php echo $alumn->id; ?>&tid=<?php echo $grado->id; ?>" class="btn btn-danger btn-xs">Eliminar</a></td>
+						<td style="width:80px;"><a href="./?view=abrirestu&id=<?php echo $alumn->id_estudiante; ?>&tid=<?php echo $grado->id_grado; ?>" class="btn btn-info btn-xs">Ver</a></td>
 					</tr>
 			<?php
 
