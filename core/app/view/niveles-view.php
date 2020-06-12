@@ -29,7 +29,7 @@
                     <tr>
                       <td><?= $ni->id_nivel; ?></td>
                       <td><?= $ni->nombre; ?></td>
-                      <td>
+                      <td style="width: 130px;">
                         <a href="./?view=niveles&opt=edit&id=<?= $ni->id_nivel; ?>" class="btn btn-warning btn-xs"><i class="fa fa-pencil"></i> Editar</a>
                         <a href="./?action=niveles&opt=del&id=<?= $ni->id_nivel; ?>" class="btn btn-danger btn-xs"><i class="fa fa-trash-o fa-lg"></i> Eliminar</a>
                       </td>

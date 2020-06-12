@@ -34,7 +34,7 @@
                       <td><?= $acad->nombre; ?></td>
                       <td><?= $acad->anio; ?></td>
                       <td><?= $acad->estado; ?></td>
-                      <td>
+                      <td style="width: 130px;">
                         <a href="./?view=a_academico&opt=edit&id=<?= $acad->id_a; ?>" class="btn btn-warning btn-xs"><i class="fa fa-pencil"></i> Editar</a>
                         <a href="./?action=a_academico&opt=del&id=<?= $acad->id_a; ?>" class="btn btn-danger btn-xs"><i class="fa fa-trash-o fa-lg"></i> Eliminar</a>
                       </td>
@@ -77,7 +77,6 @@
               </select>
             </div>
           </div>
-
           <div class=" col-lg-10">
             <button type="submit" class="btn btn-success">Agregar</button>
             <button type="button" onclick="location='./?view=a_academico&opt=all'" class="btn btn-warning">Cancelar</button>

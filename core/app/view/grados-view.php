@@ -31,7 +31,8 @@
                       <td><?= $gra->id_grado; ?></td>
                       <td><?= $gra->nombre; ?></td>
                       <td><?= $gra->nivel; ?></td>
-                      <td>
+                      <td style="width: 250px;">
+                        <a href="./?view=grados&opt=verEst&id=<?= $gra->id_grado; ?>" class="btn btn-primary btn-xs"><i class="fa fa-users fa-lg"></i> Ver estudiantes</a>
                         <a href="./?view=grados&opt=edit&id=<?= $gra->id_grado; ?>" class="btn btn-warning btn-xs"><i class="fa fa-pencil"></i> Editar</a>
                         <a href="./?action=grados&opt=del&id=<?= $gra->id_grado; ?>" class="btn btn-danger btn-xs"><i class="fa fa-trash-o fa-lg"></i> Eliminar</a>
                       </td>
@@ -91,10 +92,47 @@
   </section>
   <br>
 <?php elseif (isset($_GET["opt"]) && $_GET["opt"] == "verEst" && isset($_GET["id"])) :
-$grado =  GradosData::getById($_GET["id"]);
-$estudiantes = Est_graData::getAllByTeamId($_GET["id"]);
-$user = null;
-$user = UserData::getById($_SESSION["user_id"]);
+  $grado =  GradosData::getById($_GET["id"]);
+  $estudiantes = Est_graData::getAllByTeamId($_GET["id"]);
+  $user = UserData::getById($_SESSION["user_id"]);
 ?>
-
-<?php endif;?>
+  <section class="content">
+    <div class="row">
+      <div class="col-md-12">
+        <h1>Alumnos <small><?php echo "del " . $grado->nombre . " nivel " . $grado->nivel; ?></small></h1>
+        <?php if ($user->kind) : ?>
+          <a href="./?view=nuevoestu&id_grado=<?php echo $_GET["id"]; ?>" class="btn btn-info"><i class='fa fa-asterisk'></i> Nuevo Alumno</a> <?php endif; ?>
+        <?php if (count($estudiantes) > 0) : ?>
+          <a href="report/grado-word.php?id_grado=<?php echo $_GET["id"]; ?>" class="btn btn-info"><i class='fa fa-download'></i> Descargar</a>
+        <?php endif; ?>
+        <br><br>
+        <?php
+        if (count($estudiantes) > 0) {
+          // si hay usuarios
+        ?>
+          <table class="table table-bordered table-hover">
+            <thead>
+              <th>Identificacion</th>
+              <th>Nombre</th>
+              <th>Genero</th>
+            </thead>
+            <?php
+            foreach ($estudiantes as $estu) {
+              $alumn = $estu->getAlumn();
+            ?>
+              <tr>
+                <td><?php echo $alumn->dni ?></td>
+                <td><?php echo $alumn->nombre . " " . $alumn->apellido_paterno . " " . $alumn->apellido_materno; ?></td>
+                <td><?php echo $alumn->genero ?></td>
+              </tr>
+          <?php
+            }
+            echo "</table>";
+          } else {
+            echo "<p class='alert alert-danger'>No hay Alumnos</p>";
+          }
+          ?>
+      </div>
+    </div>
+  </section>
+<?php endif; ?>

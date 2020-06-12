@@ -1,7 +1,7 @@
 <div class="row">
 	<div class="col-md-12">
 		<section class="content-header">
-			<h1>Programas<small> seleccione un programa para el estudiante</small></h1>
+			<h1>seleccione un programa para el estudiante</h1>
 		</section>
 		<br>
 		<?php
@@ -20,7 +20,7 @@
 				foreach ($grados as $grado) {
 				?>
 					<tr>
-						<td style="width:130px;"><a href="./?action=selectteam&id=<?php echo $grado->id_grado; ?>" class="btn btn-default btn-xs">Seleccionar <i class="fa fa-arrow-right"></i></a></td>
+						<td style="width:100px;"><a href="./?action=selectteam&id=<?php echo $grado->id_grado; ?>" class="btn btn-default btn-xs">Seleccionar <i class="fa fa-arrow-right"></i></a></td>
 						<td><a href="./?view=grado&id=<?php echo $grado->id; ?>"><?php echo $grado->nombre; ?></a></td>
 						<td><a href="./?view=grado&id=<?php echo $grado->id; ?>"><?php echo $grado->nivel; ?></a></td>
 						<td style="width:130px;"><a href="./?view=editargrado&id=<?php echo $grado->id_grado; ?>" class="btn btn-warning btn-xs">Editar</a> <a href="./?action=borrargrado&id=<?php echo $grado->id_grado; ?>" class="btn btn-danger btn-xs">Eliminar</a></td>

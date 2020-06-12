@@ -114,6 +114,7 @@ if (isset($_GET["opt"]) && $_GET["opt"] == "all") : ?>
             <table class="table table-bordered table-hover">
               <thead>
                 <th></th>
+                <th>DNI</th>
                 <th>Nombres y Apellidos</th>
               </thead>
               <?php
@@ -121,7 +122,8 @@ if (isset($_GET["opt"]) && $_GET["opt"] == "all") : ?>
               ?>
                 <tr>
                   <td style="width:130px;"><a href="./?action=select_userprof&id=<?php echo $prof->id_prof; ?>" class="btn btn-warning btn-xs">Agregar administrador <i class="fa fa-arrow-right"></i></a></td>
-                  <td><a href="./?view=prof&id=<?php echo $prof->id; ?>"><?php echo $prof->nombres . " " . $prof->apellidos; ?></a></td>
+                  <td><?php echo $prof->dni?></td>
+                  <td><?php echo $prof->nombres . " " . $prof->apellidos; ?></td>
                 </tr>
               <?php
               }

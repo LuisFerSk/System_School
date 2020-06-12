@@ -22,6 +22,7 @@ $user = UserData::getById($_SESSION["user_id"]);
 					<th>Identificacion</th>
 					<th>Nombre</th>
 					<th>Genero</th>
+					<th>Estado</th>
 				</thead>
 				<?php
 				foreach ($estudiantes as $estu) {
@@ -31,6 +32,7 @@ $user = UserData::getById($_SESSION["user_id"]);
 						<td><?php echo $alumn->dni?></td>
 						<td><?php echo $alumn->nombre . " " . $alumn->apellido_paterno . " " . $alumn->apellido_materno; ?></td>
 						<td><?php echo $alumn->genero?></td>
+						<td><?php echo $alumn->estado?></td>
 					</tr>
 			<?php
 				}

@@ -12,7 +12,6 @@
                 <tr>
                   <th scope="col">Nombres</th>
                   <th scope="col">Datos</th>
-                  <th scope="col">Apoderado(a)</th>
                   <th scope="col">Fecha/Registro</th>
                   <th scope="col">Estado</th>
                   <th scope="col">Operaciones</th>
@@ -22,11 +21,10 @@
                 <?php foreach ($estu as $es) : ?>
                   <tr>
                     <td><?= $es->nombre . "<br> " . $es->apellido_paterno . " " . $es->apellido_materno; ?></td>
-                    <td>fecha Nacimiento: <?= $es->fecha_nac; ?><br>Telf/Cel: <?= $es->num_cel; ?><br>Direccion: <?= $es->direccion; ?></td>
-                    <td><?= $es->apoderado; ?></td>
+                    <td>fecha Nacimiento: <?= $es->fecha_nac; ?><br>Genero: <?= $es->genero; ?></td>
                     <td><?= $es->fecha_reg; ?></td>
                     <td><?= $es->estado; ?></td>
-                    <td>
+                    <td style="width: 130px;">
                       <div class="btn-group">
                         <a class="btn btn-warning " href="#"><i class="fa fa-cog fa-spin fa-1x fa-fw"></i> Acciones</a>
                         <a class="btn btn-danger dropdown-toggle" data-toggle="dropdown" href="#">
@@ -178,13 +176,12 @@
                   <option><?php echo $esta->nombre ?></option>
                 <?php endforeach; ?>
               </select>
-
             </div>
           </div>
           <input type="hidden" name="id" value="<?= $estu->id_estudiante; ?>">
           <div class=" col-lg-10">
             <button type="submit" class="btn btn-success">Actualizar</button>
-            <button type="button" onclick="location='./?view=a_academico&opt=all'" class="btn btn-warning">Cancelar</button>
+            <button type="button" onclick="location='./?view=estudiantes&opt=all'" class="btn btn-warning">Cancelar</button>
           </div>
         </form>
   </section>
