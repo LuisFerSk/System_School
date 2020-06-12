@@ -8,26 +8,21 @@
             Profesores
             <small>Lista de profesores</small>
           </h1>
+          <br>
           <a href="./?view=profesores&opt=new" class="btn btn-success">Nuevo Registro</a>
         </section>
-
         <!--<ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
         <li><a href="#">Examples</a></li>
         <li class="active">Blank page</li>
       </ol>-->
-
         <!-- Main content -->
-
         <section class="content">
-
           <div class="row">
             <div class="col-xs-12">
               <div class="box">
                 <!-- /.box-header -->
                 <div class="box-body">
-
-
                   <?php if (count($profesor) > 0) : ?>
                     <table class="table table-bordered table-hover" id="table">
                       <thead>

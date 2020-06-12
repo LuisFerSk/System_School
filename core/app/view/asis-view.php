@@ -23,8 +23,8 @@
 			foreach($grados as $grado){
 				?>
 				<tr>
-				<td style="width:130px;"><a href="./?action=selectteam&id=<?php echo $grado->id_grado;?>" class="btn btn-default btn-xs">Seleccionar <i class="fa fa-arrow-right"></i></a></td>
-				<td><a href="./?view=grado&id=<?php echo $grado->id;?>"><?php echo $grado->nombre ?></a></td>				
+				<td style="width:130px;"><a href="./?action=selectteamcur&id=<?php echo $grado->id_grado;?>" class="btn btn-default btn-xs">Seleccionar <i class="fa fa-arrow-right"></i></a></td>
+				<td><?php echo $grado->nombre ?></td>				
 				</tr>
 				<?php
 

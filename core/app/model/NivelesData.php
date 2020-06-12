@@ -3,6 +3,7 @@ class NivelesData {
 	public static $tablename = "niveles";
 
 	public function __construct(){
+		$this->id_nivel = "";
 		$this->nombre = "";
 	}
 

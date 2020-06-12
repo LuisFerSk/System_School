@@ -110,30 +110,16 @@
             <?php endif; ?>
 
             <?php if ($user->kind) : ?>
-              <li><a href="./?view=a_academico&opt=all"><i class="fa  fa-hourglass-end"></i> <span>Periodo academico</span></a></li>
+              <li><a href="./?view=a_academico&opt=all"><i class="fa fa-hourglass-end"></i> <span>Periodo academico</span></a></li>
+              <li><a href="./?view=niveles&opt=all"><i class="fa fa-bars"></i> <span>Facultades</span></a></li>
+              <li><a href="./?view=grados&opt=all"><i class="fa fa-list-ol"></i> <span>Programas</span></a></li>
+              <li><a href="./?view=allgrados"><i class="fa fa-user-plus"></i> <span>Registrar Estudiante</span></a></li>
               <li><a href="./?view=estudiantes&opt=all"><i class="fa fa-users"></i> <span>Estudiantes</span></a></li>
-              <li><a href="./?view=allgrados"><i class="fa fa-list-ol"></i><span>Programas</span></a></li>
-              <li><a href="./?view=profesores&opt=all"><i class="fa fa-pencil"></i><span>Profesores</span></a></li>
-
+              <li><a href="./?view=profesores&opt=all"><i class="fa fa-pencil"></i> <span>Profesores</span></a></li>
+              <li><a href="./?view=cursos&opt=all"><i class="fa fa-pencil-square-o"></i> <span>Grupo</span></a></li>
               <li class="treeview">
                 <a href="#">
                   <i class="fa fa-cogs"></i>
-                  <span>Administracion</span>
-                  <span class="pull-right-container">
-                    <i class="fa fa-angle-left pull-right"></i>
-                  </span>
-                </a>
-                <ul class="treeview-menu">
-                  <li><a href="./?view=cursos&opt=all"><i class="fa fa-pencil-square-o"></i>Cursos</a></li>
-                  <li><a href="./?view=a_academico&opt=all"><i class="fa fa-calendar"></i>Periodo academico</a></li>
-                  <li><a href="./?view=niveles&opt=all"><i class="fa fa-bars"></i> Facultades</a></li>
-                  <li><a href="./?view=grados&opt=all"><i class="fa fa-list-ol"></i> Programas</a></li>
-                </ul>
-              </li>
-
-              <li class="treeview">
-                <a href="#">
-                  <i class="fa fa-users"></i>
                   <span>Gestion de suarios</span>
                   <span class="pull-right-container">
                     <i class="fa fa-angle-left pull-right"></i>

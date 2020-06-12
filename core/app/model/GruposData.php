@@ -24,7 +24,7 @@ class GruposData {
 	}
 
 	public function update(){
-		$sql = "update ".self_grado::$tablename." set id=\"$this->id\" where id_gra_cu=$this->id";
+		$sql = "update ".self::$tablename." set id=\"$this->id\" where id_gra_cu=$this->id";
 		Executor::doit($sql);
 	}
 

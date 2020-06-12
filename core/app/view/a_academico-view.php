@@ -2,25 +2,20 @@
   $academico = A_academicoData::getAll();
 ?>
   <section class="content-header">
-
     <h1>
       Periodos Academicos
       <small>A&ntildeos</small>
     </h1>
+    <br>
     <a href="./?view=a_academico&opt=new" class="btn btn-primary">Nuevo Registro</a>
   </section>
-
   <!-- Main content -->
-
   <section class="content">
-
     <div class="row">
       <div class="col-xs-12">
         <div class="box">
           <!-- /.box-header -->
           <div class="box-body">
-
-
             <?php if (count($academico) > 0) : ?>
               <table class="table table-bordered table-hover" id="table">
                 <thead>
@@ -56,8 +51,8 @@
         </div>
       </div>
     </div>
-
   </section>
+  <br>
 <?php elseif (isset($_GET["opt"]) && $_GET["opt"] == "new") : ?>
   <section class="container">
     <div class="row">
@@ -91,14 +86,14 @@
       </div>
     </div>
   </section>
-
+  <br>
 <?php elseif (isset($_GET["opt"]) && $_GET["opt"] == "edit") :
   $academico = A_academicoData::getById($_GET["id"]);
 ?>
   <section class="container">
     <div class="row">
       <div class="col-md-12">
-        <h1>editar Alumnos</h1>
+        <h1>Editar periodo</h1>
         <br>
         <form method="POST" action="./?action=a_academico&opt=upd">
           <div class="form-group">
@@ -122,4 +117,5 @@
           <button type="submit" class="btn btn-success">Actualizar</button>
         </form>
   </section>
+  <br>
 <?php endif; ?>

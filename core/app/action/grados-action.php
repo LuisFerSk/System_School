@@ -3,7 +3,6 @@ if (isset($_GET["opt"])&& $_GET["opt"]=="add") {
 	$grados=new GradosData();
 	$grados->nombre=$_POST["nombre"];
 	$grados->nivel=$_POST["nivel"];
-
 	$grados->add();
 	header("location: ./?view=grados&opt=all");
 }
