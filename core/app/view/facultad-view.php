@@ -7,14 +7,14 @@
       <small>todas las facultades</small>
     </h1>
     <br>
-    <a href="./?view=facultad&opt=new" class="btn btn-primary">Nuevo</a>
+    <a href="./?view=facultad&opt=new" class="btn btn-primary">Nueva facultad</a>
+    <br>
+    <br>
   </section>
-  <!-- Main content -->
-  <section class="content">
+  <section class="container">
     <div class="row">
       <div class="col-xs-12">
         <div class="box">
-          <!-- /.box-header -->
           <div class="box-body">
             <?php if (count($facultad) > 0) : ?>
               <table class="table table-bordered table-hover" id="table">
@@ -23,6 +23,7 @@
                     <th scope="col">id</th>
                     <th scope="col">nombre</th>
                     <th scope="col">estado</th>
+                    <th scope="col">Operaciones</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -32,8 +33,17 @@
                       <td><?= $fd->nombre; ?></td>
                       <td><?= $fd->estado; ?></td>
                       <td style="width: 130px;">
-                        <a href="./?view=facultad&opt=edit&id=<?= $fd->id_facultad; ?>" class="btn btn-warning btn-xs"><i class="fa fa-pencil"></i> Editar</a>
-                        <a href="./?action=niveles&opt=del&id=<?= $fd->id_facultad; ?>" class="btn btn-danger btn-xs"><i class="fa fa-trash-o fa-lg"></i> Eliminar</a>
+                        <div class="btn-group">
+                          <a class="btn btn-warning " href="#"><i class="fa fa-cog fa-spin fa-1x fa-fw"></i>
+                            Acciones</a>
+                          <a class="btn btn-danger dropdown-toggle" data-toggle="dropdown" href="#">
+                            <span class="fa fa-caret-down" title="Toggle dropdown menu"></span>
+                          </a>
+                          <ul class="dropdown-menu">
+                            <li><a href="./?view=facultad&opt=edit&id=<?= $fd->id_facultad; ?>"><i class="fa fa-pencil fa-fw"></i> Editar</a></li>
+                            <li><a href="./?action=niveles&opt=del&id=<?= $fd->id_facultad; ?>"><i class="fa fa-trash-o fa-fw"></i> Eliminar</a></li>
+                          </ul>
+                        </div>
                       </td>
                     </tr>
                   <?php endforeach; ?>
@@ -51,59 +61,80 @@
   </section>
   <br>
 <?php elseif (isset($_GET["opt"]) && $_GET["opt"] == "new") : ?>
-  <section class="container">
-    <h3>Agregar Facultad</h3>
+  <section class="content-header">
+    <h1>
+      Registrar facultad
+      <small>Digite la información.</small>
+    </h1>
     <br>
-    <form method="POST" action="./?action=facultad&opt=add">
-      <div class="form-row">
-        <div class="form-group col-md-9">
-          <label for="inputEmail4">Nombre:</label>
-          <input type="tex" name="nombre" class="form-control" id="inputEmail4" placeholder="Nombre de la facultad">
-        </div>
-        <div class="form-group col-md-3">
-          <label for="inputState">Estado:</label>
-          <select id="inputState" name="estado" class="form-control">
-            <option selected>Abierto</option>
-            <option>Cerrado</option>
-          </select>
-        </div>
-      </div>
-      <div class=" col-lg-10">
-        <button type="submit" class="btn btn-primary">Guardar</button>
-        <button type="date" onclick="location='./?view=facultad&opt=all'" class="btn btn-warning">Cancelar</button>
-      </div>
-    </form>
   </section>
-  <br>
+  <section class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="box">
+          <div class="box-body">
+            <form method="POST" action="./?action=facultad&opt=add">
+              <div class="form-row">
+                <div class="form-group col-md-9">
+                  <label>Nombre:</label>
+                  <input type="tex" name="nombre" class="form-control" placeholder="Nombre de la facultad">
+                </div>
+                <div class="form-group col-md-3">
+                  <label for="inputState">Estado:</label>
+                  <select id="inputState" name="estado" class="form-control">
+                    <option selected>Abierto</option>
+                    <option>Cerrado</option>
+                  </select>
+                </div>
+              </div>
+              <div class=" col-lg-10">
+                <button type="submit" class="btn btn-primary">Guardar</button>
+                <button type="date" onclick="location='./?view=facultad&opt=all'" class="btn btn-warning">Cancelar</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 <?php elseif (isset($_GET["opt"]) && $_GET["opt"] == "edit") :
   $facultad = FacultadData::getById($_GET["id"]);
 ?>
+  <section class="content-header">
+    <h1>
+      Editar Faculta
+      <small>Digite la información.</small>
+    </h1>
+    <br>
+  </section>
   <section class="container">
     <div class="row">
-      <div class="col-md-12">
-        <h1>Editar Facultad</h1>
-        <br>
-        <form method="POST" action="./?action=facultad&opt=upd">
-          <div class="form-row">
-            <div class="form-group col-md-9">
-              <label for="exampleInputEmail1">Nombre:</label>
-              <input type="text" name="nombre" required value="<?= $facultad->nombre; ?>" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-            </div>
-            <div class="form-group col-md-3">
-              <label for="inputState">Estado:</label>
-              <select id="inputState" name="estado" class="form-control">
-                <option selected>Abierto</option>
-                <option>Cerrado</option>
-              </select>
-            </div>
+      <div class="col-xs-12">
+        <div class="box">
+          <div class="box-body">
+            <form method="POST" action="./?action=facultad&opt=upd">
+              <div class="form-row">
+                <div class="form-group col-md-9">
+                  <label>Nombre:</label>
+                  <input type="text" name="nombre" required value="<?= $facultad->nombre; ?>" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                </div>
+                <div class="form-group col-md-3">
+                  <label>Estado:</label>
+                  <select name="estado" class="form-control">
+                    <option selected>Abierto</option>
+                    <option>Cerrado</option>
+                  </select>
+                </div>
+              </div>
+              <div class=" col-lg-10">
+                <input type="hidden" name="id" value="<?= $facultad->id_facultad; ?>">
+                <button type="submit" class="btn btn-success">Actualizar</button>
+                <button type="date" onclick="location='./?view=facultad&opt=all'" class="btn btn-warning">Cancelar</button>
+              </div>
+            </form>
           </div>
-          <div class=" col-lg-10">
-            <input type="hidden" name="id" value="<?= $facultad->id_facultad; ?>">
-            <button type="submit" class="btn btn-success">Actualizar</button>
-            <button type="date" onclick="location='./?view=facultad&opt=all'" class="btn btn-warning">Cancelar</button>
-          </div>
-        </form>
-        <br>
+        </div>
+      </div>
+    </div>
   </section>
-  <br>
 <?php endif; ?>

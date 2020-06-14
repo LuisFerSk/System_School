@@ -24,6 +24,7 @@
                     <th scope="col">Nombre</th>
                     <th scope="col">Facultad</th>
                     <th scope="col">Duracion</th>
+                    <th scope="col">Operaciones</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -33,8 +34,7 @@
                       <td><?= $pro->nombre; ?></td>
                       <td><?= $pro->facultad; ?></td>
                       <td><?= $pro->numeroPeriodos; ?></td>
-                      <td style="width: 250px;">
-                        <a href="./?view=programa&opt=verEst&id=<?= $pro->id_programa; ?>" class="btn btn-primary btn-xs"><i class="fa fa-users fa-lg"></i> Ver estudiantes</a>
+                      <td style="width: 130px;">
                         <a href="./?view=programa&opt=edit&id=<?= $pro->id_programa; ?>" class="btn btn-warning btn-xs"><i class="fa fa-pencil"></i> Editar</a>
                         <a href="./?action=programas&opt=del&id=<?= $pro->id_programa; ?>" class="btn btn-danger btn-xs"><i class="fa fa-trash-o fa-lg"></i> Eliminar</a>
                       </td>

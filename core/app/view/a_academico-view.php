@@ -4,17 +4,15 @@
   <section class="content-header">
     <h1>
       Periodos Academicos
-      <small>A&ntildeos</small>
+      <small>Todos los periodos</small>
     </h1>
     <br>
     <a href="./?view=a_academico&opt=new" class="btn btn-primary">Nuevo Registro</a>
   </section>
-  <!-- Main content -->
   <section class="content">
     <div class="row">
       <div class="col-xs-12">
         <div class="box">
-          <!-- /.box-header -->
           <div class="box-body">
             <?php if (count($academico) > 0) : ?>
               <table class="table table-bordered table-hover" id="table">
@@ -33,8 +31,17 @@
                       <td><?= $acad->nombre; ?></td>
                       <td><?= $acad->estado; ?></td>
                       <td style="width: 130px;">
-                        <a href="./?view=a_academico&opt=edit&id=<?= $acad->id_a; ?>" class="btn btn-warning btn-xs"><i class="fa fa-pencil"></i> Editar</a>
-                        <a href="./?action=a_academico&opt=del&id=<?= $acad->id_a; ?>" class="btn btn-danger btn-xs"><i class="fa fa-trash-o fa-lg"></i> Eliminar</a>
+                        <div class="btn-group">
+                          <a class="btn btn-warning " href="#"><i class="fa fa-cog fa-spin fa-1x fa-fw"></i>
+                            Acciones</a>
+                          <a class="btn btn-danger dropdown-toggle" data-toggle="dropdown" href="#">
+                            <span class="fa fa-caret-down" title="Toggle dropdown menu"></span>
+                          </a>
+                          <ul class="dropdown-menu">
+                            <li><a href="./?view=a_academico&opt=edit&id=<?= $acad->id_a; ?>"><i class="fa fa-pencil fa-fw"></i> Editar</a></li>
+                            <li><a href="./?action=a_academico&opt=del&id=<?= $acad->id_a; ?>"><i class="fa fa-trash-o fa-fw"></i> Eliminar</a></li>
+                          </ul>
+                        </div>
                       </td>
                     </tr>
                   <?php endforeach; ?>
@@ -175,7 +182,7 @@
               <a href="./?view=a_academico&opt=all" class="btn btn-warning">Cancelar</a>
             </div>
         </form>
-        
+
       </div>
     </div>
   </section>
@@ -197,8 +204,8 @@
             <div class="form-group col-md-6">
               <label for="inputState">Estado:</label>
               <select id="inputState" name="estado" class="form-control">
-                <option selected>Abierto</option>
-                <option>Cerrado</option>
+                <option <?php if ($academico->estado == 'Abierto') : ?>selected<?php endif; ?>>Abierto</option>
+                <option <?php if ($academico->estado == 'Cerrado') : ?>selected<?php endif; ?>>Cerrado</option>
               </select>
             </div>
             <div class="form-row">

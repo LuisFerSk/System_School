@@ -27,6 +27,7 @@ else if (isset($_GET["opt"])&& $_GET["opt"]=="upd") {
 	$estudiantes->fecha_nac=$_POST["fecha_nac"];
 	$estudiantes->email=$_POST["email"];
 	$estudiantes->estado=$_POST["estado"];
+	$estudiantes->programa=$_POST["programa"];
 	$estudiantes->genero=$_POST["genero"];
 	$estudiantes->update();
 	header("location: ./?view=estudiantes&opt=all");
