@@ -2,20 +2,20 @@
 if (isset($_GET["opt"]) && $_GET["opt"] == "add") {
   $asignatura = new AsignaturaData();
   $asignatura->codigo = $_POST["codigo"];
-  $facultad->nombre = $_POST["nombre"];
-  $facultad->estado = $_POST["estado"];
-  $facultad->add();
+  $asignatura->nombre = $_POST["nombre"];
+  $asignatura->estado = $_POST["estado"];
+  $asignatura->add();
   header("location: ./?view=facultad&opt=all");
 } else if (isset($_GET["opt"]) && $_GET["opt"] == "upd") {
-  $facultad = new AsignaturaData();
-  $facultad->id_facultad = $_POST["id"];
-  $facultad->nombre = $_POST["nombre"];
-  $facultad->estado = $_POST["estado"];
-  $facultad->update();
+  $asignatura = new AsignaturaData();
+  $asignatura->id_facultad = $_POST["id"];
+  $asignatura->nombre = $_POST["nombre"];
+  $asignatura->estado = $_POST["estado"];
+  $asignatura->update();
   header("location: ./?view=facultad&opt=all");
 } else if (isset($_GET["opt"]) && $_GET["opt"] == "del") {
-  $facultad = new AsignaturaData();
-  $facultad->id = $_GET["id"];
-  $facultad->del();
+  $asignatura = new AsignaturaData();
+  $asignatura->id = $_GET["id"];
+  $asignatura->del();
   header("location: ./?view=facultad&opt=all");
 }
