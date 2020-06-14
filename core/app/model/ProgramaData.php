@@ -1,20 +1,31 @@
 <?php
-class GradosData {
-	public static $tablename = "grados";
+class ProgramaData {
+	public static $tablename = "programa";
 
 	public function __construct(){
+		$this->id_programa = "";
 		$this->nombre = "";
-		$this->nivel = "";
+		$this->facultad = "";
+		$this->numeroPeriodos = "";
+		$this->estado = "";
 	}
 
 	public function add(){
-		$sql = "insert into ".self::$tablename." (nombre,nivel) ";
-		$sql .= "value (\"$this->nombre\",\"$this->nivel\")";
+		$sql = "insert into ".self::$tablename." (
+			nombre,
+			facultad,
+			numeroPeriodos,
+			estado) ";
+		$sql .= "value (
+			\"$this->nombre\",
+			\"$this->facultad\",
+			\"$this->numeroPeriodos\",
+			\"$this->estado\")";
 		Executor::doit($sql);
 	}
 
 	public function del(){
-		$sql = "delete from ".self::$tablename." where id_grado=$this->id";
+		$sql = "delete from ".self::$tablename." where id_programa=$this->id_programa";
 		Executor::doit($sql);
 	}
 
@@ -24,7 +35,12 @@ class GradosData {
 	}
 
 	public function update(){
-		$sql = "update ".self::$tablename." set nombre=\"$this->nombre\" where id_grado=$this->id";
+		$sql = "update ".self::$tablename." set 
+		nombre=\"$this->nombre\",
+		facultad=\"$this->facultad\",
+		numeroPeriodos=\"$this->numeroPeriodos\",
+		estado=\"$this->estado\" 
+		where id_programa=$this->id_programa";
 		Executor::doit($sql);
 	}
 
@@ -34,38 +50,38 @@ class GradosData {
 	}
 
 	public static function getById($id){
-		$sql = "select * from ".self::$tablename." where id_grado=$id";
+		$sql = "select * from ".self::$tablename." where id_programa=$id";
 		$query = Executor::doit($sql);
-		return Model::one($query[0],new GradosData());
+		return Model::one($query[0],new ProgramaData());
 	}
 
 	public static function getBy($k,$v){
 		$sql = "select * from ".self::$tablename." where $k=\"$v\"";
 		$query = Executor::doit($sql);
-		return Model::one($query[0],new GradosData());
+		return Model::one($query[0],new ProgramaData());
 	}
 
 	public static function getAll(){
-		 $sql = "select * from ".self::$tablename;
+		$sql = "select * from ".self::$tablename;
 		$query = Executor::doit($sql);
-		return Model::many($query[0],new GradosData());
+		return Model::many($query[0],new ProgramaData());
 	}
 
 	public static function getAllBy($k,$v){
 		 $sql = "select * from ".self::$tablename." where $k=\"$v\"";
 		$query = Executor::doit($sql);
-		return Model::many($query[0],new GradosData());
+		return Model::many($query[0],new ProgramaData());
 	}
 	public static function getAllByUserId($id){
 		$sql = "select * from ".self::$tablename." where id_prof=$id";
 		$query = Executor::doit($sql);
-		return Model::many($query[0],new GradosData());
+		return Model::many($query[0],new ProgramaData());
 	}
 
 	public static function getLike($q){
 		$sql = "select * from ".self::$tablename." where name like '%$q%'";
 		$query = Executor::doit($sql);
-		return Model::many($query[0],new GradosData());
+		return Model::many($query[0],new ProgramaData());
 	}
 
 

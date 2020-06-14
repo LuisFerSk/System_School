@@ -3,25 +3,23 @@ if (isset($_GET["opt"])&& $_GET["opt"]=="add") {
 	$profesores=new ProfesoresData();
 	$profesores->dni=$_POST["dni"];
 	$profesores->nombres=$_POST["nombres"];
-	$profesores->apellidos=$_POST["apellidos"];
-	$profesores->especialidad=$_POST["especialidad"];
-	$profesores->num_cel=$_POST["num_cel"];
+	$profesores->primer_apellido=$_POST["primer_apellido"];
+	$profesores->segundo_apellido=$_POST["segundo_apellido"];
 	$profesores->email=$_POST["email"];
-	$profesores->direccion=$_POST["direccion"];
+	$profesores->estado=$_POST["estado"];
 	$profesores->add();
 	header("location: ./?view=profesores&opt=all");
 }
 
 else if (isset($_GET["opt"])&& $_GET["opt"]=="upd") {
 	$profesores= new ProfesoresData();
-	$profesores->id=$_POST["id"];
+	$profesores->id_prof=$_POST["id"];
 	$profesores->nombres=$_POST["nombres"];
-	$profesores->apellidos=$_POST["apellidos"];
+	$profesores->primer_apellido=$_POST["primer_apellido"];
+	$profesores->segundo_apellido=$_POST["segundo_apellido"];
 	$profesores->dni=$_POST["dni"];
-	$profesores->num_cel=$_POST["num_cel"];
 	$profesores->email=$_POST["email"];
-	$profesores->especialidad=$_POST["especialidad"];
-	$profesores->direccion=$_POST["direccion"];
+	$profesores->estado=$_POST["estado"];
 	$profesores->update();
 	header("location: ./?view=profesores&opt=all");
 }
@@ -33,4 +31,3 @@ else if (isset($_GET["opt"])&& $_GET["opt"]=="del") {
 	header("location: ./?view=profesores&opt=all");
 }
 
- ?>

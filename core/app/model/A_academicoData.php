@@ -3,14 +3,50 @@ class A_academicoData {
 	public static $tablename = "a_academico";
 
 	public function __construct(){
+		$this->id_a = "";
 		$this->nombre = "";
-		$this->anio = "";
+		$this->fechainicio = "";
+		$this->fechafin = "";
+		$this->iniciomatricula = "";
+		$this->finmatricula = "";
+		$this->inicioprimerparcial = "";
+		$this->finprimerparcial = "";
+		$this->iniciosegundoparcial = "";
+		$this->finsegundoparcial = "";
+		$this->inicioparcialfinal = "";
+		$this->finparcialfinal = "";
 		$this->estado = "";
 	}
 
 	public function add(){
-		$sql = "insert into ".self::$tablename." (nombre,anio,estado) ";
-		$sql .= "value (\"$this->nombre\",\"$this->anio\",\"$this->estado\")";
+		$sql = "insert into ".self::$tablename." (
+			nombre,
+			fechainicio,
+			fechafin,
+			iniciomatricula,
+			finmatricula,
+			inicioprimerparcial,
+			finprimerparcial,
+			iniciosegundoparcial,
+			finsegundoparcial,
+			inicioparcialfinal,
+			finparcialfinal,
+			estado
+		)";
+		$sql .= "value (
+			\"$this->nombre\",
+			\"$this->fechainicio\",
+			\"$this->fechafin\",
+			\"$this->iniciomatricula\",
+			\"$this->finmatricula\",
+			\"$this->inicioprimerparcial\",
+			\"$this->finprimerparcial\",
+			\"$this->iniciosegundoparcial\",
+			\"$this->finsegundoparcial\",
+			\"$this->inicioparcialfinal\",
+			\"$this->finparcialfinal\",
+			\"$this->estado\"
+		)";
 		Executor::doit($sql);
 	}
 
@@ -25,7 +61,20 @@ class A_academicoData {
 	}
 
 	public function update(){
-		$sql = "update ".self::$tablename." set nombre=\"$this->nombre\",anio=\"$this->anio\",estado=\"$this->estado\" where id_a=$this->id";
+		$sql = "update ".self::$tablename." set 
+		nombre=\"$this->nombre\",
+		fechainicio=\"$this->fechainicio\",
+		fechafin=\"$this->fechafin\",
+		iniciomatricula=\"$this->iniciomatricula\",
+		finmatricula=\"$this->finmatricula\",
+		inicioprimerparcial=\"$this->inicioprimerparcial\",
+		finprimerparcial=\"$this->finprimerparcial\",
+		iniciosegundoparcial=\"$this->iniciosegundoparcial\",
+		inicioparcialfinal=\"$this->inicioparcialfinal\",
+		inicioparcialfinal=\"$this->inicioparcialfinal\",
+		finparcialfinal=\"$this->finparcialfinal\",
+		estado=\"$this->estado\" 
+		where id_a=$this->id";
 		Executor::doit($sql);
 	}
 
@@ -65,7 +114,5 @@ class A_academicoData {
 		return Model::many($query[0],new A_academicoData());
 	}
 
-
 }
 
-?>

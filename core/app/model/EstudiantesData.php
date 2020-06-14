@@ -3,22 +3,42 @@ class EstudiantesData {
 	public static $tablename = "estudiantes";
 
 	public function __construct(){
+		$this->id_estudiante = "";
 		$this->dni = "";
-		$this->apellido_paterno = "";
-		$this->apellido_materno = "";
+		$this->primer_apellido = "";
+		$this->segundo_apellido = "";
 		$this->nombre = "";
 		$this->genero = "";
-		$this->apoderado = "";
-		$this->num_cel = "";
+		$this->programa = "";
 		$this->fecha_nac = "";
-		$this->direccion = "";
+		$this->email = "";
 		$this->estado = "";
 		$this->fecha_reg = "";
 	}
 
 	public function add(){
-		$sql = "insert into ".self::$tablename." (dni,apellido_paterno,apellido_materno,nombre,genero,apoderado,num_cel,fecha_nac,direccion,estado,fecha_reg) ";
-		$sql .= "value (\"$this->dni\",\"$this->apellido_paterno\",\"$this->apellido_materno\",\"$this->nombre\",\"$this->genero\",\"$this->apoderado\",\"$this->num_cel\",\"$this->fecha_nac\",\"$this->direccion\",\"$this->estado\",\"$this->fecha_reg\")";
+		$sql = "insert into ".self::$tablename." (
+			dni,
+			primer_apellido,
+			segundo_apellido,
+			nombre,
+			genero,
+			programa,
+			fecha_nac,
+			email,
+			estado,
+			fecha_reg) ";
+		$sql .= "value (
+			\"$this->dni\",
+			\"$this->primer_apellido\",
+			\"$this->segundo_apellido\",
+			\"$this->nombre\",
+			\"$this->genero\",
+			\"$this->programa\",
+			\"$this->fecha_nac\",
+			\"$this->email\",
+			\"$this->estado\",
+			\"$this->fecha_reg\")";
 		Executor::doit($sql);
 	}
 
@@ -33,7 +53,17 @@ class EstudiantesData {
 	}
 
 	public function update(){
-		$sql = "update ".self::$tablename." set nombre=\"$this->nombre\",apellido_paterno=\"$this->apellido_paterno\",apellido_materno=\"$this->apellido_materno\",apoderado=\"$this->apoderado\",fecha_nac=\"$this->fecha_nac\",genero=\"$this->genero\",dni=\"$this->dni\",num_cel=\"$this->num_cel\",estado=\"$this->estado\",direccion=\"$this->direccion\" where id_estudiante=$this->id";
+		$sql = "update ".self::$tablename." set 
+		dni=\"$this->dni\",
+		nombre=\"$this->nombre\",
+		primer_apellido=\"$this->primer_apellido\",
+		segundo_apellido=\"$this->segundo_apellido\",
+		programa=\"$this->programa\",
+		fecha_nac=\"$this->fecha_nac\",
+		genero=\"$this->genero\",
+		estado=\"$this->estado\",
+		email=\"$this->email\"
+		where id_estudiante=\"$this->id_estudiante\"";
 		Executor::doit($sql);
 	}
 
@@ -43,7 +73,7 @@ class EstudiantesData {
 	}
 
 	public static function getById($id){
-		 $sql = "select * from ".self::$tablename." where id_estudiante=$id";
+		$sql = "select * from ".self::$tablename." where id_estudiante=$id";
 		$query = Executor::doit($sql);
 		return Model::one($query[0],new EstudiantesData());
 	}

@@ -3,18 +3,30 @@ class ProfesoresData {
 	public static $tablename = "profesores";
 
 	public function __construct(){
+		$this->id_prof = "";
 		$this->dni = "";
 		$this->nombres = "";
-		$this->num_cel = "";
-		$this->especialidad = "";
+		$this->primer_apelldio = "";
+		$this->segundo_apellido = "";
 		$this->email = "";
-		$this->direccion = "";
-
+		$this->estado = "";
 	}
 
 	public function add(){
-		$sql = "insert into ".self::$tablename." (dni,nombres,apellidos,especialidad,num_cel,email,direccion) ";
-		$sql .= "value (\"$this->dni\",\"$this->nombres\",\"$this->apellidos\",\"$this->especialidad\",\"$this->num_cel\",\"$this->email\",\"$this->direccion\")";
+		$sql = "insert into ".self::$tablename." (
+			dni,
+			nombres,
+			primer_apellido,
+			segundo_apellido,
+			email,
+			estado) ";
+		$sql .= "value (
+			\"$this->dni\",
+			\"$this->nombres\",
+			\"$this->primer_apellido\",
+			\"$this->segundo_apellido\",
+			\"$this->email\",
+			\"$this->estado\")";
 		Executor::doit($sql);
 	}
 
@@ -29,7 +41,14 @@ class ProfesoresData {
 	}
 
 	public function update(){
-		$sql = "update ".self::$tablename." set nombres=\"$this->nombres\",apellidos=\"$this->apellidos\",especialidad=\"$this->especialidad\",dni=\"$this->dni\",num_cel=\"$this->num_cel\",email=\"$this->email\",direccion=\"$this->direccion\" where id_prof=$this->id";
+		$sql = "update ".self::$tablename." set  
+		nombres=\"$this->nombres\", 
+		primer_apellido=\"$this->primer_apellido\", 
+		segundo_apellido=\"$this->segundo_apellido\", 
+		dni=\"$this->dni\", 
+		email=\"$this->email\", 
+		estado=\"$this->estado\" 
+		where id_prof=\"$this->id_prof\"";
 		Executor::doit($sql);
 	}
 

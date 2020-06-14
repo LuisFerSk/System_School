@@ -45,7 +45,7 @@
           <!-- small box -->
           <div class="small-box bg-red">
             <div class="inner">
-              <h3><?php echo count(GradosData::getAll()); ?></h3>
+              <h3><?php echo count(ProgramaData::getAll()); ?></h3>
               <p>Programas</p>
             </div>
             <a href="./?view=grados&opt=all" class="small-box-footer">Ver mas <i class="fa fa-arrow-circle-right"></i></a>
@@ -56,7 +56,7 @@
           <div class="small-box bg-yellow">
             <div class="inner">
               <h3><?php echo count(CursosData::getall()); ?></h3>
-              <p>Cursos</p>
+              <p>Grupos</p>
             </div>
             <a href="./?view=cursos&opt=all" class="small-box-footer">Ver mas <i class="fa fa-arrow-circle-right"></i></a>
           </div>

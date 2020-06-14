@@ -32,7 +32,7 @@
                       <td><?= $cu->nombre; ?></td>
                       <?php $profesor = ProfesoresData::getById($cu->profesor); ?>
                       <td><?= $profesor->nombres; ?></td>
-                      <td style="width: 130px;">
+                      <td style="width: 250px;">
                       <a href="./?view=abrirestu&id=<?= $cu->id_curso; ?>" class="btn btn-primary btn-xs"><i class="fa fa-user"></i> Agregar estudiante</a>
                         <a href="./?view=cursos&opt=edit&id=<?= $cu->id_curso; ?>" class="btn btn-warning btn-xs"><i class="fa fa-pencil"></i> Editar</a>
                         <a href="./?action=cursos&opt=del&id=<?= $cu->id_curso; ?>" class="btn btn-danger btn-xs"><i class="fa fa-trash-o fa-lg"></i> Eliminar</a>

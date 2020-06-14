@@ -45,7 +45,7 @@
           <!-- small box -->
           <div class="small-box bg-red">
             <div class="inner">
-              <h3><?php echo count(GradosData::getAll()); ?></h3>
+              <h3><?php echo count(ProgramaData::getAll()); ?></h3>
               <p>Programas</p>
             </div>
             <a href="./?view=grados&opt=all" class="small-box-footer">Ver mas <i class="fa fa-arrow-circle-right"></i></a>

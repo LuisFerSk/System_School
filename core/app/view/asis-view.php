@@ -5,7 +5,7 @@
 	<a href="index.php?view=newteam" class="btn btn-default"><i class='fa fa-th-list'></i> Nuevo Grupo</a>
 </div>
 -->
-		<h1>Grupos</h1>
+		<h1>Seleccione un grupo para registrar la asistencia</h1>
 <br>
 		<?php
 

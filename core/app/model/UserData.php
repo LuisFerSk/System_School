@@ -3,11 +3,12 @@ class UserData {
 	public static $tablename = "usuarios";
 
 	public function __construct(){
+		$this->id = "";
 		$this->id_prof = "";
 		$this->name = "";
 		$this->lastname = "";
 		$this->username = "";
-		$this->email = "";
+		$this->RFID = "";
 		$this->password = "";
 		$this->kind = "";
 		$this->created_at = "NOW()";
