@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 22-05-2020 a las 04:55:33
+-- Tiempo de generación: 14-06-2020 a las 14:24:47
 -- Versión del servidor: 10.4.11-MariaDB
--- Versión de PHP: 7.4.5
+-- Versión de PHP: 7.4.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,8 +18,22 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `scool`
+-- Base de datos: `reksai_db`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `asignatura`
+--
+
+CREATE TABLE `asignatura` (
+  `id_asig` int(11) NOT NULL,
+  `codigo` varchar(10) COLLATE latin1_bin NOT NULL,
+  `nombre` varchar(100) COLLATE latin1_bin NOT NULL,
+  `creditos` int(2) NOT NULL,
+  `horas_semanales` int(2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_bin;
 
 -- --------------------------------------------------------
 
@@ -52,7 +66,16 @@ INSERT INTO `asistencias` (`id`, `tipo`, `fecha`, `id_estudiante`, `id_grado`) V
 CREATE TABLE `a_academico` (
   `id_a` int(11) NOT NULL,
   `nombre` varchar(200) NOT NULL,
-  `anio` int(11) DEFAULT NULL,
+  `fechainicio` date NOT NULL,
+  `fechafin` date NOT NULL,
+  `iniciomatricula` date NOT NULL,
+  `finmatricula` date NOT NULL,
+  `inicioprimerparcial` date NOT NULL,
+  `finprimerparcial` date NOT NULL,
+  `iniciosegundoparcial` date NOT NULL,
+  `finsegundoparcial` date DEFAULT current_timestamp(),
+  `inicioparcialfinal` date NOT NULL DEFAULT current_timestamp(),
+  `finparcialfinal` date NOT NULL DEFAULT current_timestamp(),
   `estado` varchar(15) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
@@ -60,11 +83,8 @@ CREATE TABLE `a_academico` (
 -- Volcado de datos para la tabla `a_academico`
 --
 
-INSERT INTO `a_academico` (`id_a`, `nombre`, `anio`, `estado`) VALUES
-(2, 'AÃ‘O DEL PERRO', 2018, 'Abierto'),
-(3, 'AÃ‘O DEL BURRO', 2017, 'Abierto'),
-(4, 'AÃ‘O DEL GATO', 2016, 'Abierto'),
-(5, 'AÑO DEL CONEJO', 2020, 'Abierto');
+INSERT INTO `a_academico` (`id_a`, `nombre`, `fechainicio`, `fechafin`, `iniciomatricula`, `finmatricula`, `inicioprimerparcial`, `finprimerparcial`, `iniciosegundoparcial`, `finsegundoparcial`, `inicioparcialfinal`, `finparcialfinal`, `estado`) VALUES
+(7, '2020-2', '2020-06-15', '2020-06-14', '2020-06-17', '2020-06-15', '2020-06-11', '2020-06-16', '2020-06-10', '2020-06-03', '2020-06-10', '2020-06-21', 'Cerrado');
 
 -- --------------------------------------------------------
 
@@ -114,7 +134,7 @@ CREATE TABLE `conducta` (
 
 CREATE TABLE `cursos` (
   `id_curso` int(11) NOT NULL,
-  `nombre` varchar(50) DEFAULT NULL,
+  `nombre` varchar(150) DEFAULT NULL,
   `profesor` varchar(80) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
@@ -123,11 +143,7 @@ CREATE TABLE `cursos` (
 --
 
 INSERT INTO `cursos` (`id_curso`, `nombre`, `profesor`) VALUES
-(25, 'ingles', 'pepe'),
-(26, 'qyechua', 'juan'),
-(28, 'Literatura', 'Maximilo Huamani Yepis'),
-(29, 'Ed. Fisica', 'Juan Lacho Perez'),
-(30, 'Informatica', 'Daniel');
+(31, 'Sotfware - 01', '9');
 
 -- --------------------------------------------------------
 
@@ -156,31 +172,43 @@ INSERT INTO `estado` (`id_estado`, `nombre`) VALUES
 
 CREATE TABLE `estudiantes` (
   `id_estudiante` int(11) NOT NULL,
-  `dni` varchar(10) DEFAULT NULL,
-  `apellido_paterno` varchar(50) DEFAULT NULL,
-  `apellido_materno` varchar(50) DEFAULT NULL,
+  `dni` varchar(11) NOT NULL,
+  `primer_apellido` varchar(50) DEFAULT NULL,
+  `segundo_apellido` varchar(50) DEFAULT NULL,
   `nombre` varchar(30) DEFAULT NULL,
   `genero` varchar(20) NOT NULL,
-  `fecha_nac` varchar(10) NOT NULL,
-  `apoderado` varchar(100) DEFAULT NULL,
-  `num_cel` varchar(50) DEFAULT NULL,
-  `direccion` varchar(80) DEFAULT NULL,
+  `fecha_nac` date NOT NULL,
+  `programa` varchar(100) DEFAULT NULL,
+  `email` varchar(150) NOT NULL,
   `estado` varchar(10) DEFAULT NULL,
-  `fecha_reg` date NOT NULL,
-  `user_id` int(11) NOT NULL
+  `fecha_reg` date NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `estudiantes`
 --
 
-INSERT INTO `estudiantes` (`id_estudiante`, `dni`, `apellido_paterno`, `apellido_materno`, `nombre`, `genero`, `fecha_nac`, `apoderado`, `num_cel`, `direccion`, `estado`, `fecha_reg`, `user_id`) VALUES
-(31, '72618793', 'lia', 'lia', 'bilma', 'Masculino', '02/02/1995', 'Braulia apellidos1 apelldios2', '147854214', 'Calle los arces 102', 'activo', '2018-08-07', 1),
-(32, '11111111', 'Gomez', 'Luque', 'Pepito', 'Masculino', '25/06/2019', 'Braulia apellidos1 apelldios2', '54875402', 'Calle los arces 102', 'activo', '2018-08-07', 1),
-(33, '11147852', 'Roque', 'Llayque', 'Maria', 'Masculino', '21/05/1999', 'Braulia apellidos1 apelldios2', '789541259', 'Calle los arces 102', 'activo', '2018-08-07', 1),
-(34, '785', 'Marroquin', 'Tiara', 'Luchito', 'Masculino', '12/04/1999', 'Braulia apellidos1 apelldios2', '789541236', 'Calle los arces 102', 'activo', '2018-08-07', 1),
-(35, '78541269', 'Layme', 'Huachaca', 'Luzmery', 'Masculino', '20/01/2015', 'Braulia apellidos1 apelldios2', '654852102', 'Calle los arces 102', 'activo', '2018-08-07', 1),
-(36, '72615487', 'pedrito', 'pedrito', 'pedrito', 'Masculino', '25/06/1995', 'Juliana apellidos1 apellidos2', '789541236', 'Calle los arces 102', 'activo', '2018-08-07', 1);
+INSERT INTO `estudiantes` (`id_estudiante`, `dni`, `primer_apellido`, `segundo_apellido`, `nombre`, `genero`, `fecha_nac`, `programa`, `email`, `estado`, `fecha_reg`) VALUES
+(67, '1003243681', 'Campo', 'Montero', 'Luis Fernando ', 'Masculino', '1999-12-12', '', 'lcampomontero@gmail.com', 'inactivo', '2020-06-13');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `est_cur`
+--
+
+CREATE TABLE `est_cur` (
+  `id` int(11) NOT NULL,
+  `id_estudiante` int(11) NOT NULL,
+  `id_grado` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_bin;
+
+--
+-- Volcado de datos para la tabla `est_cur`
+--
+
+INSERT INTO `est_cur` (`id`, `id_estudiante`, `id_grado`) VALUES
+(1, 34, 31);
 
 -- --------------------------------------------------------
 
@@ -201,7 +229,29 @@ CREATE TABLE `est_gra` (
 INSERT INTO `est_gra` (`id`, `id_estudiante`, `id_grado`) VALUES
 (8, 34, 70),
 (9, 35, 70),
-(10, 36, 69);
+(10, 36, 69),
+(11, 37, 72),
+(12, 38, 72);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `facultad`
+--
+
+CREATE TABLE `facultad` (
+  `id_facultad` int(11) NOT NULL,
+  `nombre` varchar(100) COLLATE latin1_bin NOT NULL,
+  `estado` varchar(10) COLLATE latin1_bin NOT NULL DEFAULT 'activa'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_bin;
+
+--
+-- Volcado de datos para la tabla `facultad`
+--
+
+INSERT INTO `facultad` (`id_facultad`, `nombre`, `estado`) VALUES
+(1, 'Ingieneria y tecnologia', 'Abierto'),
+(2, 'Derecho', 'Abierto');
 
 -- --------------------------------------------------------
 
@@ -230,8 +280,8 @@ INSERT INTO `genero` (`id_genero`, `genero`) VALUES
 
 CREATE TABLE `grados` (
   `id_grado` int(11) NOT NULL,
-  `nombre` varchar(20) DEFAULT NULL,
-  `nivel` varchar(20) NOT NULL,
+  `nombre` varchar(150) DEFAULT NULL,
+  `nivel` varchar(150) NOT NULL,
   `fav` int(1) NOT NULL,
   `id_prof` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
@@ -241,9 +291,9 @@ CREATE TABLE `grados` (
 --
 
 INSERT INTO `grados` (`id_grado`, `nombre`, `nivel`, `fav`, `id_prof`) VALUES
-(69, '1Â° Grado', 'Secundaria', 1, 9),
-(70, '1Â° Grado', 'Primaria', 1, 12),
-(71, '2Â° grado', 'Primaria', 1, 11);
+(72, 'Ingenieria de sistema', 'Ingieneria y tecnologia', 0, 0),
+(73, 'Ingieneria electronica', 'Ingieneria y tecnologia', 0, 0),
+(74, 'Ingenieria de sistema', 'Ingieneria y tecnologia', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -266,7 +316,7 @@ CREATE TABLE `gra_cu` (
 
 CREATE TABLE `niveles` (
   `id_nivel` int(11) NOT NULL,
-  `nombre` varchar(20) DEFAULT NULL
+  `nombre` varchar(150) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
@@ -274,9 +324,9 @@ CREATE TABLE `niveles` (
 --
 
 INSERT INTO `niveles` (`id_nivel`, `nombre`) VALUES
-(1, 'Inicial'),
-(2, 'Primaria'),
-(4, 'Secundaria');
+(5, 'Ingieneria y tecnologia'),
+(6, 'Ingieneria y tecnologia'),
+(7, 'Ingieneria y tecnologia');
 
 -- --------------------------------------------------------
 
@@ -295,30 +345,6 @@ CREATE TABLE `nomina` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `notas`
---
-
-CREATE TABLE `notas` (
-  `id` int(11) NOT NULL,
-  `id_estudiante` int(11) DEFAULT NULL,
-  `id_bloque` int(11) NOT NULL,
-  `nota` varchar(10) DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
---
--- Volcado de datos para la tabla `notas`
---
-
-INSERT INTO `notas` (`id`, `id_estudiante`, `id_bloque`, `nota`) VALUES
-(1, 34, 1, '18'),
-(2, 35, 1, '14'),
-(3, 36, 6, '12'),
-(4, 36, 7, '13'),
-(5, 36, 8, '15');
-
--- --------------------------------------------------------
-
---
 -- Estructura de tabla para la tabla `profesores`
 --
 
@@ -326,22 +352,40 @@ CREATE TABLE `profesores` (
   `id_prof` int(11) NOT NULL,
   `dni` int(11) DEFAULT NULL,
   `nombres` varchar(100) DEFAULT NULL,
-  `apellidos` varchar(80) NOT NULL,
-  `num_cel` varchar(20) DEFAULT NULL,
-  `especialidad` varchar(100) DEFAULT NULL,
-  `email` varchar(50) NOT NULL,
-  `direccion` varchar(50) NOT NULL
+  `primer_apellido` varchar(50) NOT NULL,
+  `segundo_apellido` varchar(50) DEFAULT NULL,
+  `email` varchar(150) NOT NULL,
+  `estado` varchar(10) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `profesores`
 --
 
-INSERT INTO `profesores` (`id_prof`, `dni`, `nombres`, `apellidos`, `num_cel`, `especialidad`, `email`, `direccion`) VALUES
-(9, 12345678, 'Daniel', 'danielito dadielito', '458796521', 'Computación e Informatica', 'profesor@gmail.com', 'Calle los arces 102'),
-(10, 44582510, 'juan carlos', 'Quispe Mamani', '974584216', 'Ingles', 'profesor@gmail.com', 'Calle los arces 102'),
-(11, 785428, 'Jhon', 'apellidos editados', '587412569', 'Matematicas', 'johon@hotmail.com', 'Calle los arces 102'),
-(12, 854712547, 'Elvia', 'Marroquin Cardenas', '458741256', 'Literatura', 'elvia@hotmail.com', 'Calle los arces 102');
+INSERT INTO `profesores` (`id_prof`, `dni`, `nombres`, `primer_apellido`, `segundo_apellido`, `email`, `estado`) VALUES
+(14, 1003243689, 'Fulano', 'Perez', 'Perez', 'perez@gmail.com', 'activo');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `programa`
+--
+
+CREATE TABLE `programa` (
+  `id_programa` int(11) NOT NULL,
+  `nombre` varchar(100) COLLATE latin1_bin NOT NULL,
+  `facultad` varchar(100) COLLATE latin1_bin NOT NULL,
+  `numeroPeriodos` int(2) NOT NULL,
+  `estado` varchar(10) COLLATE latin1_bin NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_bin;
+
+--
+-- Volcado de datos para la tabla `programa`
+--
+
+INSERT INTO `programa` (`id_programa`, `nombre`, `facultad`, `numeroPeriodos`, `estado`) VALUES
+(6, 'Ingenieria de sistema', 'Ingieneria y tecnologia', 10, 'Abierto'),
+(7, 'Derecho', 'Derecho', 10, 'Abierto');
 
 -- --------------------------------------------------------
 
@@ -357,7 +401,7 @@ CREATE TABLE `usuarios` (
   `username` varchar(50) DEFAULT NULL,
   `password` varchar(60) DEFAULT NULL,
   `email` varchar(200) DEFAULT NULL,
-  `image` varchar(255) DEFAULT NULL,
+  `RFID` varchar(8) DEFAULT NULL,
   `status` int(11) DEFAULT 1,
   `kind` int(11) DEFAULT 0,
   `created_at` datetime DEFAULT NULL
@@ -367,14 +411,21 @@ CREATE TABLE `usuarios` (
 -- Volcado de datos para la tabla `usuarios`
 --
 
-INSERT INTO `usuarios` (`id`, `id_prof`, `name`, `lastname`, `username`, `password`, `email`, `image`, `status`, `kind`, `created_at`) VALUES
+INSERT INTO `usuarios` (`id`, `id_prof`, `name`, `lastname`, `username`, `password`, `email`, `RFID`, `status`, `kind`, `created_at`) VALUES
 (1, 1, 'Administrador', 'admin', 'admin', '56c6fbdc1f299d0a753ac029343d380afa3919a8', NULL, NULL, 1, 1, '2018-07-15 13:36:00'),
 (27, 9, 'Daniel', 'danielito dadielito', '12345678', '56c6fbdc1f299d0a753ac029343d380afa3919a8', 'profesor@gmail.com', NULL, 1, 0, '2018-08-12 13:19:03'),
-(29, 10, 'juan carlos', 'Quispe Mamani', '44582510', '56c6fbdc1f299d0a753ac029343d380afa3919a8', 'profesor@gmail.com', NULL, 1, 0, '2020-05-21 20:31:32');
+(29, 10, 'juan carlos', 'Quispe Mamani', 'juanC', '56c6fbdc1f299d0a753ac029343d380afa3919a8', 'profesor@gmail.com', NULL, 1, 0, '2020-05-21 20:31:32');
 
 --
 -- Índices para tablas volcadas
 --
+
+--
+-- Indices de la tabla `asignatura`
+--
+ALTER TABLE `asignatura`
+  ADD PRIMARY KEY (`id_asig`),
+  ADD UNIQUE KEY `codigo` (`codigo`);
 
 --
 -- Indices de la tabla `asistencias`
@@ -421,8 +472,13 @@ ALTER TABLE `estado`
 -- Indices de la tabla `estudiantes`
 --
 ALTER TABLE `estudiantes`
-  ADD PRIMARY KEY (`id_estudiante`),
-  ADD KEY `user_id` (`user_id`);
+  ADD PRIMARY KEY (`id_estudiante`);
+
+--
+-- Indices de la tabla `est_cur`
+--
+ALTER TABLE `est_cur`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `est_gra`
@@ -431,6 +487,13 @@ ALTER TABLE `est_gra`
   ADD PRIMARY KEY (`id`),
   ADD KEY `id_estudiante` (`id_estudiante`),
   ADD KEY `id_grado` (`id_grado`);
+
+--
+-- Indices de la tabla `facultad`
+--
+ALTER TABLE `facultad`
+  ADD PRIMARY KEY (`id_facultad`),
+  ADD UNIQUE KEY `nombre` (`nombre`);
 
 --
 -- Indices de la tabla `genero`
@@ -469,18 +532,17 @@ ALTER TABLE `nomina`
   ADD KEY `id_grado` (`id_grado`) USING BTREE;
 
 --
--- Indices de la tabla `notas`
---
-ALTER TABLE `notas`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `id_estudiante` (`id_estudiante`),
-  ADD KEY `id_bloque` (`id_bloque`);
-
---
 -- Indices de la tabla `profesores`
 --
 ALTER TABLE `profesores`
   ADD PRIMARY KEY (`id_prof`);
+
+--
+-- Indices de la tabla `programa`
+--
+ALTER TABLE `programa`
+  ADD PRIMARY KEY (`id_programa`),
+  ADD KEY `facultad_fk` (`facultad`);
 
 --
 -- Indices de la tabla `usuarios`
@@ -493,6 +555,12 @@ ALTER TABLE `usuarios`
 --
 
 --
+-- AUTO_INCREMENT de la tabla `asignatura`
+--
+ALTER TABLE `asignatura`
+  MODIFY `id_asig` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT de la tabla `asistencias`
 --
 ALTER TABLE `asistencias`
@@ -502,7 +570,7 @@ ALTER TABLE `asistencias`
 -- AUTO_INCREMENT de la tabla `a_academico`
 --
 ALTER TABLE `a_academico`
-  MODIFY `id_a` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_a` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT de la tabla `bloque_cal`
@@ -520,7 +588,7 @@ ALTER TABLE `conducta`
 -- AUTO_INCREMENT de la tabla `cursos`
 --
 ALTER TABLE `cursos`
-  MODIFY `id_curso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id_curso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT de la tabla `estado`
@@ -532,13 +600,25 @@ ALTER TABLE `estado`
 -- AUTO_INCREMENT de la tabla `estudiantes`
 --
 ALTER TABLE `estudiantes`
-  MODIFY `id_estudiante` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id_estudiante` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
+
+--
+-- AUTO_INCREMENT de la tabla `est_cur`
+--
+ALTER TABLE `est_cur`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `est_gra`
 --
 ALTER TABLE `est_gra`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT de la tabla `facultad`
+--
+ALTER TABLE `facultad`
+  MODIFY `id_facultad` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `genero`
@@ -550,7 +630,7 @@ ALTER TABLE `genero`
 -- AUTO_INCREMENT de la tabla `grados`
 --
 ALTER TABLE `grados`
-  MODIFY `id_grado` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
+  MODIFY `id_grado` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
 
 --
 -- AUTO_INCREMENT de la tabla `gra_cu`
@@ -562,7 +642,7 @@ ALTER TABLE `gra_cu`
 -- AUTO_INCREMENT de la tabla `niveles`
 --
 ALTER TABLE `niveles`
-  MODIFY `id_nivel` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_nivel` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `nomina`
@@ -571,22 +651,32 @@ ALTER TABLE `nomina`
   MODIFY `id_nomina` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT de la tabla `notas`
---
-ALTER TABLE `notas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
 -- AUTO_INCREMENT de la tabla `profesores`
 --
 ALTER TABLE `profesores`
-  MODIFY `id_prof` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id_prof` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+
+--
+-- AUTO_INCREMENT de la tabla `programa`
+--
+ALTER TABLE `programa`
+  MODIFY `id_programa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+
+--
+-- Restricciones para tablas volcadas
+--
+
+--
+-- Filtros para la tabla `programa`
+--
+ALTER TABLE `programa`
+  ADD CONSTRAINT `facultad_fk` FOREIGN KEY (`facultad`) REFERENCES `facultad` (`nombre`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
