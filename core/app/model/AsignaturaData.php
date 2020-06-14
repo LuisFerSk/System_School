@@ -7,7 +7,8 @@ class AsignaturaData {
 		$this->codigo = "";
     $this->nombre = "";
     $this->creditos = "";
-    $this->horas_semanales = "";
+		$this->horas_semanales = "";
+		$this->estado = "";
 	}
 
 	public function add(){
@@ -15,17 +16,19 @@ class AsignaturaData {
 			codigo,
 			nombre,
 			creditos,
-			horas_semanales) ";
+			horas_semanales,
+			estado) ";
 		$sql .= "value (
 			\"$this->codigo\",
 			\"$this->nombre\",
 			\"$this->creditos\",
-			\"$this->horas_semanales\")";
+			\"$this->horas_semanales\",
+			\"$this->estado\")";
 		Executor::doit($sql);
 	}
 
 	public function del(){
-		$sql = "delete from ".self::$tablename." where id_a=$this->id";
+		$sql = "delete from ".self::$tablename." where id_asig=$this->id_asig";
 		Executor::doit($sql);
 	}
 
@@ -39,18 +42,19 @@ class AsignaturaData {
 		codigo=\"$this->codigo\",
 		nombre=\"$this->nombre\",
 		creditos=\"$this->creditos\",
-		horas_semanales=\"$this->horas_semanales\" 
-		where id_a=$this->id_asig";
+		horas_semanales=\"$this->horas_semanales\",
+		estado=\"$this->estado\" 
+		where id_asig=$this->id_asig";
 		Executor::doit($sql);
 	}
 
 	public function updateById($k,$v){
-		$sql = "update ".self::$tablename." set $k=\"$v\" where id_a=$this->id";
+		$sql = "update ".self::$tablename." set $k=\"$v\" where id_asig=$this->id_asig";
 		Executor::doit($sql);
 	}
 
 	public static function getById($id){
-		 $sql = "select * from ".self::$tablename." where id_a=$id";
+		 $sql = "select * from ".self::$tablename." where id_asig=$id";
 		$query = Executor::doit($sql);
 		return Model::one($query[0],new AsignaturaData());
 	}

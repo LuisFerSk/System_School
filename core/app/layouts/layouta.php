@@ -11,9 +11,9 @@
   <!-- Bootstrap 3.3.6 -->
   <link rel="stylesheet" href="res/bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" href="res/font-awesome/css/font-awesome.min.css">
-
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
   <!-- Ionicons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
   <link rel="stylesheet" href="plugins/datatables/dataTables.bootstrap.css">
   <link rel="stylesheet" href="plugins/fullcalendar/fullcalendar.min.css">
@@ -68,8 +68,6 @@
           <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
             <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
           </a>
 
           <div class="navbar-custom-menu">
@@ -111,11 +109,12 @@
 
             <?php if ($user->kind) : ?>
               <li><a href="./?view=a_academico&opt=all"><i class="fa fa-hourglass-end"></i> <span>Periodo academico</span></a></li>
-              <li><a href="./?view=facultad&opt=all"><i class="fa fa-bars"></i> <span>Facultades</span></a></li>
+              <li><a href="./?view=facultad&opt=all"><i class="fa fa-university"></i> <span>Facultades</span></a></li>
               <li><a href="./?view=programa&opt=all"><i class="fa fa-list-ol"></i> <span>Programas</span></a></li>
-              <li><a href="./?view=estudiantes&opt=all"><i class="fa fa-users"></i> <span>Estudiantes</span></a></li>
-              <li><a href="./?view=profesores&opt=all"><i class="fa fa-pencil"></i> <span>Profesores</span></a></li>
-              <li><a href="./?view=cursos&opt=all"><i class="fa fa-pencil-square-o"></i> <span>Grupo</span></a></li>
+              <li><a href="./?view=asignatura&opt=all"><i class="glyphicon glyphicon-book"></i> <span>Asignaturas</span></a></li>
+              <li><a href="./?view=cursos&opt=all"><i class="fa fa-group"></i> <span>Grupo</span></a></li>
+              <li><a href="./?view=estudiantes&opt=all"><i class="fa fa-vcard"></i> <span>Estudiantes</span></a></li>
+              <li><a href="./?view=profesores&opt=all"><i class="fa fa-suitcase"></i> <span>Profesores</span></a></li>
               <li class="treeview">
                 <a href="#">
                   <i class="fa fa-cogs"></i>

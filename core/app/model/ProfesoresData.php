@@ -66,7 +66,7 @@ class ProfesoresData {
 		public static function getAllByUserId($id){
 		$sql = "select * from ".self::$tablename." where id_prof=$id";
 		$query = Executor::doit($sql);
-		return Model::many($query[0],new GradData());
+		return Model::many($query[0],new ProfesoresData());
 	}
 
 	public static function getBy($k,$v){

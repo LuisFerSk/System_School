@@ -8,9 +8,8 @@
     </h1>
     <br>
     <a href="./?view=facultad&opt=new" class="btn btn-primary">Nueva facultad</a>
-    <br>
-    <br>
   </section>
+  <br>
   <section class="container">
     <div class="row">
       <div class="col-xs-12">
@@ -41,7 +40,7 @@
                           </a>
                           <ul class="dropdown-menu">
                             <li><a href="./?view=facultad&opt=edit&id=<?= $fd->id_facultad; ?>"><i class="fa fa-pencil fa-fw"></i> Editar</a></li>
-                            <li><a href="./?action=niveles&opt=del&id=<?= $fd->id_facultad; ?>"><i class="fa fa-trash-o fa-fw"></i> Eliminar</a></li>
+                            <li><a href="./?action=facultad&opt=del&id=<?= $fd->id_facultad; ?>"><i class="fa fa-trash-o fa-fw"></i> Eliminar</a></li>
                           </ul>
                         </div>
                       </td>
@@ -89,7 +88,7 @@
               </div>
               <div class=" col-lg-10">
                 <button type="submit" class="btn btn-primary">Guardar</button>
-                <button type="date" onclick="location='./?view=facultad&opt=all'" class="btn btn-warning">Cancelar</button>
+                <a href='./?view=facultad&opt=all' class="btn btn-warning">Cancelar</a>
               </div>
             </form>
           </div>

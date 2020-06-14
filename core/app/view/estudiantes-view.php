@@ -7,9 +7,10 @@
 			<small>todas los estudiantes</small>
 		</h1>
 		<br>
-		<a href="./?view=estudiantes&opt=new" class="btn btn-success">Nuevo estudiante</a>
+		<a href="./?view=estudiantes&opt=new" class="btn btn-primary">Nuevo estudiante</a>
 	</section>
-	<section class="content">
+	<br>
+	<section class="container">
 		<div class="row">
 			<div class="col-xs-12">
 				<div class="box">
