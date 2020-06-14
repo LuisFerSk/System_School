@@ -102,7 +102,7 @@
 
           <!-- sidebar menu: : style can be found in sidebar.less -->
           <ul class="sidebar-menu">
-            <li><a href="./?view=home"><i class="fa fa-home"></i> <span>Inicio</span></a></li>
+            <li><a href="./?view=index"><i class="fa fa-home"></i> <span>Inicio</span></a></li>
             <?php if (!$user->kind) : ?>
               <li><a href="./?view=asis"><i class="fa fa-users"></i> <span>Cursos</span></a></li>
             <?php endif; ?>
@@ -112,6 +112,7 @@
               <li><a href="./?view=facultad&opt=all"><i class="fa fa-university"></i> <span>Facultades</span></a></li>
               <li><a href="./?view=programa&opt=all"><i class="fa fa-list-ol"></i> <span>Programas</span></a></li>
               <li><a href="./?view=asignatura&opt=all"><i class="glyphicon glyphicon-book"></i> <span>Asignaturas</span></a></li>
+              <li><a href="./?view=plan_estudio&opt=all"><i class="glyphicon glyphicon-list-alt"></i> <span>Planes de estudios</span></a></li>
               <li><a href="./?view=cursos&opt=all"><i class="fa fa-group"></i> <span>Grupo</span></a></li>
               <li><a href="./?view=estudiantes&opt=all"><i class="fa fa-vcard"></i> <span>Estudiantes</span></a></li>
               <li><a href="./?view=profesores&opt=all"><i class="fa fa-suitcase"></i> <span>Profesores</span></a></li>

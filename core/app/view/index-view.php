@@ -1,23 +1,10 @@
 <section class="content">
   <div class="row">
-    <div class="col-md-12 ">
-      <div class="row">
-        <div class="col-md-3">
-        </div>
-        <div class="col-md-3">
-
-        </div>
-      </div>
-    </div>
-    <br>
-    <div class="col-md-12 text-center">
-
-    </div>
     <?php
     $found = true;
-    if (isset($_SESSION["user_id"])) {
+    if (isset($_SESSION["user_id"])) :
       $user = UserData::getById($_SESSION["user_id"]);
-      if ($user->kind == 1) {
+      if ($user->kind == 1) :
     ?>
         <div class="col-lg-3 col-xs-6">
           <!-- small box -->
@@ -48,7 +35,7 @@
               <h3><?php echo count(ProgramaData::getAll()); ?></h3>
               <p>Programas</p>
             </div>
-            <a href="./?view=grados&opt=all" class="small-box-footer">Ver mas <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="./?view=programa&opt=all" class="small-box-footer">Ver mas <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <div class="col-lg-3 col-xs-6">
@@ -61,10 +48,30 @@
             <a href="./?view=cursos&opt=all" class="small-box-footer">Ver mas <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
-      <?php }
-    }
-    if (isset($_SESSION["user_id"])) {
-      if ($user->kind == 0) {
+        <div class="col-lg-3 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-green">
+            <div class="inner">
+              <h3><?php echo count(FacultadData::getAll()); ?></h3>
+              <p>Facultades</p>
+            </div>
+            <a href="./?view=facultad&opt=all" class="small-box-footer">Ver mas <i class="fa fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+        <div class="col-lg-3 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-orange">
+            <div class="inner">
+              <h3><?php echo count(AsignaturaData::getAll()); ?></h3>
+              <p>Asignaturas</p>
+            </div>
+            <a href="./?view=asignatura&opt=all" class="small-box-footer">Ver mas <i class="fa fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+      <?php endif;
+    endif;
+    if (isset($_SESSION["user_id"])) :
+      if ($user->kind == 0) :
       ?>
         <!-- ./col -->
         <div class="col-lg-3 col-xs-6">
@@ -80,7 +87,7 @@
         <!-- ./col -->
 
         <!-- ./col -->
-    <?php }
-    } ?>
+    <?php endif;
+    endif; ?>
   </div>
 </section>
