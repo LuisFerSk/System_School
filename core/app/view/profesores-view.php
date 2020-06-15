@@ -33,15 +33,14 @@
                       <td><?= $prof->nombres . " " . $prof->primer_apellido . " " . $prof->segundo_apellido; ?></td>
                       <td><?= $prof->email; ?></td>
                       <td><?= $prof->estado; ?>
-                      <td style="width: 130px;">
+                      <td style="width: 100px;">
                         <div class="btn-group">
-                          <a class="btn btn-warning " href="#"><i class="fa fa-cog fa-spin fa-1x fa-fw"></i> Acciones</a>
-                          <a class="btn btn-danger dropdown-toggle" data-toggle="dropdown" href="#">
-                            <span class="fa fa-caret-down" title="Toggle dropdown menu"></span>
-                          </a>
+                          <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Acciones <span class="caret"></span>
+                          </button>
                           <ul class="dropdown-menu">
-                            <li><a href="./?view=profesores&opt=edit&id=<?= $prof->id_prof; ?>"><i class=" fa fa-pencil fa-fw"></i> Editar</a></li>
-                            <li><a href="./?action=profesores&opt=del&id=<?= $prof->id_prof; ?>"><i class="fa fa-trash-o fa-fw"></i> Eliminar</a></li>
+                          <li><a href="./?view=profesores&opt=edit&id=<?= $prof->id_prof; ?>"><i class=" fa fa-pencil fa-fw"></i> Editar</a></li>
+                          <li><a href="./?action=profesores&opt=del&id=<?= $prof->id_prof; ?>"><i class="fa fa-trash-o fa-fw"></i> Eliminar</a></li>
                           </ul>
                         </div>
                       </td>
