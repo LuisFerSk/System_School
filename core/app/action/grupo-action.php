@@ -1,6 +1,6 @@
 <?php 
 if (isset($_GET["opt"])&& $_GET["opt"]=="add") {
-	$grupos=new GruposData();
+	$grupos=new GrupoData();
 	$grupos->id_grado=$_POST["id_grado"];
 	$grupos->curso=$_POST["curso"];
 
@@ -9,7 +9,7 @@ if (isset($_GET["opt"])&& $_GET["opt"]=="add") {
 }
 
 else if (isset($_GET["opt"])&& $_GET["opt"]=="upd") {
-	$grupos= new GruposData();
+	$grupos= new GrupoData();
 	$grupos->id=$_POST["id"];
 	$grupos->id_grado=$_POST["id_grado"];
 	$grupos->curso=$_POST["curso"];
@@ -18,10 +18,9 @@ else if (isset($_GET["opt"])&& $_GET["opt"]=="upd") {
 }
 
 else if (isset($_GET["opt"])&& $_GET["opt"]=="del") {
-	$grupos=new GruposData();
+	$grupos=new GrupoData();
 	$grupos->id=$_GET["id"];
 	$grupos->del();
 	header("location: ./?view=grupos&opt=all");
 }
 
- ?>

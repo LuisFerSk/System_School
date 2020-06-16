@@ -1,5 +1,5 @@
 <?php
-$grado =  GradosData::getById($_GET["id"]);
+$grado =  ProgramaData::getById($_GET["id"]);
 $estudiantes = Est_graData::getAllByTeamId($_GET["id"]);
 $user = null;
 $user = UserData::getById($_SESSION["user_id"]);

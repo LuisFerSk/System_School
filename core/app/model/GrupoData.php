@@ -1,5 +1,5 @@
 <?php
-class GruposData {
+class GrupoData {
 	public static $tablename = "gra_cu";
 
 	public function __construct(){
@@ -36,32 +36,32 @@ class GruposData {
 	public static function getById($id){
 		 $sql = "select * from ".self::$tablename." where id_gra_cu=$id";
 		$query = Executor::doit($sql);
-		return Model::one($query[0],new GruposData());
+		return Model::one($query[0],new GrupoData());
 	}
 
 	public static function getBy($k,$v){
 		$sql = "select * from ".self::$tablename." where $k=\"$v\"";
 		$query = Executor::doit($sql);
-		return Model::one($query[0],new GruposData());
+		return Model::one($query[0],new GrupoData());
 	}
 
 	public static function getAll(){
 		 $sql = "select * from ".self::$tablename;
 		$query = Executor::doit($sql);
-		return Model::many($query[0],new GruposData());
+		return Model::many($query[0],new GrupoData());
 	}
 
 	public static function getAllBy($k,$v){
 		 $sql = "select * from ".self::$tablename." where $k=\"$v\"";
 		$query = Executor::doit($sql);
-		return Model::many($query[0],new GruposData());
+		return Model::many($query[0],new GrupoData());
 	}
 
 
 	public static function getLike($q){
 		$sql = "select * from ".self::$tablename." where name like '%$q%'";
 		$query = Executor::doit($sql);
-		return Model::many($query[0],new GruposData());
+		return Model::many($query[0],new GrupoData());
 	}
 
 

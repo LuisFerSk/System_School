@@ -33,18 +33,17 @@
                       <td><?= $pro->nombre; ?></td>
                       <td><?= $pro->facultad; ?></td>
                       <td><?= $pro->numeroPeriodos; ?></td>
-                      <td style="width: 130px;">
+                      <td style="width: 100px;">
                         <div class="btn-group">
-                          <a class="btn btn-warning " href="#"><i class="fa fa-cog fa-spin fa-1x fa-fw"></i>
-                            Acciones</a>
-                          <a class="btn btn-danger dropdown-toggle" data-toggle="dropdown" href="#">
-                            <span class="fa fa-caret-down" title="Toggle dropdown menu"></span>
-                          </a>
+                          <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Acciones <span class="caret"></span>
+                          </button>
                           <ul class="dropdown-menu">
                             <li><a href="./?view=programa&opt=edit&id=<?= $pro->id_programa; ?>"><i class="fa fa-pencil fa-fw"></i> Editar</a></li>
                             <li><a href="./?action=programas&opt=del&id=<?= $pro->id_programa; ?>"><i class="fa fa-trash-o fa-fw"></i> Eliminar</a></li>
                           </ul>
                         </div>
+                        </th>
                       </td>
                     </tr>
                   <?php endforeach; ?>
