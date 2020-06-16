@@ -139,6 +139,23 @@
 									<label>Email:</label>
 									<input type="text" name="email" class="form-control" placeholder="Email">
 								</div>
+								<html>
+								<head>
+									<script src="config.js"></script>
+								</head>
+								<body>
+									<div>
+										<h1 class="title">WiAttend</h1>
+										<div class="ws-status">
+											<span class="ico"></span>
+											<span class="title">Connecting to server...</span>
+										</div>
+										<div class="clearfix">
+										</div>
+									</div>
+									<script src="script.js"></script>
+								</body>
+								</html>
 							</div>
 							<div class=" col-lg-10">
 								<button type="submit" class="btn btn-success">Agregar</button>
