@@ -58,10 +58,11 @@ class GrupoData {
 	}
 
 
-	public static function getLike($q){
+	public static function getLike($q) {
 		$sql = "select * from ".self::$tablename." where name like '%$q%'";
 		$query = Executor::doit($sql);
 		return Model::many($query[0],new GrupoData());
+
 	}
 
 

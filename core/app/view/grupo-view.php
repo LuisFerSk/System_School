@@ -90,7 +90,7 @@
                   <select id="inputState" name="profesor" class="form-control">
                     <option selected>Seleccione....</option>
                     <?php foreach ($prof as $pro) : ?>
-                      <option value="<?php echo ($pro->id_prof); ?>"><?php echo $pro->nombres ?></option>
+                      <option value="<?= $pro->id_prof; ?>"><?= $pro->nombres ?></option>
                     <?php endforeach; ?>
                   </select>
                 </div>
@@ -99,7 +99,7 @@
                   <select name="numero_clases" class="form-control">
                     <option selected>Seleccione....</option>
                     <?php for ($count = 1; $count <= 4; $count++) : ?>
-                      <option value="<?php $count ?>"><?php $count ?></option>
+                      <option value="<?= $count; ?>"><?= $count; ?></option>
                     <?php endfor; ?>
                   </select>
                 </div>
@@ -114,6 +114,19 @@
       </div>
     </div>
   </section>
+  <script>
+    $(buscarHoras());
+    function buscarHoras() {
+      $.ajax({
+        url: "./?action=grupo",
+        type: "post",
+        data: {},
+        success: function(result) {
+          $("#horas_clase").html(result);
+        }
+      });
+    }
+  </script>
 <?php elseif (isset($_GET["opt"]) && $_GET["opt"] == "edit") :
   $curso = CursosData::getById($_GET["id"]);
 ?>

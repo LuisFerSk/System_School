@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 14-06-2020 a las 14:24:47
+-- Tiempo de generación: 16-06-2020 a las 16:41:47
 -- Versión del servidor: 10.4.11-MariaDB
--- Versión de PHP: 7.4.6
+-- Versión de PHP: 7.4.5
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -32,7 +32,40 @@ CREATE TABLE `asignatura` (
   `codigo` varchar(10) COLLATE latin1_bin NOT NULL,
   `nombre` varchar(100) COLLATE latin1_bin NOT NULL,
   `creditos` int(2) NOT NULL,
-  `horas_semanales` int(2) NOT NULL
+  `horas_semanales` int(2) NOT NULL,
+  `estado` varchar(10) COLLATE latin1_bin NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_bin;
+
+--
+-- Volcado de datos para la tabla `asignatura`
+--
+
+INSERT INTO `asignatura` (`id_asig`, `codigo`, `nombre`, `creditos`, `horas_semanales`, `estado`) VALUES
+(1, 'MT500', 'ingieneria de software', 4, 4, 'Abierto');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `asignatura_plan`
+--
+
+CREATE TABLE `asignatura_plan` (
+  `id_asig_plan` int(11) NOT NULL,
+  `plan` varchar(10) COLLATE latin1_bin NOT NULL,
+  `$this->asignatura = "";` varchar(100) COLLATE latin1_bin NOT NULL,
+  `s` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_bin;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `asig_plan_requisito`
+--
+
+CREATE TABLE `asig_plan_requisito` (
+  `id_asig_plan_req` int(11) NOT NULL,
+  `asig_plan` int(11) NOT NULL,
+  `asignatura` varchar(100) COLLATE latin1_bin NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_bin;
 
 -- --------------------------------------------------------
@@ -84,7 +117,7 @@ CREATE TABLE `a_academico` (
 --
 
 INSERT INTO `a_academico` (`id_a`, `nombre`, `fechainicio`, `fechafin`, `iniciomatricula`, `finmatricula`, `inicioprimerparcial`, `finprimerparcial`, `iniciosegundoparcial`, `finsegundoparcial`, `inicioparcialfinal`, `finparcialfinal`, `estado`) VALUES
-(7, '2020-2', '2020-06-15', '2020-06-14', '2020-06-17', '2020-06-15', '2020-06-11', '2020-06-16', '2020-06-10', '2020-06-03', '2020-06-10', '2020-06-21', 'Cerrado');
+(7, '2020-2', '2020-06-15', '2020-06-14', '2020-06-17', '2020-06-15', '2020-06-11', '2020-06-16', '2020-06-10', '2020-06-03', '2020-06-10', '2020-06-21', 'Abierto');
 
 -- --------------------------------------------------------
 
@@ -189,7 +222,7 @@ CREATE TABLE `estudiantes` (
 --
 
 INSERT INTO `estudiantes` (`id_estudiante`, `dni`, `primer_apellido`, `segundo_apellido`, `nombre`, `genero`, `fecha_nac`, `programa`, `email`, `estado`, `fecha_reg`) VALUES
-(67, '1003243681', 'Campo', 'Montero', 'Luis Fernando ', 'Masculino', '1999-12-12', '', 'lcampomontero@gmail.com', 'inactivo', '2020-06-13');
+(67, '1003243681', 'Campo', 'Montero', 'Luis Fernando ', 'Masculino', '1999-12-12', 'Ingenieria de sistema', 'lcampomontero@gmail.com', 'activo', '2020-06-13');
 
 -- --------------------------------------------------------
 
@@ -251,7 +284,8 @@ CREATE TABLE `facultad` (
 
 INSERT INTO `facultad` (`id_facultad`, `nombre`, `estado`) VALUES
 (1, 'Ingieneria y tecnologia', 'Abierto'),
-(2, 'Derecho', 'Abierto');
+(2, 'Derecho', 'Abierto'),
+(4, '', 'Abierto');
 
 -- --------------------------------------------------------
 
@@ -345,6 +379,19 @@ CREATE TABLE `nomina` (
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `plan_estudio`
+--
+
+CREATE TABLE `plan_estudio` (
+  `id_plan` int(11) NOT NULL,
+  `codigo` varchar(10) COLLATE latin1_bin NOT NULL,
+  `programa` int(11) NOT NULL,
+  `estado` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_bin;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `profesores`
 --
 
@@ -426,6 +473,18 @@ INSERT INTO `usuarios` (`id`, `id_prof`, `name`, `lastname`, `username`, `passwo
 ALTER TABLE `asignatura`
   ADD PRIMARY KEY (`id_asig`),
   ADD UNIQUE KEY `codigo` (`codigo`);
+
+--
+-- Indices de la tabla `asignatura_plan`
+--
+ALTER TABLE `asignatura_plan`
+  ADD PRIMARY KEY (`id_asig_plan`);
+
+--
+-- Indices de la tabla `asig_plan_requisito`
+--
+ALTER TABLE `asig_plan_requisito`
+  ADD PRIMARY KEY (`id_asig_plan_req`);
 
 --
 -- Indices de la tabla `asistencias`
@@ -532,6 +591,13 @@ ALTER TABLE `nomina`
   ADD KEY `id_grado` (`id_grado`) USING BTREE;
 
 --
+-- Indices de la tabla `plan_estudio`
+--
+ALTER TABLE `plan_estudio`
+  ADD PRIMARY KEY (`id_plan`),
+  ADD UNIQUE KEY `codigo` (`codigo`);
+
+--
 -- Indices de la tabla `profesores`
 --
 ALTER TABLE `profesores`
@@ -542,6 +608,7 @@ ALTER TABLE `profesores`
 --
 ALTER TABLE `programa`
   ADD PRIMARY KEY (`id_programa`),
+  ADD UNIQUE KEY `nombre` (`nombre`),
   ADD KEY `facultad_fk` (`facultad`);
 
 --
@@ -558,7 +625,19 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `asignatura`
 --
 ALTER TABLE `asignatura`
-  MODIFY `id_asig` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_asig` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT de la tabla `asignatura_plan`
+--
+ALTER TABLE `asignatura_plan`
+  MODIFY `id_asig_plan` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `asig_plan_requisito`
+--
+ALTER TABLE `asig_plan_requisito`
+  MODIFY `id_asig_plan_req` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `asistencias`
@@ -618,7 +697,7 @@ ALTER TABLE `est_gra`
 -- AUTO_INCREMENT de la tabla `facultad`
 --
 ALTER TABLE `facultad`
-  MODIFY `id_facultad` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_facultad` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `genero`
@@ -649,6 +728,12 @@ ALTER TABLE `niveles`
 --
 ALTER TABLE `nomina`
   MODIFY `id_nomina` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT de la tabla `plan_estudio`
+--
+ALTER TABLE `plan_estudio`
+  MODIFY `id_plan` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `profesores`
