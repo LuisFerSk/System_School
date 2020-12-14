@@ -10,7 +10,7 @@
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
   <link rel="stylesheet" href="res/bootstrap/css/bootstrap.min.css">
-  <link rel="stylesheet" href="res/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="res/font-awesome/css/fontawesome.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -133,7 +133,6 @@
               </li>
               <li><a href="./?view=blanck"><i class="fa fa-folder-o"></i><span>Manual</span></a></li>
 
-
             <?php endif; ?>
           </ul>
         </section>
@@ -160,7 +159,6 @@
           </ol>
           <!-- Default box -->
           <div class="box">
-
 
             <?php
             View::load("index");

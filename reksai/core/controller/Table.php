@@ -1,7 +1,5 @@
 <?php
 
-
-
 class Table {
 
 	public static function render($data=array(), $extra=""){
@@ -24,6 +22,3 @@ class Table {
 	}
 
 }
-
-
-?>

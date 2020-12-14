@@ -2774,7 +2774,7 @@ class upload {
      */
     function getsize($size) {
         if ($size === null) return null;
-        $last = strtolower($size{strlen($size)-1});
+        $last = strtolower($size[strlen($size)-1]);
         $size = (int) $size;
         switch($last) {
             case 'g':
@@ -2801,7 +2801,7 @@ class upload {
     function getoffsets($offsets, $x, $y, $round = true, $negative = true) {
         if (!is_array($offsets)) $offsets = explode(' ', $offsets);
         if (sizeof($offsets) == 4) {
-             $ct = $offsets[0]; $cr = $offsets[1]; $cb = $offsets[2]; $cl = $offsets[3];
+            $ct = $offsets[0]; $cr = $offsets[1]; $cb = $offsets[2]; $cl = $offsets[3];
         } else if (sizeof($offsets) == 2) {
             $ct = $offsets[0]; $cr = $offsets[1]; $cb = $offsets[0]; $cl = $offsets[1];
         } else {
