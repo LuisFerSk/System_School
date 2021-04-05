@@ -1,4 +1,4 @@
-<?php $profesores=ProfesorDAOImpl::getById($_GET["id"]);
+<?php $profesores=ProfesorData::getById($_GET["id"]);
 ?>
     <section class="container">
 <div class="row">

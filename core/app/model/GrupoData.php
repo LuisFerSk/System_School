@@ -1,16 +1,18 @@
 <?php
 class GrupoData {
-	public static $tablename = "gra_cu";
+	public static $tablename = "grupo";
 
 	public function __construct(){
-		$this->codigo= "";
-		$this->periodo = "";
-		$this->profesor = "";
+		$this->id_grupo= "";
+		$this->periodo = new PeriodoAcademicoData();
+		$this->profesor = new ProfesorData();
+		$this->list_estudiantes = list();
+		$this->list_hora_clases = list();
 	}
 
 	public function add(){
-		$sql = "insert into ".self::$tablename." (id_grado,curso) ";
-		$sql .= "value (\"$this->id_grado\",\"$this->curso\")";
+		$sql = "insert into ".self::$tablename." (id_grupo,periodo,profesor) ";
+		$sql .= "value (\"$this->id_grupo\",\"$this->periodo->id_perido_academico\",\"$this->profesor->id_profesor\")";
 		Executor::doit($sql);
 	}
 

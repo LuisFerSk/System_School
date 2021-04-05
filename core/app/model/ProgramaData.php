@@ -5,7 +5,7 @@ class ProgramaData {
 	public function __construct(){
 		$this->id_programa = "";
 		$this->nombre = "";
-		$this->facultad = "";
+		$this->facultad = new FacultadData();
 		$this->numero_periodos = "";
 		$this->estado = "";
 	}
