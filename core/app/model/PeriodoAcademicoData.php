@@ -1,5 +1,5 @@
 <?php
-class Periodo_academicoData {
+class PeriodoAcademicoData {
 	public static $tablename = "a_academico";
 
 	public function __construct(){
@@ -62,32 +62,32 @@ class Periodo_academicoData {
 	public static function getById($id){
 		 $sql = "select * from ".self::$tablename." where id_a=$id";
 		$query = Executor::doit($sql);
-		return Model::one($query[0],new Periodo_academicoData());
+		return Model::one($query[0],new PeriodoAcademicoData());
 	}
 
 	public static function getBy($k,$v){
 		$sql = "select * from ".self::$tablename." where $k=\"$v\"";
 		$query = Executor::doit($sql);
-		return Model::one($query[0],new Periodo_academicoData());
+		return Model::one($query[0],new PeriodoAcademicoData());
 	}
 
 	public static function getAll(){
 		 $sql = "select * from ".self::$tablename;
 		$query = Executor::doit($sql);
-		return Model::many($query[0],new Periodo_academicoData());
+		return Model::many($query[0],new PeriodoAcademicoData());
 	}
 
 	public static function getAllBy($k,$v){
 		 $sql = "select * from ".self::$tablename." where $k=\"$v\"";
 		$query = Executor::doit($sql);
-		return Model::many($query[0],new Periodo_academicoData());
+		return Model::many($query[0],new PeriodoAcademicoData());
 	}
 
 
 	public static function getLike($q){
 		$sql = "select * from ".self::$tablename." where name like '%$q%'";
 		$query = Executor::doit($sql);
-		return Model::many($query[0],new Periodo_academicoData());
+		return Model::many($query[0],new PeriodoAcademicoData());
 	}
 
 }
