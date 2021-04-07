@@ -5,37 +5,25 @@ class ProfesorData {
     public static $tablename = "profesores";
 
     public function __construct(){
-        $this->id_profesor = "";
-        $this->dni = "";
-        $this->nombres = "";
-        $this->primer_apelldio = "";
-        $this->segundo_apellido = "";
-        $this->email = "";
+        $this->id = "";
+        $this->username = "";
         $this->estado = "";
     }
     
 
     public function add() {
         $sql = "insert into " . self::$tablename . " (
-			dni,
-			nombres,
-			primer_apellido,
-			segundo_apellido,
-			email,
-			estado) ";
+			username,
+			estado)";
     
         $sql .= "value (
-			\"$this->dni\",
-			\"$this->nombres\",
-			\"$this->getId_prof()\",
-			\"$this->segundo_apellido\",
-			\"$this->email\",
+			\"$this->username\",
 			\"$this->estado\")";
         Executor::doit($sql);
     }
 
     public function del() {
-        $sql = "delete from " . self::$tablename . " where id_prof=$this->id";
+        $sql = "delete from " . self::$tablename . " where id=$this->id";
         Executor::doit($sql);
     }
 
@@ -46,29 +34,25 @@ class ProfesorData {
 
     public function update() {
         $sql = "update " . self::$tablename . " set  
-		nombres=\"$this->nombres\", 
-		primer_apellido=\"$this->primer_apellido\", 
-		segundo_apellido=\"$this->segundo_apellido\", 
-		dni=\"$this->dni\", 
-		email=\"$this->email\", 
+		username=\"$this->username\",  
 		estado=\"$this->estado\" 
-		where id_prof=\"$this->id_prof\"";
+		where id=\"$this->id\"";
         Executor::doit($sql);
     }
 
     public function updateById($k, $v) {
-        $sql = "update " . self::$tablename . " set $k=\"$v\" where id_prof=$this->id";
+        $sql = "update " . self::$tablename . " set $k=\"$v\" where id=$this->id";
         Executor::doit($sql);
     }
 
     public static function getById($id) {
-        $sql = "select * from " . self::$tablename . " where id_prof=$id";
+        $sql = "select * from " . self::$tablename . " where id=$id";
         $query = Executor::doit($sql);
         return Model::one($query[0], new ProfesorData());
     }
 
     public static function getAllByUserId($id) {
-        $sql = "select * from " . self::$tablename . " where id_prof=$id";
+        $sql = "select * from " . self::$tablename . " where id=$id";
         $query = Executor::doit($sql);
         return Model::many($query[0], new ProfesorData());
     }

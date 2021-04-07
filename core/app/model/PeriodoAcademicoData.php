@@ -1,9 +1,9 @@
 <?php
 class PeriodoAcademicoData {
-	public static $tablename = "a_academico";
+	public static $tablename = "periodo_academico";
 
 	public function __construct(){
-		$this->id_perido_academico = "";
+		$this->id = "";
 		$this->nombre = "";
 		$this->fecha_inicio = "";
 		$this->fecha_fin = "";
@@ -15,58 +15,37 @@ class PeriodoAcademicoData {
 	public function add(){
 		$sql = "insert into ".self::$tablename." (
 			nombre,
-			fechainicio,
-			fechafin,
-			iniciomatricula,
-			finmatricula,
+			fecha_inicio,
+			fecha_fin,
+			inicio_matricula,
+			fin_matricula,
 			estado
 		)";
 		$sql .= "value (
 			\"$this->nombre\",
-			\"$this->fechainicio\",
-			\"$this->fechafin\",
-			\"$this->iniciomatricula\",
-			\"$this->finmatricula\",
+			\"$this->fecha_inicio\",
+			\"$this->fecha_fin\",
+			\"$this->inicio_matricula\",
+			\"$this->fin_matricula\",
 			\"$this->estado\"
 		)";
-		Executor::doit($sql);
-	}
-
-	public function del(){
-		$sql = "delete from ".self::$tablename." where id_a=$this->id";
-		Executor::doit($sql);
-	}
-
-	public static function delBy($k,$v){
-		$sql = "delete from ".self::$tablename." where $k=\"$v\"";
 		Executor::doit($sql);
 	}
 
 	public function update(){
 		$sql = "update ".self::$tablename." set 
 		nombre=\"$this->nombre\",
-		fechainicio=\"$this->fechainicio\",
-		fechafin=\"$this->fechafin\",
-		iniciomatricula=\"$this->iniciomatricula\",
-		finmatricula=\"$this->finmatricula\",
+		fecha_inicio=\"$this->fecha_inicio\",
+		fecha_fin=\"$this->fecha_fin\",
+		inicio_matricula=\"$this->inicio_matricula\",
+		fin_matricula=\"$this->fin_matricula\",
 		estado=\"$this->estado\" 
-		where id_a=$this->id";
-		Executor::doit($sql);
-	}
-
-	public function updateById($k,$v){
-		$sql = "update ".self::$tablename." set $k=\"$v\" where id_a=$this->id";
+		where id=$this->id";
 		Executor::doit($sql);
 	}
 
 	public static function getById($id){
-		 $sql = "select * from ".self::$tablename." where id_a=$id";
-		$query = Executor::doit($sql);
-		return Model::one($query[0],new PeriodoAcademicoData());
-	}
-
-	public static function getBy($k,$v){
-		$sql = "select * from ".self::$tablename." where $k=\"$v\"";
+		 $sql = "select * from ".self::$tablename." where id=$id";
 		$query = Executor::doit($sql);
 		return Model::one($query[0],new PeriodoAcademicoData());
 	}
@@ -76,19 +55,4 @@ class PeriodoAcademicoData {
 		$query = Executor::doit($sql);
 		return Model::many($query[0],new PeriodoAcademicoData());
 	}
-
-	public static function getAllBy($k,$v){
-		 $sql = "select * from ".self::$tablename." where $k=\"$v\"";
-		$query = Executor::doit($sql);
-		return Model::many($query[0],new PeriodoAcademicoData());
-	}
-
-
-	public static function getLike($q){
-		$sql = "select * from ".self::$tablename." where name like '%$q%'";
-		$query = Executor::doit($sql);
-		return Model::many($query[0],new PeriodoAcademicoData());
-	}
-
 }
-

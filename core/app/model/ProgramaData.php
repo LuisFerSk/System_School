@@ -3,10 +3,9 @@ class ProgramaData {
 	public static $tablename = "programa";
 
 	public function __construct(){
-		$this->id_programa = "";
+		$this->id= "";
 		$this->nombre = "";
-		$this->facultad = new FacultadData();
-		$this->numero_periodos = "";
+		$this->facultad = "o";
 		$this->estado = "";
 	}
 
@@ -14,18 +13,16 @@ class ProgramaData {
 		$sql = "insert into ".self::$tablename." (
 			nombre,
 			facultad,
-			numeroPeriodos,
 			estado) ";
 		$sql .= "value (
 			\"$this->nombre\",
 			\"$this->facultad\",
-			\"$this->numeroPeriodos\",
 			\"$this->estado\")";
 		Executor::doit($sql);
 	}
 
 	public function del(){
-		$sql = "delete from ".self::$tablename." where id_programa=$this->id_programa";
+		$sql = "delete from ".self::$tablename." where id=$this->id";
 		Executor::doit($sql);
 	}
 
@@ -38,19 +35,18 @@ class ProgramaData {
 		$sql = "update ".self::$tablename." set 
 		nombre=\"$this->nombre\",
 		facultad=\"$this->facultad\",
-		numeroPeriodos=\"$this->numeroPeriodos\",
 		estado=\"$this->estado\" 
-		where id_programa=$this->id_programa";
+		where id=$this->id";
 		Executor::doit($sql);
 	}
 
 	public function updateById($k,$v){
-		$sql = "update ".self::$tablename." set $k=\"$v\" where id_grado=$this->id";
+		$sql = "update ".self::$tablename." set $k=\"$v\" where id=$this->id";
 		Executor::doit($sql);
 	}
 
 	public static function getById($id){
-		$sql = "select * from ".self::$tablename." where id_programa=$id";
+		$sql = "select * from ".self::$tablename." where id=$id";
 		$query = Executor::doit($sql);
 		return Model::one($query[0],new ProgramaData());
 	}
@@ -73,7 +69,7 @@ class ProgramaData {
 		return Model::many($query[0],new ProgramaData());
 	}
 	public static function getAllByUserId($id){
-		$sql = "select * from ".self::$tablename." where id_prof=$id";
+		$sql = "select * from ".self::$tablename." where id=$id";
 		$query = Executor::doit($sql);
 		return Model::many($query[0],new ProgramaData());
 	}
