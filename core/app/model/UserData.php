@@ -1,6 +1,6 @@
 <?php
 class UserData {
-	public static $tablename = "usuarios";
+	public static $tablename = "User";
 
 	public function __construct(){
 		$this->id = "";
@@ -10,10 +10,11 @@ class UserData {
 		$this->apellidos = "";
 		$this->password = "";
 		$this->kind = "";
+		$this->estado = "";
 	}
 
 	public function add(){
-		$sql = "insert into usuarios (id_prof,name,lastname,username,email,password,kind) ";
+		$sql = "insert into \"$this->tablename\" (username,dni,nombre,apellidos,password,kind)";
 		$sql .= "value (
 			\"$this->username\",
 			\"$this->dni\",
@@ -36,7 +37,6 @@ class UserData {
 
 	public function update(){
 		$sql = "update ".self::$tablename." set 
-		username=\"$this->username\",
 		dni=\"$this->dni\",
 		nombre=\"$this->nombre\",
 		apellidos=\"$this->apellidos\",
@@ -51,43 +51,33 @@ class UserData {
 		Executor::doit($sql);
 	}
 
-	public function updateById($k,$v){
-		$sql = "update ".self::$tablename." set $k=\"$v\" where id=$this->id";
-		Executor::doit($sql);
-	}
-
 	public static function getById($id){
 		 $sql = "select * from ".self::$tablename." where id=$id";
 		$query = Executor::doit($sql);
 		return Model::one($query[0],new UserData());
 	}
 
-	public static function getBy($k,$v){
-		$sql = "select * from ".self::$tablename." where $k=\"$v\"";
+	public static function getByUsername($username){
+		$sql = "select * from ".self::$tablename." where username=\"$username\"";
 		$query = Executor::doit($sql);
 		return Model::one($query[0],new UserData());
 	}
 
 	public static function getAll(){
-		 $sql = "select * from ".self::$tablename;
+		$sql = "select * from ".self::$tablename;
 		$query = Executor::doit($sql);
 		return Model::many($query[0],new UserData());
 	}
 
 	public static function getAllBy($k,$v){
-		 $sql = "select * from ".self::$tablename." where $k=\"$v\"";
+		$sql = "select * from ".self::$tablename." where $k=\"$v\"";
 		$query = Executor::doit($sql);
 		return Model::many($query[0],new UserData());
 	}
 
-
-	public static function getLike($q){
-		$sql = "select * from ".self::$tablename." where name like '%$q%'";
+	public function verificar(){
+		$sql = "select * from ".self::$tablename." where username=\"$this->username\"and password=\"$this->passwrod\"";
 		$query = Executor::doit($sql);
 		return Model::many($query[0],new UserData());
 	}
-
-
 }
-
-?>

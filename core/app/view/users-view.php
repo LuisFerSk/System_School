@@ -106,7 +106,7 @@ if (isset($_GET["opt"]) && $_GET["opt"] == "all") : ?>
             </div>
           </div>
           <?php
-          $profesores = ProfesoresData::getAll();
+          $profesores = ProfesorData::getAll();
           if (count($profesores) > 0) {
             // si hay usuarios
           ?>

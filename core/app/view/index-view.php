@@ -3,7 +3,7 @@
     <?php
     $found = true;
     if (isset($_SESSION["user_id"])) :
-      $user = UserData::getById($_SESSION["user_id"]);
+      $user = UserData::getById($_SESSION["id"]);
       if ($user->kind == 1) :
     ?>
         <div class="col-lg-3 col-xs-6">

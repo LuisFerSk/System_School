@@ -28,10 +28,9 @@ class EstudianteData {
 
 	public function update(){
 		$sql = "update ".self::$tablename." set 
-		username=\"$this->username\",
 		programa=\"$this->programa\",
 		estado=\"$this->estado\"
-		where id_estudiante=\"$this->id\"";
+		where id=\"$this->id\"";
 		Executor::doit($sql);
 	}
 

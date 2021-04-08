@@ -16,8 +16,8 @@
   <script src="res/js/jquery.js"></script>
   <script src="res/js/jquery.dataTables.min.js"></script>
 </head>
-<body class="hold-transition clearfix <?php if (isset($_SESSION["user_id"])) : ?>skin-blue sidebar-mini<?php else : ?>login-page<?php endif; ?>">
-  <?php if (isset($_SESSION["user_id"])) : ?>
+<body class="hold-transition clearfix <?php if (isset($_SESSION["id"])) : ?>skin-blue sidebar-mini<?php else : ?>login-page<?php endif; ?>">
+  <?php if (isset($_SESSION["id"])) : ?>
     <div class="wrapper">
       <header class="main-header">
         <a href="./" class="logo">
@@ -32,7 +32,7 @@
           <div class="navbar-custom-menu">
             <ul class="nav navbar-nav">
               <li class="btn-group">
-                <a class="btn btn-primary" href="#"><i class="fa fa-user fa-fw"></i> <?php echo Core::$user->name; ?></a>
+                <a class="btn btn-primary" href="#"><i class="fa fa-user fa-fw"></i> <?php echo Core::$user->nombres; ?></a>
                 <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#">
                   <span class="fa fa-caret-down" title="Toggle dropdown menu"></span>
                 </a>
@@ -48,7 +48,7 @@
         <section class="sidebar">
           <?php
           $user = null;
-          $user = UserData::getById($_SESSION["user_id"]);
+          $user = UserData::getById($_SESSION["id"]);
           ?>
           <ul class="sidebar-menu">
             <li><a href="./?view=index"><i class="fa fa-home"></i> <span>Inicio</span></a></li>
@@ -77,7 +77,6 @@
                   <li><a href="index.php?view=prof_tutor&opt=all"><i class="fa fa-user"></i>usuarios</a></li>
                 </ul>
               </li>
-              <li><a href="./?view=blanck"><i class="fa fa-folder-o"></i><span>Manual</span></a></li>
             <?php endif; ?>
           </ul>
         </section>

@@ -24,12 +24,6 @@
           </div>
         </div>
       </div>
-      <?php
-      //$user = UserData::getBy("id",2);
-      //$user->del();
-      //print_r($user);
-      ?>
-
     </div>
   </div>
 </div>

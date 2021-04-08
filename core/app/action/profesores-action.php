@@ -1,7 +1,7 @@
 <?php
 
 if (isset($_GET["opt"]) && $_GET["opt"] == "add") {
-    $profesores = new ProfesoresData();
+    $profesores = new ProfesorData();
     $profesores->dni = $_POST["dni"];
     $profesores->nombres = $_POST["nombres"];
     $profesores->primer_apellido = $_POST["primer_apellido"];
@@ -11,7 +11,7 @@ if (isset($_GET["opt"]) && $_GET["opt"] == "add") {
     $profesores->add();
     header("location: ./?view=profesores&opt=all");
 } else if (isset($_GET["opt"]) && $_GET["opt"] == "upd") {
-    $profesores = new ProfesoresData();
+    $profesores = new ProfesorData();
     $profesores->id_prof = $_POST["id"];
     $profesores->nombres = $_POST["nombres"];
     $profesores->primer_apellido = $_POST["primer_apellido"];
@@ -22,7 +22,7 @@ if (isset($_GET["opt"]) && $_GET["opt"] == "add") {
     $profesores->update();
     header("location: ./?view=profesores&opt=all");
 } else if (isset($_GET["opt"]) && $_GET["opt"] == "del") {
-    $profesores = new ProfesoresData();
+    $profesores = new ProfesorData();
     $profesores->id = $_GET["id"];
     $profesores->del();
     header("location: ./?view=profesores&opt=all");

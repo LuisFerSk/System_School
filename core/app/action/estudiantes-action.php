@@ -1,40 +1,53 @@
 <?php 
 if (isset($_GET["opt"])&& $_GET["opt"]=="add") {
-	$estudiantes=new EstudiantesData();
 
-	$estudiantes->dni=$_POST["dni"];
-	$estudiantes->primer_apellido=$_POST["primer_apellido"];
-	$estudiantes->segundo_apellido=$_POST["segundo_apellido"];
-	$estudiantes->nombre=$_POST["nombre"];
-	$estudiantes->genero=$_POST["genero"];
-	$estudiantes->programa=$_POST["programa"];
-	$estudiantes->fecha_nac=$_POST["fecha_nac"];
-	$estudiantes->email=$_POST["email"];
-	$estudiantes->estado=$_POST["estado"];
-	$estudiantes->fecha_reg=date("y-m-d");
-	$estudiantes->add();
-	
+	$user=new UserData();
+
+	$user->username = $_POST["username"];
+	$user->dni = $_POST["dni"];
+	$user->nombre = $_POST["nombre"];
+	$user->apellidos = $_POST["apellidos"];
+	$user->password = sha1(md5($_POST["password"]));
+	$user->kind = 3;
+	$user->estado = $_POST["estado"];
+
+	$estudiante=new EstudianteData();
+
+	$user->kind = $estudiante->tablename;
+
+	$estudiante->username = $_POST["username"];
+	$estudiante->programa = $_POST["programa"];
+
+	$estudiante->add();
+	$user->add();
+
 	header("location: ./?view=estudiantes&opt=all");
 }
 
 else if (isset($_GET["opt"])&& $_GET["opt"]=="upd") {
-	$estudiantes= new EstudiantesData();
-	$estudiantes->id_estudiante=$_POST["id"];
-	$estudiantes->nombre=$_POST["nombre"];
-	$estudiantes->primer_apellido=$_POST["primer_apellido"];
-	$estudiantes->segundo_apellido=$_POST["segundo_apellido"];
-	$estudiantes->dni=$_POST["dni"];
-	$estudiantes->fecha_nac=$_POST["fecha_nac"];
-	$estudiantes->email=$_POST["email"];
-	$estudiantes->estado=$_POST["estado"];
-	$estudiantes->programa=$_POST["programa"];
-	$estudiantes->genero=$_POST["genero"];
-	$estudiantes->update();
+
+	$user=new UserData();
+
+	$user->dni = $_POST["dni"];
+	$user->nombre = $_POST["nombre"];
+	$user->apellidos = $_POST["apellidos"];
+	$user->password = sha1(md5($_POST["password"]));
+	$user->estado = $_POST["estado"];
+
+	$estudiante=new EstudianteData();
+
+	$user->kind = $estudiante->tablename;
+
+	$estudiante->programa = $_POST["programa"];
+	$estudiante->estado = $_POST["estado"];
+
+	$estudiante->update();
+	$user->update();
 	header("location: ./?view=estudiantes&opt=all");
 }
 
 else if (isset($_GET["opt"])&& $_GET["opt"]=="del") {
-	$emi=new EstudiantesData();
+	$emi=new EstudianteData();
 	$emi->id=$_GET["id"];
 	$emi->del();
 	header("location: ./?view=estudiantes&opt=all");

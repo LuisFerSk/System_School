@@ -1,5 +1,5 @@
 <?php if (isset($_GET["opt"]) && $_GET["opt"] == "all") :
-	$estudiante = EstudiantesData::getAll();
+	$estudiantes = EstudianteData::getAll();
 ?>
 	<section class="content-header">
 		<h1>
@@ -15,32 +15,28 @@
 			<div class="col-xs-12">
 				<div class="box">
 					<div class="box-body">
-						<?php if (count($estudiante) > 0) : ?>
+						<?php if (count($estudiantes) > 0) : ?>
 							<table class="table table-bordered table-hover" id="table">
 								<thead>
 									<tr>
 										<th scope="col">DNI</th>
-										<th scope="col">Nombres</th>
 										<th scope="col">Datos</th>
-										<th scope="col">Fecha/Registro</th>
 										<th scope="col">Estado</th>
 										<th scope="col">Operaciones</th>
 									</tr>
 								</thead>
 								<tbody>
-									<?php foreach ($estudiante as $estu) : ?>
+									<?php foreach ($estudiantes as $estudiante) : 
+											$user = UserData::getByUsername($estudiante->username)
+										?>
 										<tr>
-											<td><?= $estu->dni; ?></td>
-											<td><?= $estu->nombre . "<br> " . $estu->primer_apellido . " " . $estu->segundo_apellido; ?>
-											</td>
+											<td><?= $user->dni; ?></td>
 											<td>
-												<strong>Programa: </strong><?= $estu->programa; ?><br>
-												<strong>Fecha Nacimiento: </strong><?= $estu->fecha_nac; ?><br>
-												<strong>Genero: </strong><?= $estu->genero; ?><br>
-												<strong>Email: </strong><?= $estu->email; ?>
+												<strong>Username: </strong><?= $user->username; ?><br>
+												<strong>Nombre: </strong><?= $user->nombre ." ".$user->apellidos ; ?><br>
+												<strong>Programa: </strong><?= $user->programa; ?><br>
 											</td>
-											<td><?= $estu->fecha_reg; ?></td>
-											<td><?= $estu->estado; ?></td>
+											<td><?= $estudiante->estado; ?></td>
 											<td style="width: 100px;">
 												<div class="btn-group">
 													<button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -81,7 +77,6 @@
 						<form method="POST" action="./?action=estudiantes&opt=add">
 							<?php
 							$estado = EstadoData::getAll();
-							$genero = GeneroData::getAll();
 							$programa = ProgramaData::getAll();
 							?>
 							<div class="form-row clearfix">
@@ -99,43 +94,25 @@
 									</select>
 								</div>
 								<div class="form-group col-md-3">
-									<label>Primer apellido:</label>
-									<input type="text" name="primer_apellido" class="form-control" placeholder="Apellido paterno">
+									<label>Nombres:</label>
+									<input type="text" name="nombre" class="form-control" placeholder="Nombre">
 								</div>
 								<div class="form-group col-md-3">
-									<label>Apellido Materno:</label>
-									<input type="text" name="segundo_apellido" class="form-control" placeholder="Apellido materno">
+									<label>Apellidos:</label>
+									<input type="text" name="apellidos" class="form-control" placeholder="Apellidos">
 								</div>
 								<div class="form-group col-md-3">
-									<label for="inputEmail4">Nombres:</label>
-									<input type="text" name="nombre" class="form-control" placeholder="Nombres">
-								</div>
-								<div class="form-group col-md-3">
-									<label>Fecha de Nacimiento:</label>
-									<div class="input-group">
-										<input type="date" name="fecha_nac" class="form-control">
-									</div>
-								</div>
-								<div class="form-group col-md-3">
-									<label>Genero:</label>
-									<select name="genero" class="form-control">
-										<option selected>Seleccione....</option>
-										<option>Masculino</option>
-										<option>Femenino</option>
-									</select>
+									<label>Contraseña:</label>
+									<input type="password" name="password" class="form-control" placeholder="Contraseña">
 								</div>
 								<div class="form-group col-md-3">
 									<label>Estado:</label>
 									<select name="estado" class="form-control">
-										<option selected>Seleccione....</option>
+										<option selected>Seleccione...</option>
 										<?php foreach ($estado as $esta) : ?>
 											<option value="<?php echo ($esta->nombre); ?>"><?php echo $esta->nombre ?></option>
 										<?php endforeach; ?>
 									</select>
-								</div>
-								<div class="form-group col-md-6">
-									<label>Email:</label>
-									<input type="text" name="email" class="form-control" placeholder="Email">
 								</div>
 							</div>
 							<div class=" col-lg-10">
@@ -149,9 +126,8 @@
 		</div>
 	</section>
 <?php elseif (isset($_GET["opt"]) && $_GET["opt"] == "edit") :
-	$estu = EstudiantesData::getById($_GET["id"]);
+	$estu = EstudianteData::getById($_GET["id"]);
 	$estado = EstadoData::getAll();
-	$genero = GeneroData::getAll();
 	$programa = ProgramaData::getAll();
 ?>
 	<section class="container">

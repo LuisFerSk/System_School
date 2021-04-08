@@ -1,5 +1,5 @@
 <?php if (isset($_GET["opt"]) && $_GET["opt"] == "all") :
-    $academico = Periodo_academicoData::getAll();
+    $academico = PeriodoAcademicoData::getAll();
 ?>
     <section class="content-header">
         <h1>
@@ -111,7 +111,7 @@
         </div>
     </section>
 <?php elseif (isset($_GET["opt"]) && $_GET["opt"] == "edit") :
-    $academico = Periodo_academicoData::getById($_GET["id"]);
+    $academico = PeriodoAcademicoData::getById($_GET["id"]);
 ?>
     <section class="content-header">
         <h1>

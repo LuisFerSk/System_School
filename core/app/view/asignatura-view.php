@@ -21,8 +21,6 @@
                   <tr>
                     <th scope="col">Cogido</th>
                     <th scope="col">Nombre</th>
-                    <th scope="col">Creditos</th>
-                    <th scope="col">Horas por semana</th>
                     <th scope="col">Estado</th>
                     <th scope="col">Operaciones</th>
                   </tr>
@@ -32,8 +30,6 @@
                     <tr>
                       <td><?= $asig->codigo; ?></td>
                       <td><?= $asig->nombre; ?></td>
-                      <td><?= $asig->creditos; ?></td>
-                      <td><?= $asig->horas_semanales; ?>
                       <td><?= $asig->estado; ?></td>
                       <td style="width: 100px;">
                         <div class="btn-group">
