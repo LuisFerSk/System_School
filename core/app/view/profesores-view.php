@@ -39,8 +39,8 @@
                             Acciones <span class="caret"></span>
                           </button>
                           <ul class="dropdown-menu">
-                          <li><a href="./?view=profesores&opt=edit&id=<?= $prof->id_prof; ?>"><i class=" fa fa-pencil fa-fw"></i> Editar</a></li>
-                          <li><a href="./?action=profesores&opt=del&id=<?= $prof->id_prof; ?>"><i class="fa fa-trash-o fa-fw"></i> Eliminar</a></li>
+                            <li><a href="./?view=profesores&opt=edit&id=<?= $prof->id_prof; ?>"><i class=" fa fa-pencil fa-fw"></i> Editar</a></li>
+                            <li><a href="./?action=profesores&opt=del&id=<?= $prof->id_prof; ?>"><i class="fa fa-trash-o fa-fw"></i> Eliminar</a></li>
                           </ul>
                         </div>
                       </td>

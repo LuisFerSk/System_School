@@ -6,8 +6,6 @@ class AsignaturaData {
 		$this->id = "";
 		$this->codigo = "";
     	$this->nombre = "";
-    	$this->creditos = "";
-		$this->horas_semanales = "";
 		$this->estado = "";
 	}
 
@@ -15,14 +13,10 @@ class AsignaturaData {
 		$sql = "insert into ".self::$tablename." (
 			codigo,
 			nombre,
-			creditos,
-			horas_semanales,
 			estado) ";
 		$sql .= "value (
 			\"$this->codigo\",
 			\"$this->nombre\",
-			\"$this->creditos\",
-			\"$this->horas_semanales\",
 			\"$this->estado\")";
 		Executor::doit($sql);
 	}
@@ -36,8 +30,6 @@ class AsignaturaData {
 		$sql = "update ".self::$tablename." set 
 		codigo=\"$this->codigo\",
 		nombre=\"$this->nombre\",
-		creditos=\"$this->creditos\",
-		horas_semanales=\"$this->horas_semanales\",
 		estado=\"$this->estado\" 
 		where id=$this->id";
 		Executor::doit($sql);

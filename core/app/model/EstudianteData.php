@@ -4,14 +4,14 @@ class EstudianteData {
 
 	public function __construct(){
 		$this->id = "";
-		$this->username = "";
+		$this->email = "";
 		$this->programa = "";
 		$this->estado = "";
 	}
 
 	public function add(){
 		$sql = "insert into ".self::$tablename." (
-			username,
+			email,
 			programa,
 			estado) ";
 		$sql .= "value (

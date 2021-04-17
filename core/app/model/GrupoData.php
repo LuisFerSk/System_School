@@ -8,16 +8,21 @@ class GrupoData {
 		$this->profesor = "";
 		$this->list_estudiantes = list();
 		$this->list_hora_clases = list();
+		$this->estado = "";
 	}
 
 	public function add(){
 		$sql = "insert into ".self::$tablename." (id_grupo,periodo,profesor) ";
-		$sql .= "value (\"$this->id\",\"$this->periodo\",\"$this->profesor\")";
+		$sql .= "value (\"$this->id\",\"$this->periodo\",\"$this->profesor\",\"$this->estado\")";
 		Executor::doit($sql);
 	}
 
 	public function update(){
-		$sql = "update ".self::$tablename." set (periodo=\"$this->periodo\",profesor=\"$this->profesor\") where id=$this->id";
+		$sql = "update ".self::$tablename." set
+			periodo=\"$this->periodo\",
+			profesor=\"$this->profesor\",
+			estado=\"$this->estado\"
+			where id=$this->id";
 		Executor::doit($sql);
 	}
 

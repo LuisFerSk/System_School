@@ -30,7 +30,7 @@
                     <tr>
                       <td><?= $cu->id_curso; ?></td>
                       <td><?= $cu->nombre; ?></td>
-                      <?php $profesor = ProfesoresData::getById($cu->profesor); ?>
+                      <?php $profesor = ProfesorData::getById($cu->profesor); ?>
                       <td><?= $profesor->nombres; ?></td>
                       <td style="width: 100px;">
                         <div class="btn-group">
@@ -72,7 +72,7 @@
           <div class="box-body">
             <form method="POST" action="./?action=grupo&opt=add">
               <?php
-              $prof = ProfesoresData::getAll();
+              $prof = ProfesorData::getAll();
               $asignatura = AsignaturaData::getAll();
               ?>
               <div class="form-row">
@@ -116,6 +116,7 @@
   </section>
   <script>
     $(buscarHoras());
+
     function buscarHoras() {
       $.ajax({
         url: "./?action=grupo",
@@ -136,7 +137,7 @@
         <h1>Editar grupo</h1>
         <br>
         <form method="POST" action="./?action=grupo&opt=upd">
-          <?php $prof = ProfesoresData::getAll(); ?>
+          <?php $prof = ProfesorData::getAll(); ?>
           <div class="form-row clearfix">
             <div class="form-group col-md-6">
               <label for="exampleInputEmail1">Nombre:</label>
@@ -154,9 +155,9 @@
             <input type="hidden" name="id" value="<?= $curso->id_curso; ?>">
           </div>
           <div class=" col-lg-10">
-              <button type="submit" class="btn btn-success">Actualizar</button>
-              <button type="button" onclick="location='./?view=cursos&opt=all'" class="btn btn-warning">Cancelar</button>
-            </div>
+            <button type="submit" class="btn btn-success">Actualizar</button>
+            <button type="button" onclick="location='./?view=cursos&opt=all'" class="btn btn-warning">Cancelar</button>
+          </div>
         </form>
   </section>
   <br>

@@ -17,9 +17,11 @@ if (isset($_GET["opt"])&& $_GET["opt"]=="add") {
 
 	$estudiante->username = $_POST["username"];
 	$estudiante->programa = $_POST["programa"];
+	$estudiante->estado = $_POST["estado"];
+
+	$user->add();
 
 	$estudiante->add();
-	$user->add();
 
 	header("location: ./?view=estudiantes&opt=all");
 }

@@ -22,25 +22,23 @@
                     <th scope="col">id programa</th>
                     <th scope="col">Nombre</th>
                     <th scope="col">Facultad</th>
-                    <th scope="col">Duracion</th>
                     <th scope="col">Operaciones</th>
                   </tr>
                 </thead>
                 <tbody>
                   <?php foreach ($programa as $pro) : ?>
                     <tr>
-                      <td><?= $pro->id_programa; ?></td>
+                      <td><?= $pro->id; ?></td>
                       <td><?= $pro->nombre; ?></td>
                       <td><?= $pro->facultad; ?></td>
-                      <td><?= $pro->numeroPeriodos; ?></td>
                       <td style="width: 100px;">
                         <div class="btn-group">
                           <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Acciones <span class="caret"></span>
                           </button>
                           <ul class="dropdown-menu">
-                            <li><a href="./?view=programa&opt=edit&id=<?= $pro->id_programa; ?>"><i class="fa fa-pencil fa-fw"></i> Editar</a></li>
-                            <li><a href="./?action=programas&opt=del&id=<?= $pro->id_programa; ?>"><i class="fa fa-trash-o fa-fw"></i> Eliminar</a></li>
+                            <li><a href="./?view=programa&opt=edit&id=<?= $pro->id; ?>"><i class="fa fa-pencil fa-fw"></i> Editar</a></li>
+                            <li><a href="./?action=programas&opt=del&id=<?= $pro->id; ?>"><i class="fa fa-trash-o fa-fw"></i> Eliminar</a></li>
                           </ul>
                         </div>
                         </th>

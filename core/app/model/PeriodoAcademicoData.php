@@ -7,8 +7,6 @@ class PeriodoAcademicoData {
 		$this->nombre = "";
 		$this->fecha_inicio = "";
 		$this->fecha_fin = "";
-		$this->inicio_matricula = "";
-		$this->fin_matricula = "";
 		$this->estado = "";
 	}
 
@@ -17,16 +15,12 @@ class PeriodoAcademicoData {
 			nombre,
 			fecha_inicio,
 			fecha_fin,
-			inicio_matricula,
-			fin_matricula,
 			estado
 		)";
 		$sql .= "value (
 			\"$this->nombre\",
 			\"$this->fecha_inicio\",
 			\"$this->fecha_fin\",
-			\"$this->inicio_matricula\",
-			\"$this->fin_matricula\",
 			\"$this->estado\"
 		)";
 		Executor::doit($sql);
@@ -37,8 +31,6 @@ class PeriodoAcademicoData {
 		nombre=\"$this->nombre\",
 		fecha_inicio=\"$this->fecha_inicio\",
 		fecha_fin=\"$this->fecha_fin\",
-		inicio_matricula=\"$this->inicio_matricula\",
-		fin_matricula=\"$this->fin_matricula\",
 		estado=\"$this->estado\" 
 		where id=$this->id";
 		Executor::doit($sql);

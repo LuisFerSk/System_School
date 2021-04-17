@@ -17,7 +17,9 @@
   <script src="res/js/jquery.dataTables.min.js"></script>
 </head>
 <body class="hold-transition clearfix <?php if (isset($_SESSION["id"])) : ?>skin-blue sidebar-mini<?php else : ?>login-page<?php endif; ?>">
-  <?php if (isset($_SESSION["id"])) : ?>
+  <?php if (isset($_SESSION["id"])) : 
+    $user = UserData::getById($_SESSION["id"]);
+    ?>
     <div class="wrapper">
       <header class="main-header">
         <a href="./" class="logo">
@@ -32,7 +34,7 @@
           <div class="navbar-custom-menu">
             <ul class="nav navbar-nav">
               <li class="btn-group">
-                <a class="btn btn-primary" href="#"><i class="fa fa-user fa-fw"></i> <?php echo Core::$user->nombres; ?></a>
+                <a class="btn btn-primary" href="#"><i class="fa fa-user fa-fw"></i> <?php echo $user->nombre; ?></a>
                 <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#">
                   <span class="fa fa-caret-down" title="Toggle dropdown menu"></span>
                 </a>
@@ -116,7 +118,7 @@
         <p class="login-box-msg">Iniciar sesion</p>
         <form action="./?action=access&opt=login" method="post">
           <div class="form-group has-feedback">
-            <input type="text" class="form-control" placeholder="usuario" name="username">
+            <input type="text" class="form-control" placeholder="Email" name="email">
             <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
           </div>
           <div class="form-group has-feedback">

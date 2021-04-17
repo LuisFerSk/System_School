@@ -26,14 +26,14 @@
 									</tr>
 								</thead>
 								<tbody>
-									<?php foreach ($estudiantes as $estudiante) : 
-											$user = UserData::getByUsername($estudiante->username)
-										?>
+									<?php foreach ($estudiantes as $estudiante) :
+										$user = UserData::getByEmail($estudiante->email)
+									?>
 										<tr>
 											<td><?= $user->dni; ?></td>
 											<td>
-												<strong>Username: </strong><?= $user->username; ?><br>
-												<strong>Nombre: </strong><?= $user->nombre ." ".$user->apellidos ; ?><br>
+												<strong>Email: </strong><?= $user->email; ?><br>
+												<strong>Nombre: </strong><?= $user->nombre . " " . $user->apellidos; ?><br>
 												<strong>Programa: </strong><?= $user->programa; ?><br>
 											</td>
 											<td><?= $estudiante->estado; ?></td>
@@ -43,8 +43,8 @@
 														Acciones <span class="caret"></span>
 													</button>
 													<ul class="dropdown-menu">
-														<li><a href="./?view=estudiantes&opt=edit&id=<?= $estu->id_estudiante; ?>"><i class="fa fa-pencil fa-fw"></i> Editar</a></li>
-														<li><a href="./?action=estudiantes&opt=del&id=<?= $estu->id_estudiante; ?>"><i class="fa fa-trash-o fa-fw"></i> Eliminar</a></li>
+														<li><a href="./?view=estudiantes&opt=edit&id=<?= $estu->id; ?>"><i class="fa fa-pencil fa-fw"></i> Editar</a></li>
+														<li><a href="./?action=estudiantes&opt=del&id=<?= $estu->id; ?>"><i class="fa fa-trash-o fa-fw"></i> Eliminar</a></li>
 													</ul>
 												</div>
 											</td>
@@ -81,8 +81,12 @@
 							?>
 							<div class="form-row clearfix">
 								<div class="form-group col-md-3">
+									<label>Email:</label>
+									<input type="email" required name="email" class="form-control" placeholder="Nombre de usuario">
+								</div>
+								<div class="form-group col-md-3">
 									<label>DNI:</label>
-									<input type="tex" name="dni" class="form-control" id="inputEmail4" placeholder="Numero de DNI">
+									<input type="tex" required name="dni" class="form-control" placeholder="Numero de DNI">
 								</div>
 								<div class="form-group col-md-3">
 									<label>Programa:</label>
@@ -94,16 +98,16 @@
 									</select>
 								</div>
 								<div class="form-group col-md-3">
+									<label>Contraseña:</label>
+									<input type="password" name="password" class="form-control" placeholder="Contraseña">
+								</div>
+								<div class="form-group col-md-3">
 									<label>Nombres:</label>
 									<input type="text" name="nombre" class="form-control" placeholder="Nombre">
 								</div>
-								<div class="form-group col-md-3">
+								<div class="form-group col-md-6">
 									<label>Apellidos:</label>
 									<input type="text" name="apellidos" class="form-control" placeholder="Apellidos">
-								</div>
-								<div class="form-group col-md-3">
-									<label>Contraseña:</label>
-									<input type="password" name="password" class="form-control" placeholder="Contraseña">
 								</div>
 								<div class="form-group col-md-3">
 									<label>Estado:</label>

@@ -156,10 +156,10 @@
                                 </div>
                             </div>
                             <div class=" col-lg-10">
-                                    <input type="hidden" name="id" value="<?= $academico->id_a; ?>">
-                                    <button type="submit" class="btn btn-success">Actualizar</button>
-                                    <button type="date" onclick="location='./?view=facultad&opt=all'" class="btn btn-warning">Cancelar</button>
-                                </div>
+                                <input type="hidden" name="id" value="<?= $academico->id_a; ?>">
+                                <button type="submit" class="btn btn-success">Actualizar</button>
+                                <button type="date" onclick="location='./?view=facultad&opt=all'" class="btn btn-warning">Cancelar</button>
+                            </div>
                         </form>
                     </div>
                 </div>

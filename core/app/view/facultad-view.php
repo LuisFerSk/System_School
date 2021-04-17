@@ -28,7 +28,7 @@
                 <tbody>
                   <?php foreach ($facultad as $fd) : ?>
                     <tr>
-                      <td><?= $fd->id_facultad; ?></td>
+                      <td><?= $fd->id; ?></td>
                       <td><?= $fd->nombre; ?></td>
                       <td><?= $fd->estado; ?></td>
                       <td style="width: 100px;">
@@ -37,8 +37,8 @@
                             Acciones <span class="caret"></span>
                           </button>
                           <ul class="dropdown-menu">
-                          <li><a href="./?view=facultad&opt=edit&id=<?= $fd->id_facultad; ?>"><i class="fa fa-pencil fa-fw"></i> Editar</a></li>
-                          <li><a href="./?action=facultad&opt=del&id=<?= $fd->id_facultad; ?>"><i class="fa fa-trash-o fa-fw"></i> Eliminar</a></li>
+                            <li><a href="./?view=facultad&opt=edit&id=<?= $fd->id; ?>"><i class="fa fa-pencil fa-fw"></i> Editar</a></li>
+                            <li><a href="./?action=facultad&opt=del&id=<?= $fd->id; ?>"><i class="fa fa-trash-o fa-fw"></i> Eliminar</a></li>
                           </ul>
                         </div>
                       </td>
@@ -119,7 +119,7 @@
                   <label>Estado:</label>
                   <select name="estado" class="form-control">
                     <option selected><?= $facultad->estado; ?></option>
-                    <option><?= $facultad->estado=="Abierto"?"Cerrado":"Abierto"; ?></option>
+                    <option><?= $facultad->estado == "Abierto" ? "Cerrado" : "Abierto"; ?></option>
                   </select>
                 </div>
               </div>
