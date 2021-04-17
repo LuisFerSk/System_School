@@ -19,6 +19,6 @@ else if (isset($_GET["opt"])&& $_GET["opt"]=="upd") {
 else if (isset($_GET["opt"])&& $_GET["opt"]=="del") {
 	$facultad=new FacultadData();
 	$facultad->id=$_GET["id"];
-	$facultad->del();
+	// $facultad->del();
 	header("location: ./?view=facultad&opt=all");
 }

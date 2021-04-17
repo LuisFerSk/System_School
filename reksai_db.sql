@@ -133,6 +133,22 @@ CREATE TABLE `user` (
 
 
 
+INSERT INTO asignatura(id,codigo,nombre,estado) VALUES(1,'MT500','ingieneria de software','activo');
+
+INSERT INTO estado(id,nombre) VALUES(1,'activo'),(2,'inactivo');
+
+INSERT INTO estudiante(id,dni,programa,estado) VALUES(4,'1003243681','Derecho','activo');
+
+INSERT INTO facultad(id,nombre,estado) VALUES(1,'Ingieneria y tecnologia','activo'),(2,'Derecho','activo');
+
+
+
+INSERT INTO perido_academico(id,nombre,fecha_inicio,fecha_fin,estado) VALUES(1,'2021-2','2021-04-17','2021-04-20','Cerrado');
+
+INSERT INTO programa(id,nombre,facultad,estado) VALUES(6,'Ingenieria de sistema','Ingieneria y tecnologia','activo'),(7,'Derecho','Derecho','activo');
+INSERT INTO user(id,email,dni,nombre,apellidos,password,kind,estado) VALUES(1,'admin@gmail.com','1003243681','Luis Fernando','Campo Montero','56c6fbdc1f299d0a753ac029343d380afa3919a8',1,'activo');
+
+
 
 
 
