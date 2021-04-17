@@ -1,5 +1,5 @@
 <?php if (isset($_GET["opt"]) && $_GET["opt"] == "all") :
-  $curso = CursosData::getAll();
+  $curso = GrupoData::getAll();
 ?>
   <section class="content-header">
     <h1>
@@ -28,9 +28,9 @@
                 <tbody>
                   <?php foreach ($curso as $cu) : ?>
                     <tr>
-                      <td><?= $cu->id_curso; ?></td>
+                      <td><?= $cu->id; ?></td>
                       <td><?= $cu->nombre; ?></td>
-                      <?php $profesor = ProfesorData::getById($cu->profesor); ?>
+                      <?php $profesor = UserData::getById($cu->profesor); ?>
                       <td><?= $profesor->nombres; ?></td>
                       <td style="width: 100px;">
                         <div class="btn-group">
@@ -72,7 +72,7 @@
           <div class="box-body">
             <form method="POST" action="./?action=grupo&opt=add">
               <?php
-              $prof = ProfesorData::getAll();
+              $prof = UserData::getAll();
               $asignatura = AsignaturaData::getAll();
               ?>
               <div class="form-row">
@@ -114,7 +114,7 @@
       </div>
     </div>
   </section>
-  <script>
+  <!-- <script>
     $(buscarHoras());
 
     function buscarHoras() {
@@ -127,9 +127,9 @@
         }
       });
     }
-  </script>
+  </script> -->
 <?php elseif (isset($_GET["opt"]) && $_GET["opt"] == "edit") :
-  $curso = CursosData::getById($_GET["id"]);
+  $curso = GrupoData::getById($_GET["id"]);
 ?>
   <section class="container">
     <div class="row">
@@ -137,7 +137,7 @@
         <h1>Editar grupo</h1>
         <br>
         <form method="POST" action="./?action=grupo&opt=upd">
-          <?php $prof = ProfesorData::getAll(); ?>
+          <?php $prof = UserData::getAll(); ?>
           <div class="form-row clearfix">
             <div class="form-group col-md-6">
               <label for="exampleInputEmail1">Nombre:</label>

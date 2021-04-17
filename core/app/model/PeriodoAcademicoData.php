@@ -1,6 +1,6 @@
 <?php
 class PeriodoAcademicoData {
-	public static $tablename = "periodo_academico";
+	public static $tablename = "perido_academico";
 
 	public function __construct(){
 		$this->id = "";
@@ -16,8 +16,7 @@ class PeriodoAcademicoData {
 			fecha_inicio,
 			fecha_fin,
 			estado
-		)";
-		$sql .= "value (
+		) value (
 			\"$this->nombre\",
 			\"$this->fecha_inicio\",
 			\"$this->fecha_fin\",
@@ -43,7 +42,7 @@ class PeriodoAcademicoData {
 	}
 
 	public static function getAll(){
-		 $sql = "select * from ".self::$tablename;
+		$sql = "select * from ".self::$tablename;
 		$query = Executor::doit($sql);
 		return Model::many($query[0],new PeriodoAcademicoData());
 	}

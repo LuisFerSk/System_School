@@ -1,7 +1,7 @@
 <?php
 class UserData
 {
-	public static $tablename = "User";
+	public static $tablename = "user";
 
 	public function __construct()
 	{
@@ -17,8 +17,14 @@ class UserData
 
 	public function add()
 	{
-		$sql = "insert into \"$this->tablename\" (email,dni,nombre,apellidos,password,kind,estado)";
-		$sql .= "value (
+		$sql = "insert into \"$this->tablename\" (
+			email,
+			dni,
+			nombre,
+			apellidos,
+			password,
+			kind,
+			estado) value (
 			\"$this->email\",
 			\"$this->dni\",
 			\"$this->nombre\",
@@ -53,6 +59,17 @@ class UserData
 		Executor::doit($sql);
 	}
 
+	public function updateInfo()
+	{
+		$sql = "update " . self::$tablename . " set 
+		dni=\"$this->dni\",
+		email=\"$this->email\",
+		nombre=\"$this->nombre\",
+		apellidos=\"$this->apellidos\" 
+		where dni=$this->dni";
+		Executor::doit($sql);
+	}
+
 	public function update_passwd()
 	{
 		$sql = "update " . self::$tablename . " set password=\"$this->password\" where id=$this->id";
@@ -66,9 +83,9 @@ class UserData
 		return Model::one($query[0], new UserData());
 	}
 
-	public static function getByEmail($email)
+	public static function getByDni($dni)
 	{
-		$sql = "select * from " . self::$tablename . " where email=\"$email\"";
+		$sql = "select * from " . self::$tablename . " where dni=\"$dni\"";
 		$query = Executor::doit($sql);
 		return Model::one($query[0], new UserData());
 	}
@@ -76,6 +93,13 @@ class UserData
 	public static function getAll()
 	{
 		$sql = "select * from " . self::$tablename;
+		$query = Executor::doit($sql);
+		return Model::many($query[0], new UserData());
+	}
+
+	public static function getAllProfesor()
+	{
+		$sql = "select * from  " . self::$tablename . " where kind = 2";
 		$query = Executor::doit($sql);
 		return Model::many($query[0], new UserData());
 	}

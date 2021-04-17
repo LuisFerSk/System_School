@@ -1,21 +1,21 @@
 <?php
-class EstudianteData {
+class EstudianteData{
 	public static $tablename = "estudiante";
 
 	public function __construct(){
 		$this->id = "";
-		$this->email = "";
+		$this->dni = "";
 		$this->programa = "";
 		$this->estado = "";
 	}
 
 	public function add(){
 		$sql = "insert into ".self::$tablename." (
-			email,
+			dni,
 			programa,
 			estado) ";
 		$sql .= "value (
-			\"$this->username\",
+			\"$this->dni\",
 			\"$this->programa\",
 			\"$this->estado\");";
 		Executor::doit($sql);
@@ -29,8 +29,9 @@ class EstudianteData {
 	public function update(){
 		$sql = "update ".self::$tablename." set 
 		programa=\"$this->programa\",
+		dni=\"$this->dni\",
 		estado=\"$this->estado\"
-		where id=\"$this->id\"";
+		where dni=\"$this->dni\"";
 		Executor::doit($sql);
 	}
 

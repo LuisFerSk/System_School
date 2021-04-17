@@ -19,8 +19,9 @@
                             <table class="table table-bordered table-hover" id="table">
                                 <thead>
                                     <tr>
-                                        <th scope="col">Numero</th>
                                         <th scope="col">Periodo academico</th>
+                                        <th scope="col">Fecha de inicio</th>
+                                        <th scope="col">Fecha finalización</th>
                                         <th scope="col">Estado</th>
                                         <th scope="col">Operaciones</th>
                                     </tr>
@@ -28,8 +29,9 @@
                                 <tbody>
                                     <?php foreach ($academico as $acad) : ?>
                                         <tr>
-                                            <td><?= $acad->id_a; ?></td>
                                             <td><?= $acad->nombre; ?></td>
+                                            <td><?= $acad->fecha_inicio; ?></td>
+                                            <td><?= $acad->fecha_fin; ?></td>
                                             <td><?= $acad->estado; ?></td>
                                             <td style="width: 100px;">
                                                 <div class="btn-group">
@@ -37,8 +39,8 @@
                                                         Acciones <span class="caret"></span>
                                                     </button>
                                                     <ul class="dropdown-menu">
-                                                        <li><a href="./?view=periodo_academico&opt=edit&id=<?= $acad->id_a; ?>"><i class="fa fa-pencil fa-fw"></i> Editar</a></li>
-                                                        <li><a href="./?action=periodo_academico&opt=del&id=<?= $acad->id_a; ?>"><i class="fa fa-trash-o fa-fw"></i> Eliminar</a></li>
+                                                        <li><a href="./?view=periodo_academico&opt=edit&id=<?= $acad->id; ?>"><i class="fa fa-pencil fa-fw"></i> Editar</a></li>
+                                                        <li><a href="./?action=periodo_academico&opt=del&id=<?= $acad->id; ?>"><i class="fa fa-trash-o fa-fw"></i> Eliminar</a></li>
                                                     </ul>
                                                 </div>
                                                 </th>
@@ -91,14 +93,6 @@
                                     <label>Fecha fin periodo:</label>
                                     <input type="date" name="fechafin" class="form-control">
                                 </div>
-                                <div class="form-group col-md-6">
-                                    <label>Fecha inicio matricula:</label>
-                                    <input type="date" name="iniciomatricula" class="form-control">
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <label>Fecha fin matricula:</label>
-                                    <input type="date" name="finmatricula" class="form-control">
-                                </div>
                             </div>
                             <div class=" col-lg-10">
                                 <button type="submit" class="btn btn-success">Agregar</button>
@@ -125,7 +119,7 @@
             <div class="col-xs-12">
                 <div class="box">
                     <div class="box-body">
-                        <form method="POST" action="./?action=a_academico&opt=upd">
+                        <form method="POST" action="./?action=periodo_academico&opt=upd">
                             <div class="form-row clearfix">
                                 <div class="form-group col-md-6">
                                     <label>Periodo academico:</label>
@@ -140,23 +134,15 @@
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label>Fecha inicio periodo:</label>
-                                    <input type="date" name="fechainicio" class="form-control" value="<?= $academico->fechainicio; ?>">
+                                    <input type="date" name="fechainicio" class="form-control" value="<?= $academico->fecha_inicio; ?>">
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label>Fecha fin periodo:</label>
-                                    <input type="date" name="fechafin" class="form-control" value="<?= $academico->fechafin; ?>">
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <label>Fecha inicio matricula:</label>
-                                    <input type="date" name="iniciomatricula" class="form-control" value="<?= $academico->iniciomatricula; ?>">
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <label>Fecha fin matricula:</label>
-                                    <input type="date" name="finmatricula" class="form-control" value="<?= $academico->finmatricula; ?>">
+                                    <input type="date" name="fechafin" class="form-control" value="<?= $academico->fecha_fin; ?>">
                                 </div>
                             </div>
                             <div class=" col-lg-10">
-                                <input type="hidden" name="id" value="<?= $academico->id_a; ?>">
+                                <input type="hidden" name="id" value="<?= $academico->id; ?>">
                                 <button type="submit" class="btn btn-success">Actualizar</button>
                                 <button type="date" onclick="location='./?view=facultad&opt=all'" class="btn btn-warning">Cancelar</button>
                             </div>

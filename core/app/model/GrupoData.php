@@ -6,8 +6,8 @@ class GrupoData {
 		$this->id= "";
 		$this->perido = "";
 		$this->profesor = "";
-		$this->list_estudiantes = list();
-		$this->list_hora_clases = list();
+		$this->list_estudiantes = array();
+		$this->list_hora_clases = array();
 		$this->estado = "";
 	}
 
