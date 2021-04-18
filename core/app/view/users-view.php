@@ -60,7 +60,7 @@ if (isset($_GET["opt"]) && $_GET["opt"] == "all") : ?>
                     <td><?php echo $user->username; ?></td>
                     <td style="width:120px;">
                       <a href="./?view=users&opt=edit&id=<?php echo $user->id; ?>" class="btn btn-warning btn-xs">Editar</a>
-                      <a href="./?action=users&opt=del&id=<?php echo $user->id; ?>" class="btn btn-danger btn-xs">Eliminar</a>
+                      <!-- <a href="./?action=users&opt=del&id=<?php echo $user->id; ?>" class="btn btn-danger btn-xs">Eliminar</a> -->
                     </td>
                   </tr>
               <?php

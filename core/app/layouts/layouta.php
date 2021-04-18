@@ -16,10 +16,11 @@
   <script src="res/js/jquery.js"></script>
   <script src="res/js/jquery.dataTables.min.js"></script>
 </head>
+
 <body class="hold-transition clearfix <?php if (isset($_SESSION["id"])) : ?>skin-blue sidebar-mini<?php else : ?>login-page<?php endif; ?>">
-  <?php if (isset($_SESSION["id"])) : 
+  <?php if (isset($_SESSION["id"])) :
     $user = UserData::getById($_SESSION["id"]);
-    ?>
+  ?>
     <div class="wrapper">
       <header class="main-header">
         <a href="./" class="logo">
@@ -54,10 +55,8 @@
           ?>
           <ul class="sidebar-menu">
             <li><a href="./?view=index"><i class="fa fa-home"></i> <span>Inicio</span></a></li>
-            <?php if (!$user->kind) : ?>
-              <li><a href="./?view=asis"><i class="fa fa-users"></i> <span>Cursos</span></a></li>
-            <?php endif; ?>
-            <?php if ($user->kind) : ?>
+            <li><a href="./?view=asis"><i class="fa fa-users"></i> <span>Información personal</span></a></li>
+            <?php if (stristr($user->kind, '1')) : ?>
               <li><a href="./?view=periodo_academico&opt=all"><i class="fa fa-hourglass-end"></i> <span>Periodo academico</span></a></li>
               <li><a href="./?view=facultad&opt=all"><i class="fa fa-university"></i> <span>Facultades</span></a></li>
               <li><a href="./?view=programa&opt=all"><i class="fa fa-list-ol"></i> <span>Programas</span></a></li>
@@ -79,6 +78,12 @@
                   <li><a href="index.php?view=prof_tutor&opt=all"><i class="fa fa-user"></i>usuarios</a></li>
                 </ul>
               </li>
+            <?php endif; 
+             if (stristr($user->kind, '2')) : ?>
+              <li><a href="./?view=asis"><i class="fa fa-users"></i> <span>Grupos</span></a></li>
+            <?php endif;
+            if (stristr($user->kind, '3')) : ?>
+              <li><a href="./?view=asis"><i class="fa fa-users"></i> <span>Asistencia</span></a></li>
             <?php endif; ?>
           </ul>
         </section>
@@ -128,11 +133,12 @@
           <button type="submit" class="btn btn-block btn-flat" style="background-color:green;">Entrar</button>
         </form>
       </div>
-  <?php endif; ?>
-  <script src="res/js/jquery.min.js"></script>
-  <script src="res/bootstrap/js/bootstrap.min.js"></script>
-  <script src="dist/js/app.min.js"></script>
-  <script src="dist/js/demo.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
+    <?php endif; ?>
+    <script src="res/js/jquery.min.js"></script>
+    <script src="res/bootstrap/js/bootstrap.min.js"></script>
+    <script src="dist/js/app.min.js"></script>
+    <script src="dist/js/demo.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
 </body>
+
 </html>
