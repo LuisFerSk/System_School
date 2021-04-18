@@ -38,7 +38,7 @@
                           </button>
                           <ul class="dropdown-menu">
                             <li><a href="./?view=programa&opt=edit&id=<?= $pro->id; ?>"><i class="fa fa-pencil fa-fw"></i> Editar</a></li>
-                            <li><a href="./?action=programas&opt=del&id=<?= $pro->id; ?>"><i class="fa fa-trash-o fa-fw"></i> Eliminar</a></li>
+                            <!-- <li><a href="./?action=programas&opt=del&id=<?= $pro->id; ?>"><i class="fa fa-trash-o fa-fw"></i> Eliminar</a></li> -->
                           </ul>
                         </div>
                         </th>
@@ -75,13 +75,9 @@
               $facultad = FacultadData::getAll();
               ?>
               <div class="form-row clearfix">
-                <div class="form-group col-md-3">
+                <div class="form-group col-md-6">
                   <label>Programa:</label>
                   <input type="tex" name="nombre" class="form-control" placeholder="Ingrese el programa">
-                </div>
-                <div class="form-group col-md-3">
-                  <label>Numero de periodos:</label>
-                  <input type="number" name="numeroPeriodos" class="form-control" placeholder="Ingrese la duracion">
                 </div>
                 <div class="form-group col-md-3">
                   <label>Facultad</label>
@@ -131,17 +127,13 @@
               $facultad = FacultadData::getAll();
               ?>
               <div class="form-row clearfix">
-                <div class="form-group col-md-3">
+                <div class="form-group col-md-6">
                   <label>Programa:</label>
-                  <input type="tex" name="nombre" class="form-control" placeholder="Ingrese el programa" value="<?= $programa->nombre; ?>">
-                </div>
-                <div class="form-group col-md-3">
-                  <label>Numero de periodos:</label>
-                  <input type="number" name="numeroPeriodos" class="form-control" placeholder="Ingrese la duracion" value="<?= $programa->numeroPeriodos; ?>">
+                  <input type="tex" required name="nombre" class="form-control" placeholder="Ingrese el programa" value="<?= $programa->nombre; ?>">
                 </div>
                 <div class="form-group col-md-3">
                   <label>Facultad</label>
-                  <select name="facultad" class="form-control">
+                  <select required name="facultad" class="form-control">
                     <?php
                     foreach ($facultad as $fd) :
                       if ($programa->facultad == $fd->nombre) : ?>
@@ -154,16 +146,16 @@
                 </div>
                 <div class="form-group col-md-3">
                   <label>Estado:</label>
-                  <select name="estado" class="form-control">
+                  <select required name="estado" class="form-control">
                     <option selected><?= $programa->estado; ?></option>
-                    <option><?= $programa->estado=="Abierto"?"Cerrado":"Abierto"; ?></option>
+                    <option><?= $programa->estado == "Abierto" ? "Cerrado" : "Abierto"; ?></option>
                   </select>
                 </div>
               </div>
               <div class=" col-lg-10">
                 <button type="submit" class="btn btn-success">Actualizar</button>
                 <a href='./?view=programa&opt=all' class="btn btn-warning">Cancelar</a>
-                <input type="hidden" name="id_programa" value="<?= $programa->id_programa ?>">
+                <input type="hidden" name="id" value="<?= $programa->id ?>">
               </div>
             </form>
           </div>

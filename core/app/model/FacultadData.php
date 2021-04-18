@@ -18,12 +18,12 @@ class FacultadData {
 		$sql = "update ".self::$tablename." set 
 		nombre=\"$this->nombre\",
 		estado=\"$this->estado\" 
-		where id_facultad=$this->id";
+		where id=$this->id";
 		Executor::doit($sql);
 	}
 
 	public static function getById($id){
-		 $sql = "select * from ".self::$tablename." where id_facultad=$id";
+		 $sql = "select * from ".self::$tablename." where id=$id";
 		$query = Executor::doit($sql);
 		return Model::one($query[0],new FacultadData());
 	}

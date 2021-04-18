@@ -38,9 +38,9 @@
                             Acciones <span class="caret"></span>
                           </button>
                           <ul class="dropdown-menu">
-                            <li><a href="./?view=abrirestu&id=<?= $cu->id_curso; ?>"><i class="fa fa-user"></i> Matricular</a></li>
-                            <li><a href="./?view=grupo&opt=edit&id=<?= $cu->id_curso; ?>"><i class="fa fa-pencil"></i> Editar</a></li>
-                            <li><a href="./?action=grupo&opt=del&id=<?= $cu->id_curso; ?>"><i class="fa fa-trash-o fa-lg"></i> Eliminar</a></li>
+                            <li><a href="./?view=abrirestu&id=<?= $cu->id; ?>"><i class="fa fa-user"></i> Matricular</a></li>
+                            <li><a href="./?view=grupo&opt=edit&id=<?= $cu->id; ?>"><i class="fa fa-pencil"></i> Editar</a></li>
+                            <!-- <li><a href="./?action=grupo&opt=del&id=<?= $cu->id_curso; ?>"><i class="fa fa-trash-o fa-lg"></i> Eliminar</a></li> -->
                         </div>
                       </td>
                     </tr>
@@ -49,7 +49,7 @@
               </table>
             <?php else : ?>
               <div class="box-body">
-                <p class="alert alert-warning">Aun no hay estudiantes registrados!</p>
+                <p class="alert alert-warning">Aun no hay grupos registrados!</p>
               </div>
             <?php endif; ?>
           </div>
@@ -85,12 +85,12 @@
                     <?php endforeach; ?>
                   </select>
                 </div>
-                <div class="form-group col-md-6">
+                <div class="form-group col-md-7">
                   <label for="inputState">Profesor:</label>
                   <select id="inputState" name="profesor" class="form-control">
                     <option selected>Seleccione....</option>
                     <?php foreach ($prof as $pro) : ?>
-                      <option value="<?= $pro->id_prof; ?>"><?= $pro->nombres ?></option>
+                      <option value="<?= $pro->id; ?>"><?= $pro->dni . " - " . $pro->nombre . " " . $pro->apellidos ?></option>
                     <?php endforeach; ?>
                   </select>
                 </div>

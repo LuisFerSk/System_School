@@ -38,7 +38,7 @@
                           </button>
                           <ul class="dropdown-menu">
                             <li><a href="./?view=facultad&opt=edit&id=<?= $fd->id; ?>"><i class="fa fa-pencil fa-fw"></i> Editar</a></li>
-                            <li><a href="./?action=facultad&opt=del&id=<?= $fd->id; ?>"><i class="fa fa-trash-o fa-fw"></i> Eliminar</a></li>
+                            <!-- <li><a href="./?action=facultad&opt=del&id=<?= $fd->id; ?>"><i class="fa fa-trash-o fa-fw"></i> Eliminar</a></li> -->
                           </ul>
                         </div>
                       </td>
@@ -96,6 +96,7 @@
   </section>
 <?php elseif (isset($_GET["opt"]) && $_GET["opt"] == "edit") :
   $facultad = FacultadData::getById($_GET["id"]);
+  $estado = EstadoData::getAll();
 ?>
   <section class="content-header">
     <h1>
@@ -118,13 +119,18 @@
                 <div class="form-group col-md-3">
                   <label>Estado:</label>
                   <select name="estado" class="form-control">
-                    <option selected><?= $facultad->estado; ?></option>
-                    <option><?= $facultad->estado == "Abierto" ? "Cerrado" : "Abierto"; ?></option>
+                    <?php foreach ($estado as $esta) :
+                      if ($facultad->estado == $esta->nombre) : ?>
+                        <option selected value="<?= $esta->nombre; ?>"><?= $esta->nombre; ?></option>
+                      <?php else : ?>
+                        <option value="<?= $esta->nombre; ?>"><?= $esta->nombre; ?></option>
+                    <?php endif;
+                    endforeach; ?>
                   </select>
-                </div>
+                </div
               </div>
               <div class=" col-lg-10">
-                <input type="hidden" name="id" value="<?= $facultad->id_facultad; ?>">
+                <input type="hidden" name="id" value="<?= $facultad->id; ?>">
                 <button type="submit" class="btn btn-success">Actualizar</button>
                 <button onclick="location='./?view=facultad&opt=all'" class="btn btn-warning">Cancelar</button>
               </div>
