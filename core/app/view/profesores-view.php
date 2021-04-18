@@ -30,7 +30,7 @@
                   <?php foreach ($profesor as $prof) : ?>
                     <tr>
                       <td><?= $prof->dni; ?></td>
-                      <td><?= $prof->nombres . " " . $prof->primer_apellido . " " . $prof->segundo_apellido; ?></td>
+                      <td><?= $prof->nombre . " " . $prof->apellidos; ?></td>
                       <td><?= $prof->email; ?></td>
                       <td><?= $prof->estado; ?>
                       <td style="width: 100px;">
@@ -39,8 +39,8 @@
                             Acciones <span class="caret"></span>
                           </button>
                           <ul class="dropdown-menu">
-                            <li><a href="./?view=profesores&opt=edit&id=<?= $prof->id_prof; ?>"><i class=" fa fa-pencil fa-fw"></i> Editar</a></li>
-                            <li><a href="./?action=profesores&opt=del&id=<?= $prof->id_prof; ?>"><i class="fa fa-trash-o fa-fw"></i> Eliminar</a></li>
+                            <li><a href="./?view=profesores&opt=edit&id=<?= $prof->id; ?>"><i class=" fa fa-pencil fa-fw"></i> Editar</a></li>
+                            <li><a href="./?action=profesores&opt=del&id=<?= $prof->id; ?>"><i class="fa fa-trash-o fa-fw"></i> Eliminar</a></li>
                           </ul>
                         </div>
                       </td>
@@ -76,28 +76,28 @@
             <form method="POST" action="./?action=profesores&opt=add">
               <div class="form-row clearfix">
                 <div class="form-group col-md-3">
-                  <label for="inputEmail4">DNI:</label>
-                  <input type="tex" name="dni" class="form-control" placeholder="Numero de DNI">
+                  <label>DNI:</label>
+                  <input type="tex" required name="dni" class="form-control" placeholder="Numero de DNI">
                 </div>
                 <div class="form-group col-md-3">
-                  <label for="inputEmail4">Nombres:</label>
-                  <input type="text" name="nombres" class="form-control" placeholder="Nombres y Apellidos">
+                  <label>Nombres:</label>
+                  <input type="text" required name="nombre" class="form-control" placeholder="Nombres y Apellidos">
                 </div>
                 <div class="form-group col-md-3">
-                  <label for="inputEmail4">Primer apellido:</label>
-                  <input type="text" name="primer_apellido" class="form-control" placeholder="Primer apellido">
+                  <label>Apellidos:</label>
+                  <input type="text" required name="apellidos" class="form-control" placeholder="Apellidos">
                 </div>
                 <div class="form-group col-md-3">
-                  <label for="inputEmail4">Segundo apellido:</label>
-                  <input type="text" name="segundo_apellido" class="form-control" placeholder="Segundo apellido">
+                  <label>Contraseña:</label>
+                  <input type="password" required name="password" class="form-control" placeholder="Password">
                 </div>
                 <div class="form-group col-md-9">
-                  <label for="inputEmail4">Email</label>
-                  <input type="email" name="email" class="form-control" id="inputEmail4" placeholder="Email">
+                  <label>Email</label>
+                  <input type="email" required name="email" class="form-control" id="inputEmail4" placeholder="Email">
                 </div>
                 <div class="form-group col-md-3">
                   <label>Estado:</label>
-                  <select name="estado" class="form-control">
+                  <select required name="estado" class="form-control">
                     <?php foreach ($estado as $esta) : ?>
                       <option><?php echo $esta->nombre; ?></option>
                     <?php endforeach; ?>
@@ -138,15 +138,11 @@
                 </div>
                 <div class="form-group col-md-3">
                   <label>Nombres:</label>
-                  <input type="text" value="<?= $profesor->nombres; ?>" name="nombres" class="form-control" placeholder="Nombres y Apellidos">
+                  <input type="text" value="<?= $profesor->nombre; ?>" name="nombre" class="form-control" placeholder="Nombres y Apellidos">
                 </div>
-                <div class="form-group col-md-3">
-                  <label>Primer apellido:</label>
-                  <input type="text" value="<?= $profesor->primer_apellido; ?>" name="primer_apellido" class="form-control" placeholder="Primer apellido">
-                </div>
-                <div class="form-group col-md-3">
-                  <label>Segundo apellido:</label>
-                  <input type="text" value="<?= $profesor->segundo_apellido; ?>" name="segundo_apellido" class="form-control" placeholder="Segundo apellido">
+                <div class="form-group col-md-6">
+                  <label>Apellidos:</label>
+                  <input type="text" value="<?= $profesor->apellidos; ?>" name="apellidos" class="form-control" placeholder="Primer apellido">
                 </div>
                 <div class="form-group col-md-9">
                   <label>Email</label>
@@ -164,7 +160,7 @@
                     endforeach; ?>
                   </select>
                 </div>
-                <input type="hidden" name="id" value="<?= $profesor->id_prof; ?>">
+                <input type="hidden" name="id" value="<?= $profesor->id; ?>">
               </div>
               <div class=" col-lg-10">
                 <button type="submit" class="btn btn-primary">Actualizar</button>

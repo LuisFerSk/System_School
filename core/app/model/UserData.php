@@ -17,7 +17,7 @@ class UserData
 
 	public function add()
 	{
-		$sql = "insert into \"$this->tablename\" (
+		$sql = "insert into " . self::$tablename . " (
 			email,
 			dni,
 			nombre,
@@ -36,6 +36,12 @@ class UserData
 	}
 
 	public function del()
+	{
+		$sql = "delete from " . self::$tablename . " where id=$this->id and kind = 3";
+		Executor::doit($sql);
+	}
+
+	public function delEstudiante()
 	{
 		$sql = "delete from " . self::$tablename . " where id=$this->id";
 		Executor::doit($sql);

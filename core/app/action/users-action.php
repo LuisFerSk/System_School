@@ -1,5 +1,5 @@
 <?php
-if(isset($_SESSION["user_id"])){
+if(isset($_SESSION["id"])){
 if(isset($_GET["opt"]) && $_GET["opt"]=="add"){
 if(count($_POST)>0){
 	$user = new UserData();
@@ -17,7 +17,7 @@ if(count($_POST)>0){
 }
 else if(isset($_GET["opt"]) && $_GET["opt"]=="upd"){
 if(count($_POST)>0){
-	$user = UserData::getById($_POST["user_id"]);
+	$user = UserData::getById($_POST["id"]);
 	$user->name = $_POST["name"];
 	$user->lastname = $_POST["lastname"];
 	$user->username = $_POST["username"];
@@ -35,7 +35,7 @@ if(count($_POST)>0){
 }
 else if(isset($_GET["opt"]) && $_GET["opt"]=="del"){
 	$user = UserData::getById($_GET["id"]);
-	if($user->id!=$_SESSION["user_id"]){
+	if($user->id!=$_SESSION["id"]){
 		$user->del();
 	}
 	Core::alert("Usuario eliminado!");

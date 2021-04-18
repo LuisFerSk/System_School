@@ -8,20 +8,12 @@ if (isset($_GET["opt"]) && $_GET["opt"] == "add") {
 	$user->nombre = $_POST["nombre"];
 	$user->apellidos = $_POST["apellidos"];
 	$user->password = sha1(md5($_POST["password"]));
-	$user->kind = 3;
+	$user->kind = 2;
 	$user->estado = $_POST["estado"];
-
-	$estudiante = new EstudianteData();
-
-	$estudiante->dni = $_POST["dni"];
-	$estudiante->programa = $_POST["programa"];
-	$estudiante->estado = $_POST["estado"];
 
 	$user->add();
 
-	$estudiante->add();
-
-	header("location: ./?view=estudiantes&opt=all");
+	header("location: ./?view=profesores&opt=all");
 } else if (isset($_GET["opt"]) && $_GET["opt"] == "upd") {
 
 	$user = new UserData();
@@ -31,19 +23,10 @@ if (isset($_GET["opt"]) && $_GET["opt"] == "add") {
 	$user->apellidos = $_POST["apellidos"];
 	$user->email = $_POST["email"];
 
-	$estudiante = new EstudianteData();
-
-	$estudiante->dni = $_POST["dni"];
-	$estudiante->programa = $_POST["programa"];
-	$estudiante->estado = $_POST["estado"];
-
-	$estudiante->update();
 	$user->updateInfo();
-	header("location: ./?view=estudiantes&opt=all");
+	header("location: ./?view=profesores&opt=all");
 } else if (isset($_GET["opt"]) && $_GET["opt"] == "del") {
-	$estudiante = EstudianteData::getById($_GET["id"]);
-	$estudiante->del();
-	$user = UserData::getByDni($estudiante->dni);
+	$user->id = $_GET["id"];
 	$user->delEstudiante();
-	header("location: ./?view=estudiantes&opt=all");
+	header("location: ./?view=profesores&opt=all");
 }

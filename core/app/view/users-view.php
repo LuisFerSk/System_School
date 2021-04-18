@@ -1,8 +1,8 @@
 <?php
-if (!isset($_SESSION["user_id"])) {
+if (!isset($_SESSION["id"])) {
   Core::redir("./");
 }
-$user = UserData::getById($_SESSION["user_id"]);
+$user = UserData::getById($_SESSION["id"]);
 // si el id  del usuario no existe.
 if ($user == null) {
   Core::redir("./");
@@ -106,7 +106,7 @@ if (isset($_GET["opt"]) && $_GET["opt"] == "all") : ?>
             </div>
           </div>
           <?php
-          $profesores = ProfesorData::getAll();
+          $profesores = UserData::getAll();
           if (count($profesores) > 0) {
             // si hay usuarios
           ?>

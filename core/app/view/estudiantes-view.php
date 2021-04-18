@@ -99,19 +99,19 @@
 								</div>
 								<div class="form-group col-md-3">
 									<label>Contraseña:</label>
-									<input type="password" name="password" class="form-control" placeholder="Contraseña">
+									<input type="password" required name="password" class="form-control" placeholder="Contraseña">
 								</div>
 								<div class="form-group col-md-3">
 									<label>Nombres:</label>
-									<input type="text" name="nombre" class="form-control" placeholder="Nombre">
+									<input type="text" required name="nombre" class="form-control" placeholder="Nombre">
 								</div>
 								<div class="form-group col-md-6">
 									<label>Apellidos:</label>
-									<input type="text" name="apellidos" class="form-control" placeholder="Apellidos">
+									<input type="text" required name="apellidos" class="form-control" placeholder="Apellidos">
 								</div>
 								<div class="form-group col-md-3">
 									<label>Estado:</label>
-									<select name="estado" class="form-control">
+									<select name="estado" required class="form-control">
 										<option selected>Seleccione...</option>
 										<?php foreach ($estado as $esta) : ?>
 											<option value="<?php echo ($esta->nombre); ?>"><?php echo $esta->nombre ?></option>
