@@ -37,7 +37,7 @@
                             Acciones <span class="caret"></span>
                           </button>
                           <ul class="dropdown-menu">
-                            <li><a href="./?view=programa&opt=edit&id=<?= $pro->id; ?>"><i class="fa fa-pencil fa-fw"></i> Editar</a></li>
+                            <li><a href="./?view=programa&opt=edit&id=<?= $pro->id; ?>"><i class="fas fa-pen"></i> Editar</a></li>
                             <!-- <li><a href="./?action=programas&opt=del&id=<?= $pro->id; ?>"><i class="fa fa-trash-o fa-fw"></i> Eliminar</a></li> -->
                           </ul>
                         </div>

@@ -43,8 +43,8 @@
 														Acciones <span class="caret"></span>
 													</button>
 													<ul class="dropdown-menu">
-														<li><a href="./?view=estudiantes&opt=edit&id=<?= $estudiante->id; ?>"><i class="fa fa-pencil fa-fw"></i> Editar</a></li>
-														<li><a href="./?action=estudiantes&opt=del&id=<?= $estudiante->id; ?>"><i class="fa fa-trash-o fa-fw"></i> Eliminar</a></li>
+														<li><a href="./?view=estudiantes&opt=edit&id=<?= $estudiante->id; ?>"><i class="fas fa-pen"></i> Editar</a></li>
+														<!-- <li><a href="./?action=estudiantes&opt=del&id=<?= $estudiante->id; ?>"><i class="fa fa-trash-o fa-fw"></i> Eliminar</a></li> -->
 													</ul>
 												</div>
 											</td>

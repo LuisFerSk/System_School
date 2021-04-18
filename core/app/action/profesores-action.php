@@ -1,7 +1,7 @@
 <?php
 if (isset($_GET["opt"]) && $_GET["opt"] == "add") {
 
-	$user = new UserData();  
+	$user = new UserData();
 
 	$user->email = $_POST["email"];
 	$user->dni = $_POST["dni"];
@@ -17,16 +17,19 @@ if (isset($_GET["opt"]) && $_GET["opt"] == "add") {
 } else if (isset($_GET["opt"]) && $_GET["opt"] == "upd") {
 
 	$user = new UserData();
-
+	$user->id = $_POST["id"];
 	$user->dni = $_POST["dni"];
+	$user->email = $_POST["email"];
 	$user->nombre = $_POST["nombre"];
 	$user->apellidos = $_POST["apellidos"];
-	$user->email = $_POST["email"];
-
+	$user->estado = $_POST["estado"];
+	
 	$user->updateInfo();
-	header("location: ./?view=profesores&opt=all");
-} else if (isset($_GET["opt"]) && $_GET["opt"] == "del") {
-	$user->id = $_GET["id"];
-	$user->delEstudiante();
+
 	header("location: ./?view=profesores&opt=all");
 }
+// else if (isset($_GET["opt"]) && $_GET["opt"] == "del") {
+// 	$user->id = $_GET["id"];
+// 	$user->delEstudiante();
+// 	header("location: ./?view=profesores&opt=all");
+// }

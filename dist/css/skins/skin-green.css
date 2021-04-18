@@ -3,7 +3,7 @@
  * -----------
  */
 .skin-green .main-header .navbar {
-  background-color: #00a65a;
+  background-color: green;
 }
 .skin-green .main-header .navbar .nav > li > a {
   color: #ffffff;
@@ -29,7 +29,7 @@
   color: #fff;
 }
 .skin-green .main-header .navbar .sidebar-toggle:hover {
-  background-color: #008d4c;
+  background-color: green;
 }
 @media (max-width: 767px) {
   .skin-green .main-header .navbar .dropdown-menu li.divider {
@@ -39,19 +39,19 @@
     color: #fff;
   }
   .skin-green .main-header .navbar .dropdown-menu li a:hover {
-    background: #008d4c;
+    background: green;
   }
 }
 .skin-green .main-header .logo {
-  background-color: #008d4c;
+  background-color: green;
   color: #ffffff;
   border-bottom: 0 solid transparent;
 }
 .skin-green .main-header .logo:hover {
-  background-color: #008749;
+  background-color: green;
 }
 .skin-green .main-header li.user-header {
-  background-color: #00a65a;
+  background-color: green;
 }
 .skin-green .content-header {
   background: transparent;
@@ -67,7 +67,7 @@
 }
 .skin-green .sidebar-menu > li.header {
   color: #4b646f;
-  background: #1a2226;
+  background: green;
 }
 .skin-green .sidebar-menu > li > a {
   border-left: 3px solid transparent;
@@ -75,12 +75,12 @@
 .skin-green .sidebar-menu > li:hover > a,
 .skin-green .sidebar-menu > li.active > a {
   color: #ffffff;
-  background: #1e282c;
-  border-left-color: #00a65a;
+  background: green;
+  border-left-color: green;
 }
 .skin-green .sidebar-menu > li > .treeview-menu {
   margin: 0 1px;
-  background: #2c3b41;
+  background: green;
 }
 .skin-green .sidebar a {
   color: #b8c7ce;
@@ -128,4 +128,10 @@
   border-top-right-radius: 2px;
   border-bottom-right-radius: 2px;
   border-bottom-left-radius: 0;
+}
+.skin-blue .main-header .navbar {
+  background-color: green;
+}
+.skin-blue .main-header .navbar .sidebar-toggle:hover {
+  background-color: green;
 }

@@ -39,7 +39,7 @@
                           </button>
                           <ul class="dropdown-menu">
                             <li><a href="./?view=abrirestu&id=<?= $cu->id; ?>"><i class="fa fa-user"></i> Matricular</a></li>
-                            <li><a href="./?view=grupo&opt=edit&id=<?= $cu->id; ?>"><i class="fa fa-pencil"></i> Editar</a></li>
+                            <li><a href="./?view=grupo&opt=edit&id=<?= $cu->id; ?>"><i class="fas fa-pen"></i> Editar</a></li>
                             <!-- <li><a href="./?action=grupo&opt=del&id=<?= $cu->id_curso; ?>"><i class="fa fa-trash-o fa-lg"></i> Eliminar</a></li> -->
                         </div>
                       </td>
