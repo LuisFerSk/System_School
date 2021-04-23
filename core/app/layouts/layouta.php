@@ -7,16 +7,16 @@
   <title>Reksai</title>
   <link rel="icon" href="wwwroot/Logoupc.png">
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-  <link rel="stylesheet" href="res/bootstrap/css/bootstrap.css">
+  <link rel="stylesheet" href="res/bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
-  <link rel="stylesheet" href="dist/css/skins/_all-skins.css">
+  <link rel="stylesheet" href="dist/css/skins/skin-green.min.css">
   <script src="res/js/jquery.min.js"></script>
   <script src="dist/js/all.min.js"></script>
   <script src="res/js/jquery.dataTables.min.js"></script>
 </head>
 
 
-<body class="hold-transition clearfix <?php if (isset($_SESSION["id"])) : ?>skin-blue sidebar-mini<?php else : ?>login-page<?php endif; ?>">
+<body class="hold-transition clearfix <?php if (isset($_SESSION["id"])) : ?>skin-green sidebar-mini<?php else : ?>login-page<?php endif; ?>">
   <?php if (isset($_SESSION["id"])) :
     $user = UserData::getById($_SESSION["id"]);
   ?>
@@ -29,18 +29,15 @@
         <nav class="navbar navbar-static-top">
           <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
             <span class="sr-only">Toggle navigation</span>
-            <span class="fas fa-bars"></span>
+            <i class="fas fa-bars"></i>
           </a>
           <div class="navbar-custom-menu">
             <ul class="nav navbar-nav">
               <li class="btn-group">
-                <a class="btn btn-primary" href="#"><i class="fa fa-user fa-fw"></i> <?php echo $user->nombre; ?></a>
-                <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#">
-                  <span class="fas fa-arrow-down" title="Toggle dropdown menu"></span>
+                <a class="btn" href="./?view=informacion_personal"><i class="fa fa-user fa-fw"></i> <?php echo $user->nombre; ?></a>
+                <a class="btn" href="./?action=access&opt=logout">
+                  <i class="fas fa-sign-out-alt"></i> Cerrar sesion
                 </a>
-                <ul class="dropdown-menu">
-                  <li><a href="./?action=access&opt=logout"><i class="fas fa-sign-out-alt"></i> Salir</a></li>
-                </ul>
               </li>
             </ul>
           </div>
@@ -54,12 +51,12 @@
           ?>
           <ul class="sidebar-menu">
             <li><a href="./?view=index"><i class="fa fa-home"></i> <span>Inicio</span></a></li>
-            <li><a href="./?view=asis"><i class="far fa-address-card"></i> <span>Información personal</span></a></li>
+            <li><a href="./?view=informacion_personal"><i class="far fa-address-card"></i> <span>Información personal</span></a></li>
             <?php if (stristr($user->kind, '1')) : ?>
               <li><a href="./?view=periodo_academico&opt=all"><i class="fa fa-hourglass-end"></i> <span>Periodo academico</span></a></li>
               <li><a href="./?view=facultad&opt=all"><i class="fa fa-university"></i> <span>Facultades</span></a></li>
               <li><a href="./?view=programa&opt=all"><i class="fa fa-list-ol"></i> <span>Programas</span></a></li>
-              <li><a href="./?view=asignatura&opt=all"><i class="glyphicon glyphicon-book"></i> <span>Asignaturas</span></a></li>
+              <li><a href="./?view=asignatura&opt=all"><i class="fas fa-file-signature"></i> <span>Asignaturas</span></a></li>
               <li><a href="./?view=grupo&opt=all"><i class="fas fa-users"></i> <span>Grupo</span></a></li>
               <li><a href="./?view=estudiantes&opt=all"><i class="fas fa-graduation-cap"></i> <span>Estudiantes</span></a></li>
               <li><a href="./?view=profesores&opt=all"><i class="fa fa-suitcase"></i> <span>Profesores</span></a></li>
