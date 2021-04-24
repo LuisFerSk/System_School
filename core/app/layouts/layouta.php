@@ -8,18 +8,18 @@
   <link rel="icon" href="wwwroot/Logoupc.png">
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <link rel="stylesheet" href="res/bootstrap/css/bootstrap.min.css">
-  <link rel="stylesheet" href="res/font-awesome/css/fontawesome.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
-  <link rel="stylesheet" href="dist/css/AdminLTE.css">
-  <link rel="stylesheet" href="dist/css/skins/_all-skins.css">
-  <script src="res/js/jquery.js"></script>
+  <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
+  <link rel="stylesheet" href="dist/css/skins/skin-green.min.css">
+  <script src="res/js/jquery.min.js"></script>
+  <script src="dist/js/all.min.js"></script>
   <script src="res/js/jquery.dataTables.min.js"></script>
 </head>
-<body class="hold-transition clearfix <?php if (isset($_SESSION["id"])) : ?>skin-blue sidebar-mini<?php else : ?>login-page<?php endif; ?>">
-  <?php if (isset($_SESSION["id"])) : 
+
+
+<body class="hold-transition clearfix <?php if (isset($_SESSION["id"])) : ?>skin-green sidebar-mini<?php else : ?>login-page<?php endif; ?>">
+  <?php if (isset($_SESSION["id"])) :
     $user = UserData::getById($_SESSION["id"]);
-    ?>
+  ?>
     <div class="wrapper">
       <header class="main-header">
         <a href="./" class="logo">
@@ -29,18 +29,15 @@
         <nav class="navbar navbar-static-top">
           <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
             <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
+            <i class="fas fa-bars"></i>
           </a>
           <div class="navbar-custom-menu">
             <ul class="nav navbar-nav">
               <li class="btn-group">
-                <a class="btn btn-primary" href="#"><i class="fa fa-user fa-fw"></i> <?php echo $user->nombre; ?></a>
-                <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#">
-                  <span class="fa fa-caret-down" title="Toggle dropdown menu"></span>
+                <a class="btn" href="./?view=informacion_personal"><i class="fa fa-user fa-fw"></i> <?php echo $user->nombre; ?></a>
+                <a class="btn" href="./?action=access&opt=logout">
+                  <i class="fas fa-sign-out-alt"></i> Cerrar sesion
                 </a>
-                <ul class="dropdown-menu">
-                  <li><a href="./?action=access&opt=logout"><i class="fa fa-sign-out"></i> Salir</a></li>
-                </ul>
               </li>
             </ul>
           </div>
@@ -54,31 +51,34 @@
           ?>
           <ul class="sidebar-menu">
             <li><a href="./?view=index"><i class="fa fa-home"></i> <span>Inicio</span></a></li>
-            <?php if (!$user->kind) : ?>
-              <li><a href="./?view=asis"><i class="fa fa-users"></i> <span>Cursos</span></a></li>
-            <?php endif; ?>
-            <?php if ($user->kind) : ?>
+            <li><a href="./?view=informacion_personal"><i class="far fa-address-card"></i> <span>Información personal</span></a></li>
+            <?php if (stristr($user->kind, '1')) : ?>
               <li><a href="./?view=periodo_academico&opt=all"><i class="fa fa-hourglass-end"></i> <span>Periodo academico</span></a></li>
               <li><a href="./?view=facultad&opt=all"><i class="fa fa-university"></i> <span>Facultades</span></a></li>
               <li><a href="./?view=programa&opt=all"><i class="fa fa-list-ol"></i> <span>Programas</span></a></li>
-              <li><a href="./?view=asignatura&opt=all"><i class="glyphicon glyphicon-book"></i> <span>Asignaturas</span></a></li>
-              <!--<li><a href="./?view=plan_estudio&opt=all"><i class="glyphicon glyphicon-list-alt"></i> <span>Planes de estudios</span></a></li>-->
-              <li><a href="./?view=grupo&opt=all"><i class="fa fa-group"></i> <span>Grupo</span></a></li>
-              <li><a href="./?view=estudiantes&opt=all"><i class="fa fa-vcard"></i> <span>Estudiantes</span></a></li>
+              <li><a href="./?view=asignatura&opt=all"><i class="fas fa-file-signature"></i> <span>Asignaturas</span></a></li>
+              <li><a href="./?view=grupo&opt=all"><i class="fas fa-users"></i> <span>Grupo</span></a></li>
+              <li><a href="./?view=estudiantes&opt=all"><i class="fas fa-graduation-cap"></i> <span>Estudiantes</span></a></li>
               <li><a href="./?view=profesores&opt=all"><i class="fa fa-suitcase"></i> <span>Profesores</span></a></li>
               <li class="treeview">
                 <a href="#">
                   <i class="fa fa-cogs"></i>
                   <span>Gestion de suarios</span>
                   <span class="pull-right-container">
-                    <i class="fa fa-angle-left pull-right"></i>
+                    <i class="fas fa-chevron-down pull-right"></i>
                   </span>
                 </a>
                 <ul class="treeview-menu">
-                  <li><a href="index.php?view=users&opt=all"><i class="fa fa-key"></i>Super-Usuario</a></li>
-                  <li><a href="index.php?view=prof_tutor&opt=all"><i class="fa fa-user"></i>usuarios</a></li>
+                  <li><a href="index.php?view=users&opt=all"><i class="fa fa-key"></i> Super-Usuario</a></li>
+                  <li><a href="index.php?view=prof_tutor&opt=all"><i class="fa fa-user"></i> usuarios</a></li>
                 </ul>
               </li>
+            <?php endif;
+            if (stristr($user->kind, '2')) : ?>
+              <li><a href="./?view=asis"><i class="fa fa-users"></i> <span>Grupos</span></a></li>
+            <?php endif;
+            if (stristr($user->kind, '3')) : ?>
+              <li><a href="./?view=asis"><i class="fa fa-users"></i> <span>Asistencia</span></a></li>
             <?php endif; ?>
           </ul>
         </section>
@@ -92,8 +92,8 @@
           $fecha = date('g:ia');
           ?>
           <ol class="breadcrumb">
-            <li><i class="fa fa-calendar"></i> <?php echo $dias[date('w')] . " " . date('d') . " de " . $meses[date('n') - 1] . " " . date('Y') ?></li>
-            <li><i class="fa fa-clock-o"></i><?php echo " Hora: " . $fecha; ?></li>
+            <li><i class="far fa-calendar-alt"></i> <?php echo $dias[date('w')] . " " . date('d') . " de " . $meses[date('n') - 1] . " " . date('Y') ?></li>
+            <li><i class="far fa-clock"></i><?php echo " Hora: " . $fecha; ?></li>
           </ol>
           <div class="box">
             <?php
@@ -128,11 +128,12 @@
           <button type="submit" class="btn btn-block btn-flat" style="background-color:green;">Entrar</button>
         </form>
       </div>
-  <?php endif; ?>
-  <script src="res/js/jquery.min.js"></script>
-  <script src="res/bootstrap/js/bootstrap.min.js"></script>
-  <script src="dist/js/app.min.js"></script>
-  <script src="dist/js/demo.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
+    <?php endif; ?>
+    <script src="res/js/jquery.min.js"></script>
+    <script src="res/bootstrap/js/bootstrap.min.js"></script>
+    <script src="dist/js/app.min.js"></script>
+    <script src="dist/js/demo.js"></script>
+    <script src="dist/js/moment.min.js"></script>
 </body>
+
 </html>

@@ -37,8 +37,8 @@
                             Acciones <span class="caret"></span>
                           </button>
                           <ul class="dropdown-menu">
-                          <li><a href="./?view=asignatura&opt=edit&id=<?= $asig->id_asig; ?>"><i class=" fa fa-pencil fa-fw"></i> Editar</a></li>
-                            <li><a href="./?action=asignatura&opt=del&id=<?= $asig->id_asig; ?>"><i class="fa fa-trash-o fa-fw"></i> Eliminar</a></li>
+                          <li><a href="./?view=asignatura&opt=edit&id=<?= $asig->id; ?>"><i class="fas fa-pen"></i> Editar</a></li>
+                            <!-- <li><a href="./?action=asignatura&opt=del&id=<?= $asig->id_asig; ?>"><i class="fa fa-trash-o fa-fw"></i> Eliminar</a></li> -->
                           </ul>
                         </div>
                         </th>

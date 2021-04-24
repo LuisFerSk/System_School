@@ -5,7 +5,7 @@
     <!--	<a href="index.php?view=list&id_grado=<?php echo $_GET["id_grado"]; ?>" class="btn btn-default"><i class='fa fa-check'></i> Asistencia</a> -->
     <form class="form-horizontal" id="loadlist" role="form">
       <div class="form-group">
-        <label for="inputEmail1" class="col-lg-2 control-label">Inicio/Fin:</label>
+        <label class="col-lg-2 control-label">Inicio/Fin:</label>
         <div class="col-lg-3">
           <input type="date" name="start_at" value="<?php echo date("Y-m-d"); ?>" required class="form-control">
         </div>
@@ -13,7 +13,7 @@
           <input type="date" name="finish_at" value="<?php echo date("Y-m-d"); ?>" required class="form-control">
         </div>
         <div class="col-lg-offset-3">
-          <input type="hidden" name="id_grado" value="<?php echo $_GET["id_grado"]; ?>">
+          <input type="hidden" name="id" value="<?php echo $_GET["id_grado"]; ?>">
           <button type="submit" class="btn btn-primary">Buscar</button>
         </div>
 

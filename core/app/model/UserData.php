@@ -59,8 +59,8 @@ class UserData
 		dni=\"$this->dni\",
 		nombre=\"$this->nombre\",
 		apellidos=\"$this->apellidos\",
-		password=\"$this->password\",
-		kind=\"$this->kind\" 
+		kind=\"$this->kind\" ,
+		estado=\"$this->estado\"
 		where id=$this->id";
 		Executor::doit($sql);
 	}
@@ -71,8 +71,9 @@ class UserData
 		dni=\"$this->dni\",
 		email=\"$this->email\",
 		nombre=\"$this->nombre\",
-		apellidos=\"$this->apellidos\" 
-		where dni=$this->dni";
+		apellidos=\"$this->apellidos\",
+		estado=\"$this->estado\"
+		where id=$this->id";
 		Executor::doit($sql);
 	}
 
@@ -105,7 +106,7 @@ class UserData
 
 	public static function getAllProfesor()
 	{
-		$sql = "select * from  " . self::$tablename . " where kind = 2";
+		$sql = "select * from  " . self::$tablename . " where kind like '%2%'";
 		$query = Executor::doit($sql);
 		return Model::many($query[0], new UserData());
 	}
