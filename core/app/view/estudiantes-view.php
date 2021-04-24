@@ -1,6 +1,7 @@
 <?php if (isset($_GET["opt"]) && $_GET["opt"] == "all") :
 	$estudiantes = EstudianteData::getAll();
 ?>
+
 	<section class="content-header">
 		<h1>
 			Estudiantes
@@ -75,14 +76,17 @@
 				<div class="box">
 					<div class="box-body">
 						<form method="POST" action="./?action=estudiantes&opt=add">
-							<?php
+						<?php
 							$estado = EstadoData::getAll();
 							$programa = ProgramaData::getAll();
 							?>
+
 							<div class="form-row clearfix">
 								<div class="form-group col-md-3">
+								
 									<label>Email:</label>
 									<input type="email" required name="email" class="form-control" placeholder="Email">
+									
 								</div>
 								<div class="form-group col-md-3">
 									<label>DNI:</label>
@@ -118,6 +122,13 @@
 										<?php endforeach; ?>
 									</select>
 								</div>
+
+								
+
+
+
+
+
 							</div>
 							<div class=" col-lg-10">
 								<button type="submit" class="btn btn-success">Agregar</button>
