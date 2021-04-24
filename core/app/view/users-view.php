@@ -7,7 +7,18 @@ $user = UserData::getById($_SESSION["id"]);
 if ($user == null) {
   Core::redir("./");
 }
-if (isset($_GET["opt"]) && $_GET["opt"] == "all") : ?>
+if (isset($_GET["opt"]) && $_GET["opt"] == "user") : ?>
+  <section class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="btn-group pull-right">
+        
+        </div>
+      </div>
+    </div>
+  </section>
+
+<?php elseif (isset($_GET["opt"]) && $_GET["opt"] == "all") : ?>
   <section class="container">
     <div class="row">
       <div class="col-md-12">
@@ -23,10 +34,10 @@ if (isset($_GET["opt"]) && $_GET["opt"] == "all") : ?>
                 <div class="modal-body ">
                   <div>Nota:
                     <p>Tenga en cuenta que al agregar un usuario como nuevo superusuario(Usuario Administrador), este tendra todos los siguientes previlegios:
-                      <ul>
-                        <li>agregar, editar y eliminar todos los datos</li>
-                        <li>cambiar todas las configuraciones</li>
-                      </ul>
+                    <ul>
+                      <li>agregar, editar y eliminar todos los datos</li>
+                      <li>cambiar todas las configuraciones</li>
+                    </ul>
                     </p>
                   </div>
                 </div>
@@ -108,7 +119,6 @@ if (isset($_GET["opt"]) && $_GET["opt"] == "all") : ?>
           <?php
           $profesores = UserData::getAll();
           if (count($profesores) > 0) {
-            // si hay usuarios
           ?>
             <h2> Lista de Profesores</h2>
             <table class="table table-bordered table-hover">
@@ -122,7 +132,7 @@ if (isset($_GET["opt"]) && $_GET["opt"] == "all") : ?>
               ?>
                 <tr>
                   <td style="width:130px;"><a href="./?action=select_userprof&id=<?php echo $prof->id_prof; ?>" class="btn btn-warning btn-xs">Agregar administrador <i class="fa fa-arrow-right"></i></a></td>
-                  <td><?php echo $prof->dni?></td>
+                  <td><?php echo $prof->dni ?></td>
                   <td><?php echo $prof->nombres . " " . $prof->primer_apelldio . " " . $prof->segundo_apellido; ?></td>
                 </tr>
               <?php
@@ -184,7 +194,7 @@ if (isset($_GET["opt"]) && $_GET["opt"] == "all") : ?>
       </div>
     </div>
   </section>
-<?php elseif (isset($_GET["opt"]) && $_GET["opt"] == "edit") : ?>
+  <? elseif (isset($_GET["opt"]) && $_GET["opt"] == "edit") : ?>
   <div class="container">
     <?php $user = UserData::getById($_GET["id"]); ?>
     <div class="row">

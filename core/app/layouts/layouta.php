@@ -9,10 +9,11 @@
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <link rel="stylesheet" href="res/bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
-  <link rel="stylesheet" href="dist/css/skins/skin-green.min.css">
-  <script src="res/js/jquery.min.js"></script>
+  <link rel="stylesheet" href="dist/css/skin-green.min.css">
   <script src="dist/js/all.min.js"></script>
+  <script src="res/js/jquery.min.js"></script>
   <script src="res/js/jquery.dataTables.min.js"></script>
+  
 </head>
 
 
@@ -34,7 +35,7 @@
           <div class="navbar-custom-menu">
             <ul class="nav navbar-nav">
               <li class="btn-group">
-                <a class="btn" href="./?view=informacion_personal"><i class="fa fa-user fa-fw"></i> <?php echo $user->nombre; ?></a>
+                <a class="btn" href="./?view=users&opt=user"><i class="fa fa-user fa-fw"></i> <?php echo $user->nombre; ?></a>
                 <a class="btn" href="./?action=access&opt=logout">
                   <i class="fas fa-sign-out-alt"></i> Cerrar sesion
                 </a>
@@ -51,7 +52,7 @@
           ?>
           <ul class="sidebar-menu">
             <li><a href="./?view=index"><i class="fa fa-home"></i> <span>Inicio</span></a></li>
-            <li><a href="./?view=informacion_personal"><i class="far fa-address-card"></i> <span>Información personal</span></a></li>
+            <li><a href="./?view=users&opt=userl"><i class="far fa-address-card"></i> <span>Información personal</span></a></li>
             <?php if (stristr($user->kind, '1')) : ?>
               <li><a href="./?view=periodo_academico&opt=all"><i class="fa fa-hourglass-end"></i> <span>Periodo academico</span></a></li>
               <li><a href="./?view=facultad&opt=all"><i class="fa fa-university"></i> <span>Facultades</span></a></li>
@@ -134,6 +135,7 @@
     <script src="dist/js/app.min.js"></script>
     <script src="dist/js/demo.js"></script>
     <script src="dist/js/moment.min.js"></script>
+    
 </body>
 
 </html>
