@@ -6,10 +6,12 @@ class UserData
 	public function __construct()
 	{
 		$this->id = "";
+		////
 		$this->email = "";
 		$this->dni = "";
 		$this->nombre = "";
 		$this->apellidos = "";
+		////
 		$this->password = "";
 		$this->kind = "";
 		$this->estado = "";

@@ -13,7 +13,6 @@
   <script src="dist/js/all.min.js"></script>
   <script src="res/js/jquery.min.js"></script>
   <script src="res/js/jquery.dataTables.min.js"></script>
-  
 </head>
 
 
@@ -52,7 +51,7 @@
           ?>
           <ul class="sidebar-menu">
             <li><a href="./?view=index"><i class="fa fa-home"></i> <span>Inicio</span></a></li>
-            <li><a href="./?view=users&opt=userl"><i class="far fa-address-card"></i> <span>Información personal</span></a></li>
+            <li><a href="./?view=users&opt=user"><i class="far fa-address-card"></i> <span>Información personal</span></a></li>
             <?php if (stristr($user->kind, '1')) : ?>
               <li><a href="./?view=periodo_academico&opt=all"><i class="fa fa-hourglass-end"></i> <span>Periodo academico</span></a></li>
               <li><a href="./?view=facultad&opt=all"><i class="fa fa-university"></i> <span>Facultades</span></a></li>
@@ -61,19 +60,7 @@
               <li><a href="./?view=grupo&opt=all"><i class="fas fa-users"></i> <span>Grupo</span></a></li>
               <li><a href="./?view=estudiantes&opt=all"><i class="fas fa-graduation-cap"></i> <span>Estudiantes</span></a></li>
               <li><a href="./?view=profesores&opt=all"><i class="fa fa-suitcase"></i> <span>Profesores</span></a></li>
-              <li class="treeview">
-                <a href="#">
-                  <i class="fa fa-cogs"></i>
-                  <span>Gestion de suarios</span>
-                  <span class="pull-right-container">
-                    <i class="fas fa-chevron-down pull-right"></i>
-                  </span>
-                </a>
-                <ul class="treeview-menu">
-                  <li><a href="index.php?view=users&opt=all"><i class="fa fa-key"></i> Super-Usuario</a></li>
-                  <li><a href="index.php?view=prof_tutor&opt=all"><i class="fa fa-user"></i> usuarios</a></li>
-                </ul>
-              </li>
+              <li><a href="./?view=users&opt=all"><i class="fa fa-user"></i> <span>usuarios</span></a></li>
             <?php endif;
             if (stristr($user->kind, '2')) : ?>
               <li><a href="./?view=asis"><i class="fa fa-users"></i> <span>Grupos</span></a></li>
@@ -129,13 +116,33 @@
           <button type="submit" class="btn btn-block btn-flat" style="background-color:green;">Entrar</button>
         </form>
       </div>
+      <!-- <script>
+        $(document).ready(function() {
+              $('#contactform').submit(function(event) {
+                event.preventDefault();
+
+                $.ajax({
+                  type: 'POST',
+                  url: $(this).attr('action'),
+                  data: $(this).serialize(),
+                  success: function(data) {
+                    //Cuando la interacción sea exitosa, se ejecutará esto.
+                  },
+                  error: function(data) {
+                    //Cuando la interacción retorne un error, se ejecutará esto.
+                  }
+                
+                })
+              })
+            });
+      </script> -->
     <?php endif; ?>
     <script src="res/js/jquery.min.js"></script>
     <script src="res/bootstrap/js/bootstrap.min.js"></script>
     <script src="dist/js/app.min.js"></script>
     <script src="dist/js/demo.js"></script>
     <script src="dist/js/moment.min.js"></script>
-    
+
 </body>
 
 </html>

@@ -13,10 +13,9 @@
   <section class="container">
     <div class="row">
       <div class="col-xs-12">
-        <div class="box">
-          <div class="box-body">
+          <div class="box box-body">
             <?php if (count($programa) > 0) : ?>
-              <table class="table table-bordered table-hover" id="table">
+              <table class="table table-bordered datatable table-hover">
                 <thead>
                   <tr>
                     <th scope="col">id programa</th>
@@ -38,7 +37,6 @@
                           </button>
                           <ul class="dropdown-menu">
                             <li><a href="./?view=programa&opt=edit&id=<?= $pro->id; ?>"><i class="fas fa-pen"></i> Editar</a></li>
-                            <!-- <li><a href="./?action=programas&opt=del&id=<?= $pro->id; ?>"><i class="fa fa-trash-o fa-fw"></i> Eliminar</a></li> -->
                           </ul>
                         </div>
                         </th>
@@ -53,8 +51,7 @@
               </div>
             <?php endif; ?>
           </div>
-        </div>
-      </div>
+     </div>
     </div>
   </section>
 <?php elseif (isset($_GET["opt"]) && $_GET["opt"] == "new") : ?>
@@ -82,7 +79,7 @@
                 <div class="form-group col-md-3">
                   <label>Facultad</label>
                   <select name="facultad" class="form-control">
-                    <option value="">--seleccione--</option>
+                    <option value="">Seleccione...</option>
                     <?php foreach ($facultad as $fd) : ?>
                       <option value="<?php echo ($fd->nombre); ?>"><?php echo $fd->nombre ?></option>
                     <?php endforeach; ?>
