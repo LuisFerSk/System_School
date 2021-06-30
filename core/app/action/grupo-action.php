@@ -17,11 +17,5 @@ elseif (isset($_GET["opt"])&& $_GET["opt"]=="upd") :
 	$grupos->update();
 	header("location: ./?view=grupos&opt=all");
 
-// elseif (isset($_GET["opt"])&& $_GET["opt"]=="del") :
-// 	$grupos=new GrupoData();
-// 	$grupos->id=$_GET["id"];
-// 	$grupos->del();
-// 	header("location: ./?view=grupos&opt=all");
-
 endif;
 

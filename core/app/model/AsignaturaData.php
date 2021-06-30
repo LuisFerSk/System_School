@@ -42,7 +42,7 @@ class AsignaturaData {
 	}
 
 	public static function getByCodigo($codigo){
-		$sql = "select * from ".self::$tablename." where codigo=$codigo";
+		$sql = "select * from ".self::$tablename." where codigo=\"$codigo\"";
 		$query = Executor::doit($sql);
 		return Model::one($query[0],new AsignaturaData());
 	}

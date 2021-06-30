@@ -1,5 +1,5 @@
 <?php if (isset($_GET["opt"]) && $_GET["opt"] == "all") :
-  $curso = GrupoData::getAll();
+  $grupos = GrupoData::getAll();
 ?>
   <section class="content-header">
     <h1>
@@ -15,7 +15,7 @@
       <div class="col-xs-12">
         <div class="box">
           <div class="box-body">
-            <?php if (count($curso) > 0) : ?>
+            <?php if (count($grupos) > 0) : ?>
               <table class="table table-bordered table-hover" id="table">
                 <thead>
                   <tr>
@@ -26,23 +26,22 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <?php foreach ($curso as $value) :
-                    $asignatura = AsignaturaData::getByCodigo($value->asignatura);
+                  <?php foreach ($grupos as $grupo) :
+                    $asignatura = AsignaturaData::getByCodigo($grupo->asignatura);
                   ?>
                     <tr>
-                      <td><?= $value->id; ?></td>
+                      <td><?= $grupo->numero; ?></td>
                       <td><?= $asignatura->nombre; ?></td>
-                      <?php $profesor = UserData::getById($value->profesor); ?>
-                      <td><?= $profesor->nombres; ?></td>
+                      <?php $profesor = UserData::getByDni($grupo->profesor); ?>
+                      <td><?= $profesor->nombre; ?></td>
                       <td style="width: 100px;">
                         <div class="btn-group">
                           <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Acciones <span class="caret"></span>
                           </button>
                           <ul class="dropdown-menu">
-                            <li><a href="./?view=abrirestu&id=<?= $value->id; ?>"><i class="fa fa-user"></i> Matricular</a></li>
-                            <li><a href="./?view=grupo&opt=edit&id=<?= $value->id; ?>"><i class="fas fa-pen"></i> Editar</a></li>
-                            <!-- <li><a href="./?action=grupo&opt=del&id=<?= $value->id_curso; ?>"><i class="fa fa-trash-o fa-lg"></i> Eliminar</a></li> -->
+                            <li><a href="./?view=abrirestu&id=<?= $grupo->id; ?>"><i class="fa fa-user"></i> Matricular</a></li>
+                            <li><a href="./?view=grupo&opt=edit&id=<?= $grupo->id; ?>"><i class="fas fa-pen"></i> Editar</a></li>
                         </div>
                       </td>
                     </tr>
