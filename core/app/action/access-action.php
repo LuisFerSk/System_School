@@ -10,7 +10,6 @@ if (isset($_GET["opt"]) && $_GET["opt"] == "login") {
 			$user = $query->fetch_array();
 			if ($user != null) {
 				$_SESSION["id"] = $user["id"];
-				$_SESSION["kind"] = $user["kind"];
 				Core::redir("./");
 			}
 		}

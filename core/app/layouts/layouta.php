@@ -46,28 +46,32 @@
       <aside class="main-sidebar">
         <section class="sidebar">
           <?php
-          $user = null;
-          $user = UserData::getById($_SESSION["id"]);
+          $kinds = KindData::getById($_SESSION["id"]);
           ?>
           <ul class="sidebar-menu">
             <li><a href="./?view=index"><i class="fa fa-home"></i> <span>Inicio</span></a></li>
             <li><a href="./?view=users&opt=user"><i class="far fa-address-card"></i> <span>Información personal</span></a></li>
-            <?php if (stristr($user->kind, '1')) : ?>
-              <li><a href="./?view=periodo_academico&opt=all"><i class="fa fa-hourglass-end"></i> <span>Periodo academico</span></a></li>
-              <li><a href="./?view=facultad&opt=all"><i class="fa fa-university"></i> <span>Facultades</span></a></li>
-              <li><a href="./?view=programa&opt=all"><i class="fa fa-list-ol"></i> <span>Programas</span></a></li>
-              <li><a href="./?view=asignatura&opt=all"><i class="fas fa-file-signature"></i> <span>Asignaturas</span></a></li>
-              <li><a href="./?view=grupo&opt=all"><i class="fas fa-users"></i> <span>Grupo</span></a></li>
-              <li><a href="./?view=estudiantes&opt=all"><i class="fas fa-graduation-cap"></i> <span>Estudiantes</span></a></li>
-              <li><a href="./?view=profesores&opt=all"><i class="fa fa-suitcase"></i> <span>Profesores</span></a></li>
-              <li><a href="./?view=users&opt=all"><i class="fa fa-user"></i> <span>usuarios</span></a></li>
-            <?php endif;
-            if (stristr($user->kind, '2')) : ?>
-              <li><a href="./?view=asis"><i class="fa fa-users"></i> <span>Grupos</span></a></li>
-            <?php endif;
-            if (stristr($user->kind, '3')) : ?>
-              <li><a href="./?view=asis"><i class="fa fa-users"></i> <span>Asistencia</span></a></li>
-            <?php endif; ?>
+            <?php foreach ($kinds as $value) :
+              if ($value->id_kind == '1') : ?>
+                <li><a href="./?view=periodo_academico&opt=all"><i class="fa fa-hourglass-end"></i> <span>Periodo academico</span></a></li>
+                <li><a href="./?view=facultad&opt=all"><i class="fa fa-university"></i> <span>Facultades</span></a></li>
+                <li><a href="./?view=programa&opt=all"><i class="fa fa-list-ol"></i> <span>Programas</span></a></li>
+                <li><a href="./?view=asignatura&opt=all"><i class="fas fa-file-signature"></i> <span>Asignaturas</span></a></li>
+                <li><a href="./?view=grupo&opt=all"><i class="fas fa-users"></i> <span>Grupo</span></a></li>
+                <li><a href="./?view=estudiantes&opt=all"><i class="fas fa-graduation-cap"></i> <span>Estudiantes</span></a></li>
+                <li><a href="./?view=profesores&opt=all"><i class="fa fa-suitcase"></i> <span>Profesores</span></a></li>
+                <li><a href="./?view=users&opt=all"><i class="fa fa-user"></i> <span>usuarios</span></a></li>
+              <?php continue;
+              endif;
+              if ($value->id_kind == '2') : ?>
+                <li><a href="./?view=asis"><i class="fa fa-users"></i> <span>Grupos</span></a></li>
+              <?php continue;
+              endif;
+              if ($value->id_kind == '0') : ?>
+                <li><a href="./?view=asis"><i class="fa fa-users"></i> <span>Asistencia</span></a></li>
+            <?php continue;
+              endif;
+            endforeach; ?>
           </ul>
         </section>
       </aside>

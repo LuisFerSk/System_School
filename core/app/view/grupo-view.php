@@ -26,11 +26,13 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <?php foreach ($curso as $cu) : ?>
+                  <?php foreach ($curso as $value) :
+                    $asignatura = AsignaturaData::getByCodigo($value->asignatura);
+                  ?>
                     <tr>
-                      <td><?= $cu->id; ?></td>
-                      <td><?= $cu->nombre; ?></td>
-                      <?php $profesor = UserData::getById($cu->profesor); ?>
+                      <td><?= $value->id; ?></td>
+                      <td><?= $asignatura->nombre; ?></td>
+                      <?php $profesor = UserData::getById($value->profesor); ?>
                       <td><?= $profesor->nombres; ?></td>
                       <td style="width: 100px;">
                         <div class="btn-group">
@@ -38,9 +40,9 @@
                             Acciones <span class="caret"></span>
                           </button>
                           <ul class="dropdown-menu">
-                            <li><a href="./?view=abrirestu&id=<?= $cu->id; ?>"><i class="fa fa-user"></i> Matricular</a></li>
-                            <li><a href="./?view=grupo&opt=edit&id=<?= $cu->id; ?>"><i class="fas fa-pen"></i> Editar</a></li>
-                            <!-- <li><a href="./?action=grupo&opt=del&id=<?= $cu->id_curso; ?>"><i class="fa fa-trash-o fa-lg"></i> Eliminar</a></li> -->
+                            <li><a href="./?view=abrirestu&id=<?= $value->id; ?>"><i class="fa fa-user"></i> Matricular</a></li>
+                            <li><a href="./?view=grupo&opt=edit&id=<?= $value->id; ?>"><i class="fas fa-pen"></i> Editar</a></li>
+                            <!-- <li><a href="./?action=grupo&opt=del&id=<?= $value->id_curso; ?>"><i class="fa fa-trash-o fa-lg"></i> Eliminar</a></li> -->
                         </div>
                       </td>
                     </tr>

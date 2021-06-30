@@ -41,6 +41,12 @@ class AsignaturaData {
 		return Model::one($query[0],new AsignaturaData());
 	}
 
+	public static function getByCodigo($codigo){
+		$sql = "select * from ".self::$tablename." where codigo=$codigo";
+		$query = Executor::doit($sql);
+		return Model::one($query[0],new AsignaturaData());
+	}
+
 	public static function getAll(){
 		 $sql = "select * from ".self::$tablename;
 		$query = Executor::doit($sql);
