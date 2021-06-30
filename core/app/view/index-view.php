@@ -64,7 +64,9 @@
           <div class="col-lg-3 col-xs-6">
             <div class="small-box bg-yellow">
               <div class="inner">
-                <h3><?php echo count(GrupoData::getall()); ?></h3>
+                <h3>
+                  <?php echo count(GrupoData::getall()); ?>
+                </h3>
                 <p>Grupos</p>
               </div>
               <a href="./?view=asis" class="small-box-footer">Ver mas <i class="fa fa-arrow-circle-right"></i></a>
@@ -72,11 +74,16 @@
           </div>
         <?php continue;
         endif;
-        if ($user->kind == '3') : ?>
+        if ($value->id_kind == '0') : ?>
           <div class="col-lg-3 col-xs-6">
             <div class="small-box bg-yellow">
               <div class="inner">
-                <h3><?php echo count(GrupoData::getall()); ?></h3>
+                <h3>
+                  <?php
+                  $estudiante = EstudianteData::getById($_SESSION["id"]);
+                  echo count(GrupoEstudianteData::getByEstudiante($estudiante->dni));
+                  ?>
+                </h3>
                 <p>Grupos</p>
               </div>
               <a href="./?view=asis" class="small-box-footer">Ver mas <i class="fa fa-arrow-circle-right"></i></a>

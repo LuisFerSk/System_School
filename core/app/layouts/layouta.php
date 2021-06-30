@@ -64,11 +64,11 @@
               <?php continue;
               endif;
               if ($value->id_kind == '2') : ?>
-                <li><a href="./?view=asis"><i class="fa fa-users"></i> <span>Grupos</span></a></li>
+                <li><a href="./?view=grupo&opt=all"><i class="fa fa-users"></i> <span>Grupos</span></a></li>
               <?php continue;
               endif;
               if ($value->id_kind == '0') : ?>
-                <li><a href="./?view=asis"><i class="fa fa-users"></i> <span>Asistencia</span></a></li>
+                <li><a href="./?view=grupo&opt=all"><i class="fa fa-users"></i> <span>Asistencia</span></a></li>
             <?php continue;
               endif;
             endforeach; ?>

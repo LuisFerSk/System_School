@@ -1,13 +1,19 @@
 <?php if (isset($_GET["opt"]) && $_GET["opt"] == "all") :
   $grupos = GrupoData::getAll();
+  $kinds = KindData::getById($_SESSION["id"]);
 ?>
   <section class="content-header">
     <h1>
       Grupo
       <small>Todo los grupos</small>
     </h1>
-    <br>
-    <a href="./?view=grupo&opt=new" class="btn btn-primary">Nuevo grupo</a>
+    <?php foreach ($kinds as $value) :
+      if ($value->id_kind == '1') : ?>
+        <br>
+        <a href="./?view=grupo&opt=new" class="btn btn-primary">Nuevo grupo</a>
+    <?php break;
+      endif;
+    endforeach; ?>
   </section>
   <br>
   <section class="container">
@@ -21,7 +27,12 @@
                   <tr>
                     <th scope="col">Numero</th>
                     <th scope="col">Asignatura</th>
-                    <th scope="col">Profesor Encargado</th>
+                    <?php foreach ($kinds as $value) :
+                      if ($value->id_kind != '2') : ?>
+                        <th scope="col">Profesor Encargado</th>
+                    <?php break;
+                      endif;
+                    endforeach; ?>
                     <th scope="col">Operaciones</th>
                   </tr>
                 </thead>
@@ -32,16 +43,32 @@
                     <tr>
                       <td><?= $grupo->numero; ?></td>
                       <td><?= $asignatura->nombre; ?></td>
-                      <?php $profesor = UserData::getByDni($grupo->profesor); ?>
-                      <td><?= $profesor->nombre; ?></td>
+                      <?php foreach ($kinds as $value) :
+                        if ($value->id_kind != '2') :
+                          $profesor = UserData::getByDni($grupo->profesor); ?>
+                          <td><?= $profesor->nombre; ?></td>
+                      <?php break;
+                        endif;
+                      endforeach; ?>
                       <td style="width: 100px;">
                         <div class="btn-group">
                           <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Acciones <span class="caret"></span>
                           </button>
                           <ul class="dropdown-menu">
-                            <li><a href="./?view=abrirestu&id=<?= $grupo->id; ?>"><i class="fa fa-user"></i> Matricular</a></li>
-                            <li><a href="./?view=grupo&opt=edit&id=<?= $grupo->id; ?>"><i class="fas fa-pen"></i> Editar</a></li>
+                            <?php foreach ($kinds as $value) :
+                              if ($value->id_kind == '1') : ?>
+                                <li><a href="./?view=abrirestu&id=<?= $grupo->id; ?>"><i class="fa fa-user"></i> Matricular</a></li>
+                                <li><a href="./?view=grupo&opt=edit&id=<?= $grupo->id; ?>"><i class="fas fa-pen"></i> Editar</a></li>
+                              <?php endif;
+                              if ($value->id_kind == '2' || $value->id_kind == '1') : ?>
+                                <li><a href="./?view=grupo_estudiante&id=<?= $grupo->id; ?>"><i class="far fa-address-book"></i> Asistencia</a></li>
+                              <?php endif;
+                              if ($value->id_kind == '0') : ?>
+                                <li><a href="./?view=asistencia&id=<?= $grupo->id; ?>"><i class="far fa-address-book"></i> Asistencia</a></li>
+                            <?php endif;
+                            endforeach; ?>
+                          </ul>
                         </div>
                       </td>
                     </tr>
@@ -115,20 +142,6 @@
       </div>
     </div>
   </section>
-  <!-- <script>
-    $(buscarHoras());
-
-    function buscarHoras() {
-      $.ajax({
-        url: "./?action=grupo",
-        type: "post",
-        data: {},
-        success: function(result) {
-          $("#horas_clase").html(result);
-        }
-      });
-    }
-  </script> -->
 <?php elseif (isset($_GET["opt"]) && $_GET["opt"] == "edit") :
   $curso = GrupoData::getById($_GET["id"]);
 ?>
