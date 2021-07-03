@@ -6,7 +6,7 @@ class AsistenciaData
     public function __construct()
     {
         $this->id = "";
-        $this->grupo_asistencia = "";
+        $this->grupo_estudiante = "";
         $this->tipo_asistencia = "";
         $this->fecha = "";
     }
@@ -14,14 +14,14 @@ class AsistenciaData
     public function add()
     {
         $sql = "insert into " . self::$tablename . " (
-			grupo_asistencia,
+			grupo_estudiante,
 			tipo_asistencia,
 			fecha) ";
         $sql .= "value (
-			\"$this->grupo_asistencia\",
+			\"$this->grupo_estudiante\",
 			\"$this->tipo_asistencia\",
 			\"$this->fecha\")";
-        Executor::doit($sql);
+        return Executor::doit($sql);
     }
 
     public function del()
