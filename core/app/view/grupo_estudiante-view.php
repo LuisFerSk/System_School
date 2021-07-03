@@ -3,7 +3,6 @@
     foreach ($kinds as $value) :
         if ($value->id_kind != '0') :
             $grupo_estudiante = GrupoEstudianteData::getByGrupo($_GET["id"]);
-            
             break;
         endif;
     endforeach;

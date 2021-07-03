@@ -27,17 +27,17 @@ class AsistenciaData
     public function del()
     {
         $sql = "delete from " . self::$tablename . " where id=$this->id";
-        Executor::doit($sql);
+        return Executor::doit($sql);
     }
 
     public function update()
     {
         $sql = "update " . self::$tablename . " set 
-		codigo=$this->grupo_estudiante,
-		nombre=$this->tipo_asistencia,
-		estado=\"$this->fecha\" 
+		grupo_estudiante=$this->grupo_estudiante,
+		tipo_asistencia=$this->tipo_asistencia,
+		fecha=\"$this->fecha\" 
 		where id=$this->id";
-        Executor::doit($sql);
+        return Executor::doit($sql);
     }
 
     public static function getById($id)

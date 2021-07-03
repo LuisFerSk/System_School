@@ -13,11 +13,10 @@
       <div class="form-group">
         <label for="inputEmail1" class="col-lg-2 control-label">Seleccionar Fecha:</label>
         <div class="col-lg-7">
-          <input type="date" name="fecha" min="<?= $periodo->fecha_inicio ?>" max="<?= date("Y-m-d") > $periodo->fecha_fin ? $periodo->fecha_fin :  date("Y-m-d") ?>" value="<?= date("Y-m-d") > $periodo->fecha_fin ? $periodo->fecha_fin :  date("Y-m-d") ?>" required class="form-control">
+          <input id="fecha" type="date" name="fecha" min="<?= $periodo->fecha_inicio ?>" max="<?= date("Y-m-d") > $periodo->fecha_fin ? $periodo->fecha_fin :  date("Y-m-d") ?>" required class="form-control">
         </div>
         <div class="col-lg-offset-3">
           <input type="hidden" name="id_grupo" value="<?= $_GET["id"] ?>">
-          <button id="submit" type="submit" class="btn btn-primary">Buscar</button>
         </div>
       </div>
     </form>
@@ -28,7 +27,7 @@
   <?php foreach ($kinds as $value) :
     if ($value->id_kind == '1' || $value->id_kind == '2') : ?>
       <script>
-        $("#loadlist").submit(function(e) {
+        $("#fecha").change(function(e) {
           e.preventDefault();
           var d = $("#loadlist").serialize();
           $.get("./?action=cargar_asistencia", d, function(data) {
