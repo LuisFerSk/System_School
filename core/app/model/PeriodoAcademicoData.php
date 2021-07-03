@@ -25,7 +25,7 @@ class PeriodoAcademicoData
 			\"$this->fecha_fin\",
 			\"$this->estado\"
 		)";
-		Executor::doit($sql);
+		return Executor::doit($sql);
 	}
 
 	public function update()

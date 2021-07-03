@@ -21,7 +21,7 @@ class AsignaturaData
 			\"$this->codigo\",
 			\"$this->nombre\",
 			\"$this->estado\")";
-		Executor::doit($sql);
+		return Executor::doit($sql);
 	}
 
 	public function del()
@@ -37,7 +37,7 @@ class AsignaturaData
 		nombre=\"$this->nombre\",
 		estado=\"$this->estado\" 
 		where id=$this->id";
-		Executor::doit($sql);
+		return Executor::doit($sql);
 	}
 
 	public static function getById($id)

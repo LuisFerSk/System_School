@@ -14,13 +14,13 @@ class AsistenciaData
     public function add()
     {
         $sql = "insert into " . self::$tablename . " (
-			codigo,
-			nombre,
-			estado) ";
+			grupo_asistencia,
+			tipo_asistencia,
+			fecha) ";
         $sql .= "value (
-			\"$this->codigo\",
-			\"$this->nombre\",
-			\"$this->estado\")";
+			\"$this->grupo_asistencia\",
+			\"$this->tipo_asistencia\",
+			\"$this->fecha\")";
         Executor::doit($sql);
     }
 
@@ -33,9 +33,9 @@ class AsistenciaData
     public function update()
     {
         $sql = "update " . self::$tablename . " set 
-		codigo=\"$this->codigo\",
-		nombre=\"$this->nombre\",
-		estado=\"$this->estado\" 
+		codigo=\"$this->grupo_asistencia\",
+		nombre=\"$this->tipo_asistencia\",
+		estado=\"$this->fecha\" 
 		where id=$this->id";
         Executor::doit($sql);
     }
@@ -47,9 +47,16 @@ class AsistenciaData
         return Model::one($query[0], new AsistenciaData());
     }
 
-    public static function getByGrupoEstudiante($grupo_asistencia)
+    public static function getByGrupoEstudiante($grupo_estudiante)
     {
-        $sql = "select * from " . self::$tablename . " where grupo_asistencia = \"$grupo_asistencia\";";
+        $sql = "select * from " . self::$tablename . " where grupo_estudiante = $grupo_estudiante;";
+        $query = Executor::doit($sql);
+        return Model::one($query[0], new AsistenciaData());
+    }
+
+    public static function getByATD($grupo_estudiante, $fecha)
+    {
+        $sql = "select * from " . self::$tablename . " where grupo_estudiante = $grupo_estudiante and fecha = \"$fecha\";";
         $query = Executor::doit($sql);
         return Model::one($query[0], new AsistenciaData());
     }

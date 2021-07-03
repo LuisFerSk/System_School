@@ -72,7 +72,7 @@
             <div class="col-xs-12">
                 <div class="box">
                     <div class="box-body">
-                        <form method="POST" action="./?action=periodo_academico&opt=add">
+                        <form id="form">
                             <div class="form-row clearfix">
                                 <div class="form-group col-md-6">
                                     <label for="inputEmail4">Periodo academico:</label>
@@ -103,7 +103,17 @@
                 </div>
             </div>
         </div>
+        <div id="result"></div>
     </section>
+    <script>
+        $("#form").submit(function(e) {
+            e.preventDefault();
+            var d = $("#form").serialize();
+            $.post("./?action=periodo_academico&opt=add", d, function(result) {
+                $("#result").html(result);
+            });
+        });
+    </script>
 <?php elseif (isset($_GET["opt"]) && $_GET["opt"] == "edit") :
     $academico = PeriodoAcademicoData::getById($_GET["id"]);
 ?>
