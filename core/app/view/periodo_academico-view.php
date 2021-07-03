@@ -109,9 +109,12 @@
         $("#form").submit(function(e) {
             e.preventDefault();
             var d = $("#form").serialize();
-            $.post("./?action=periodo_academico&opt=add", d, function(result) {
-                $("#result").html(result);
-            });
+            $.post(
+                "./?action=periodo_academico&opt=add",
+                d,
+                function(result) {
+                    $("#result").html(result);
+                });
         });
     </script>
 <?php elseif (isset($_GET["opt"]) && $_GET["opt"] == "edit") :

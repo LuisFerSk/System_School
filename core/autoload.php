@@ -19,3 +19,5 @@ include "controller/Form.php";
 include "controller/Table.php";
 include "controller/Bs.php";
 include "controller/Crudadmin.php";
+
+include "controller/Alert.php";

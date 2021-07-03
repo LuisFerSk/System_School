@@ -56,10 +56,10 @@ foreach ($kinds as $value) :
                     <?php endforeach; ?>
                 </table>
 <?php else :
-                echo "<p class='alert alert-danger'>La fecha no se encuentra en el horario del grupo</p>";
+                echo Alert::Danger('La fecha no se encuentra en el horario del grupo');
             endif;
         else :
-            echo "<p class='alert alert-danger'>No hay Grupos</p>";
+            echo Alert::Danger('No hay Grupos');
         endif;
     endif;
 endforeach; ?>
