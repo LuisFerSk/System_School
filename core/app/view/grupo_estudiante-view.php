@@ -3,6 +3,7 @@
     foreach ($kinds as $value) :
         if ($value->id_kind != '0') :
             $grupo_estudiante = GrupoEstudianteData::getByGrupo($_GET["id"]);
+            
             break;
         endif;
     endforeach;
@@ -51,7 +52,7 @@
                                                             Acciones <span class="caret"></span>
                                                         </button>
                                                         <ul class="dropdown-menu">
-                                                            <li><a href="./?view=asistencia&id_estudiante=<?= $estudiante->id; ?>&id_grupo=<?= $_GET["id"] ?>"><i class="fa fa-user"></i> Tomar asistencia</a></li>
+                                                            <li><a href="./?view=asistencia&id_estudiante=<?= $estudiante->id ?>&id_grupo=<?= $_GET["id"] ?>"><i class="fa fa-user"></i> Tomar asistencia</a></li>
                                                         </ul>
                                                     </div>
                                                 </td>

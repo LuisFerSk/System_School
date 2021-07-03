@@ -57,15 +57,17 @@
                           </button>
                           <ul class="dropdown-menu">
                             <?php foreach ($kinds as $value) :
+                              if ($value->id_kind == '0') : ?>
+                                <li><a href="./?view=asistencia&id=<?= $grupo->id; ?>"><i class="far fa-address-book"></i> Tu asistencia</a></li>
+                              <?php break;
+                              endif;
+                              if ($value->id_kind == '2' || $value->id_kind == '1') : ?>
+                                <li><a href="./?view=grupo_estudiante&id=<?= $grupo->id; ?>"><i class="fas fa-eye"></i> Ver grupo</a></li>
+                                <li><a href="./?view=asistencia&id=<?= $grupo->id; ?>"><i class="far fa-address-book"></i> Asistencia</a></li>
+                              <?php endif;
                               if ($value->id_kind == '1') : ?>
                                 <li><a href="./?view=abrirestu&id=<?= $grupo->id; ?>"><i class="fa fa-user"></i> Matricular</a></li>
                                 <li><a href="./?view=grupo&opt=edit&id=<?= $grupo->id; ?>"><i class="fas fa-pen"></i> Editar</a></li>
-                              <?php endif;
-                              if ($value->id_kind == '2' || $value->id_kind == '1') : ?>
-                                <li><a href="./?view=grupo_estudiante&id=<?= $grupo->id; ?>"><i class="far fa-address-book"></i> Asistencia</a></li>
-                              <?php endif;
-                              if ($value->id_kind == '0') : ?>
-                                <li><a href="./?view=asistencia&id=<?= $grupo->id; ?>"><i class="far fa-address-book"></i> Asistencia</a></li>
                             <?php endif;
                             endforeach; ?>
                           </ul>

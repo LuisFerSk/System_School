@@ -1,16 +1,19 @@
 <?php
-class AsignaturaData {
+class AsignaturaData
+{
 	public static $tablename = "asignatura";
 
-	public function __construct(){
+	public function __construct()
+	{
 		$this->id = "";
 		$this->codigo = "";
-    	$this->nombre = "";
+		$this->nombre = "";
 		$this->estado = "";
 	}
 
-	public function add(){
-		$sql = "insert into ".self::$tablename." (
+	public function add()
+	{
+		$sql = "insert into " . self::$tablename . " (
 			codigo,
 			nombre,
 			estado) ";
@@ -21,13 +24,15 @@ class AsignaturaData {
 		Executor::doit($sql);
 	}
 
-	public function del(){
-		$sql = "delete from ".self::$tablename." where id=$this->id";
+	public function del()
+	{
+		$sql = "delete from " . self::$tablename . " where id=$this->id";
 		Executor::doit($sql);
 	}
 
-	public function update(){
-		$sql = "update ".self::$tablename." set 
+	public function update()
+	{
+		$sql = "update " . self::$tablename . " set 
 		codigo=\"$this->codigo\",
 		nombre=\"$this->nombre\",
 		estado=\"$this->estado\" 
@@ -35,21 +40,24 @@ class AsignaturaData {
 		Executor::doit($sql);
 	}
 
-	public static function getById($id){
-		$sql = "select * from ".self::$tablename." where id=$id";
+	public static function getById($id)
+	{
+		$sql = "select * from " . self::$tablename . " where id=$id";
 		$query = Executor::doit($sql);
-		return Model::one($query[0],new AsignaturaData());
+		return Model::one($query[0], new AsignaturaData());
 	}
 
-	public static function getByCodigo($codigo){
-		$sql = "select * from ".self::$tablename." where codigo=\"$codigo\"";
+	public static function getByCodigo($codigo)
+	{
+		$sql = "select * from " . self::$tablename . " where codigo=\"$codigo\"";
 		$query = Executor::doit($sql);
-		return Model::one($query[0],new AsignaturaData());
+		return Model::one($query[0], new AsignaturaData());
 	}
 
-	public static function getAll(){
-		 $sql = "select * from ".self::$tablename;
+	public static function getAll()
+	{
+		$sql = "select * from " . self::$tablename;
 		$query = Executor::doit($sql);
-		return Model::many($query[0],new AsignaturaData());
+		return Model::many($query[0], new AsignaturaData());
 	}
 }

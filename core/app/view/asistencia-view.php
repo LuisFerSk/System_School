@@ -1,9 +1,9 @@
-<?php if (isset($_GET["id_grupo"])) :
-  $grupo = GrupoData::getById($_GET["id_grupo"]);
+<?php if (isset($_GET["id"])) :
+  $grupo = GrupoData::getById($_GET["id"]);
   $periodo = PeriodoAcademicoData::getByNombre($grupo->periodo);
 ?>
   <section class="content-header">
-    <a href="./?view=grupo_estudiante&id=<?= $_GET["id_grupo"] ?>" class="btn pull-right btn-sm btn-info"><i class='fa fa-arrow-left'></i> Regresar</a>
+    <a href="./?view=grupo_estudiante&id=<?= $_GET["id"] ?>" class="btn pull-right btn-sm btn-info"><i class='fa fa-arrow-left'></i> Regresar</a>
     <h1>Asistencia</h1>
   </section>
   <br>
@@ -12,11 +12,11 @@
       <div class="form-group">
         <label for="inputEmail1" class="col-lg-2 control-label">Seleccionar Fecha:</label>
         <div class="col-lg-7">
-          <input type="date" name="fecha" min="<?= $periodo->fecha_inicio ?>" max="<?= date("Y-m-d"); ?>" value="<?= date("Y-m-d"); ?>" required class="form-control">
+          <input type="date" name="fecha" min="<?= $periodo->fecha_inicio ?>" max="<?= date("Y-m-d") < $periodo->fecha_fin ? $periodo->fecha_fin :  date("Y-m-d") ?>" value="<?= date("Y-m-d") < $periodo->fecha_fin ? $periodo->fecha_fin :  date("Y-m-d") ?>" required class="form-control">
         </div>
         <div class="col-lg-offset-3">
-          <input type="hidden" name="id_grado" value="<?= $_GET["id_grupo"] ?>">
-          <button type="submit" class="btn btn-primary">Buscar</button>
+          <input type="hidden" name="id_grupo" value="<?= $_GET["id"] ?>">
+          <button id="submit" type="submit" class="btn btn-primary">Buscar</button>
         </div>
       </div>
     </form>
