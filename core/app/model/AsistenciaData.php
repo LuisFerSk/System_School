@@ -18,8 +18,8 @@ class AsistenciaData
 			tipo_asistencia,
 			fecha) ";
         $sql .= "value (
-			\"$this->grupo_estudiante\",
-			\"$this->tipo_asistencia\",
+			$this->grupo_estudiante,
+			$this->tipo_asistencia,
 			\"$this->fecha\")";
         return Executor::doit($sql);
     }
@@ -33,8 +33,8 @@ class AsistenciaData
     public function update()
     {
         $sql = "update " . self::$tablename . " set 
-		codigo=\"$this->grupo_asistencia\",
-		nombre=\"$this->tipo_asistencia\",
+		codigo=$this->grupo_estudiante,
+		nombre=$this->tipo_asistencia,
 		estado=\"$this->fecha\" 
 		where id=$this->id";
         Executor::doit($sql);
@@ -56,7 +56,7 @@ class AsistenciaData
 
     public static function getByATD($grupo_estudiante, $fecha)
     {
-        $sql = "select * from " . self::$tablename . " where grupo_estudiante = $grupo_estudiante and fecha = \"$fecha\";";
+        $sql = "select * from " . self::$tablename . " where grupo_estudiante=$grupo_estudiante and fecha=\"$fecha\";";
         $query = Executor::doit($sql);
         return Model::one($query[0], new AsistenciaData());
     }
