@@ -31,9 +31,7 @@
           e.preventDefault();
           var d = $("#loadlist").serialize();
           $.get("./?action=cargar_asistencia", d, function(data) {
-            console.log(data);
             $("#data").html(data);
-
           });
         });
       </script>

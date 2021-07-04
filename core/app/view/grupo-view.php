@@ -63,7 +63,8 @@
                               endif;
                               if ($value->id_kind == '2' || $value->id_kind == '1') : ?>
                                 <li><a href="./?view=grupo_estudiante&id=<?= $grupo->id; ?>"><i class="fas fa-eye"></i> Ver grupo</a></li>
-                                <li><a href="./?view=asistencia&id=<?= $grupo->id; ?>"><i class="far fa-address-book"></i> Asistencia</a></li>
+                                <li><a href="./?view=asistencia&id=<?= $grupo->id ?>"><i class="far fa-address-book"></i> Asistencia</a></li>
+                                <li><a href="./?view=QR&codigo_qr=defaul&id_grupo=<?= $grupo->id ?>"><i class="fas fa-qrcode"></i> Ver codigo QR</a></li>
                               <?php endif;
                               if ($value->id_kind == '1') : ?>
                                 <li><a href="./?view=abrirestu&id=<?= $grupo->id; ?>"><i class="fa fa-user"></i> Matricular</a></li>
